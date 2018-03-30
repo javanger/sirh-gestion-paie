@@ -4,6 +4,9 @@
 	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+	
+	
+	
 	<bean id="bulletin1" class="dev.paie.entite.BulletinSalaire">
 		<property name="primeExceptionnelle" value="1000"></property>
 		<property name="remunerationEmploye" ref="Remuneration" />
@@ -35,10 +38,7 @@
 
 	</bean>
 	
-	<bean id="cotisation1" class="dev.paie.entite.Cotisation">
-	</bean>
-	<bean id="avantage1" class="dev.paie.entite.Avantage">
-	</bean>
+
 
 	<!-- exemple de valorisation de liste -->
 	<bean id="profil1" class="dev.paie.entite.ProfilRemuneration">
