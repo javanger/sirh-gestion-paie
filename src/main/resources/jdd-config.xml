@@ -9,8 +9,7 @@
 		<property name="primeExceptionnelle" value="1000"></property>
 		<property name="remunerationEmploye" ref="remuneration1"></property>
 	</bean>
-	<bean id="periode1" class="dev.paie.entite.Periode">
-	</bean>
+	<bean id="periode1" class="dev.paie.entite.Periode"></bean>
 	<bean id="remuneration1" class="dev.paie.entite.RemunerationEmploye">
 		<property name="entreprise" ref="entreprise1"></property>
 		<property name="matricule" value="M01"></property>
@@ -26,10 +25,8 @@
 		<property name="denomination" value="Dev Entreprise"></property>
 		<property name="codeNaf" value="6202A"></property>
 	</bean>
-	<bean id="cotisation1" class="dev.paie.entite.Cotisation">
-	</bean>
-	<bean id="avantage1" class="dev.paie.entite.Avantage">
-	</bean>
+	<bean id="cotisation1" class="dev.paie.entite.Cotisation"></bean>
+	<bean id="avantage1" class="dev.paie.entite.Avantage"></bean>
 
 	<!-- exemple de valorisation de liste -->
 	<bean id="profil1" class="dev.paie.entite.ProfilRemuneration">
