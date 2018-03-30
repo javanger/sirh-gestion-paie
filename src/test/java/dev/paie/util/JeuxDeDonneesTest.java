@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.junit.After;
 import org.junit.Before;
@@ -12,6 +13,7 @@ import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import dev.paie.entite.BulletinSalaire;
+import dev.paie.entite.Cotisation;
 
 public class JeuxDeDonneesTest {
 	private ClassPathXmlApplicationContext context;
