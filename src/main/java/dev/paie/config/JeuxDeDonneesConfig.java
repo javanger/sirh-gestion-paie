@@ -3,15 +3,15 @@
  */
 package dev.paie.config;
 
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * @author Kevin M.
  *
  */
 @Configuration
-@ComponentScan({"dev.paie.service", "dev.paie.util"})
-public class ServicesConfig {
-
+@ImportResource("classpath:jdd-config.xml")
+public class JeuxDeDonneesConfig {
+	
 }
