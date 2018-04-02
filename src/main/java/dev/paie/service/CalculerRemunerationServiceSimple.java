@@ -53,7 +53,11 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 		
 		resultatCalculRemunaration.setTotalCotisationsPatronales(paieUtils.formaterBigDecimal(totalCotisationPatronal.get()).toString());
 		
-		BigDecimal netImposable = salaireBrut.subtract(totalRetenueSalarial.get());
+		String salaireArrondi = paieUtils.formaterBigDecimal(salaireBrut);
+		String retenueSalarialArrondi = paieUtils.formaterBigDecimal(totalRetenueSalarial.get());
+		BigDecimal salaire = new BigDecimal(salaireArrondi);
+		BigDecimal retenuSalaire = new BigDecimal(retenueSalarialArrondi);
+		BigDecimal netImposable = salaire.subtract(retenuSalaire);
 		
 		resultatCalculRemunaration.setNetImposable(paieUtils.formaterBigDecimal(netImposable).toString());
 		
