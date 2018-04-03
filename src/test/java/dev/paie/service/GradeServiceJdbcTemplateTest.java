@@ -53,8 +53,8 @@ public class GradeServiceJdbcTemplateTest {
 		gradeService.mettreAJour(newGrade, "jdb");
 
 		Grade gradeModifie = gradeService.lister().stream().filter(p->p.getCode().equals("triban")).findAny().get();
-		assertEquals("154.89", gradeModifie.getNbHeuresBase());
-		assertEquals("45.98", gradeModifie.getTauxBase());
+		assertTrue("154.89", new BigDecimal("154.89").compareTo(gradeModifie.getNbHeuresBase()) == 0);
+		assertTrue("45.98", new BigDecimal("45.98").compareTo(gradeModifie.getTauxBase())==0);
 		
 	
 
