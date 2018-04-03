@@ -35,7 +35,7 @@ public class CotisationServiceJpa implements CotisationService{
 		
 		
 
-		TypedQuery<Cotisation> query = em.createQuery("select c from cotisation c", Cotisation.class);
+		TypedQuery<Cotisation> query = em.createQuery("select c from Cotisation c", Cotisation.class);
 
 		List<Cotisation> listeCotisation= query.getResultList();
 		return listeCotisation;
