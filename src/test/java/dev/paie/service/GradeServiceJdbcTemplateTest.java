@@ -44,6 +44,10 @@ public class GradeServiceJdbcTemplateTest {
 		
 		
 		assertEquals("abc", gradeService.findByCode("abc").getCode());
+		assert new BigDecimal("15.00").compareTo(gradeService.findByCode("abc").getNbHeuresBase()) == 0;
+		assert new BigDecimal("13.00").compareTo(gradeService.findByCode("abc").getTauxBase()) == 0;
+		
+				
 		//Optional<Grade> gradeRes = gradeService.lister().stream().filter(g -> g.getCode().equals("abc")).findFirst();
 		//assertTrue("pas trouvé abc", gradeRes.isPresent());
 		
@@ -55,7 +59,8 @@ public class GradeServiceJdbcTemplateTest {
 		//Optional<Grade> gradeModif = gradeService.lister().stream().filter(g -> g.getCode().equals("casp")).findFirst();
 		//assertTrue("pas trouvé casp", gradeModif.isPresent());
 		assertEquals("casp", gradeService.findByCode("casp").getCode());
-		
+		assert new BigDecimal("80.00").compareTo(gradeService.findByCode("casp").getNbHeuresBase()) == 0;
+		assert new BigDecimal("56.00").compareTo(gradeService.findByCode("casp").getTauxBase()) == 0;
 		
 	}
 }
