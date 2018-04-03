@@ -6,7 +6,6 @@ package dev.paie.service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -22,7 +21,7 @@ import dev.paie.util.PaieUtils;
 @Service
 public class CalculerRemunerationServiceSimple implements CalculerRemunerationService {
 
-	PaieUtils PaieUtils = new PaieUtils();
+	PaieUtils paieUtils = new PaieUtils();
 
 	/*
 	 * (non-Javadoc)
@@ -37,11 +36,11 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 		ResultatCalculRemuneration remuneration = new ResultatCalculRemuneration();
 		Grade grade = bulletin.getRemunerationEmploye().getGrade();
 
-		String salaireDeBase = PaieUtils.formaterBigDecimal(grade.getNbHeuresBase().multiply(grade.getTauxBase()));
+		String salaireDeBase = paieUtils.formaterBigDecimal(grade.getNbHeuresBase().multiply(grade.getTauxBase()));
 
 		remuneration.setSalaireDeBase(salaireDeBase);
 
-		String salaireBrut = PaieUtils
+		String salaireBrut = paieUtils
 				.formaterBigDecimal(bulletin.getPrimeExceptionnelle().add(new BigDecimal(salaireDeBase)));
 
 		remuneration.setSalaireBrut(salaireBrut);
@@ -52,7 +51,7 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 
 		BigDecimal totalRetenueSalarial = totalRetenueSalarialOptional.get();
 
-		remuneration.setTotalRetenueSalarial(PaieUtils.formaterBigDecimal(totalRetenueSalarial));
+		remuneration.setTotalRetenueSalarial(paieUtils.formaterBigDecimal(totalRetenueSalarial));
 
 		
 		
@@ -62,14 +61,14 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 
 		BigDecimal totalCotisationsPatriobales = totalCotisationsPatriobalesOptional.get();
 
-		remuneration.setTotalCotisationsPatronales(PaieUtils.formaterBigDecimal(totalCotisationsPatriobales));
+		remuneration.setTotalCotisationsPatronales(paieUtils.formaterBigDecimal(totalCotisationsPatriobales));
 
 		
 		
 		BigDecimal netImposable = new BigDecimal(salaireBrut).subtract(totalRetenueSalarial).setScale(2,
 				RoundingMode.DOWN);
 
-		remuneration.setNetImposable(PaieUtils.formaterBigDecimal(netImposable));
+		remuneration.setNetImposable(paieUtils.formaterBigDecimal(netImposable));
 		
 		
 		Optional<BigDecimal> totalCotisationsSalarial = bulletin.getRemunerationEmploye().getProfilRemuneration()
@@ -78,7 +77,7 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 
 		BigDecimal netAPayer = netImposable.subtract(totalCotisationsSalarial.get());
 
-		remuneration.setNetAPayer(PaieUtils.formaterBigDecimal(netAPayer));
+		remuneration.setNetAPayer(paieUtils.formaterBigDecimal(netAPayer));
 
 
 		return remuneration;

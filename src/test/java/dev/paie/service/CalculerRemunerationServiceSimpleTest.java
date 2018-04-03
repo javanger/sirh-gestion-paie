@@ -1,6 +1,3 @@
-/**
- * 
- */
 package dev.paie.service;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -28,9 +25,10 @@ import dev.paie.util.JeuxDeDonneesConfig;
 // test
 @RunWith(SpringRunner.class)
 public class CalculerRemunerationServiceSimpleTest {
+
 	@Autowired
 	private CalculerRemunerationService remunerationService;
-	
+
 	@Autowired
 	BulletinSalaire bulletin1;
 
