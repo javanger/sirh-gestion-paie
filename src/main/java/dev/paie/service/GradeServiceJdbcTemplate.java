@@ -53,5 +53,17 @@ public class GradeServiceJdbcTemplate implements GradeService {
 		gradeList = jdbcTemplate.query(sql, mapper);
 		return gradeList;
 	}
+	
+	public Grade findByCode(String code) {
+		Grade gradeFind = null;
+		for (Grade g : this.lister()) {
+			if (g.getCode().equals(code))
+				gradeFind = g;
+		}
+		return gradeFind;
+		 
+		
+		
+	}
 
 }

@@ -10,5 +10,7 @@ public interface GradeService {
 	void mettreAJour(Grade grade);
 
 	List<Grade> lister();
+	
+	Grade findByCode(String code);
 
 }

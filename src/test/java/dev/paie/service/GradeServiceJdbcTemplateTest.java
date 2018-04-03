@@ -2,6 +2,7 @@ package dev.paie.service;
 
 
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
@@ -39,22 +40,21 @@ public class GradeServiceJdbcTemplateTest {
 		assertTrue("liste null", gradeService.lister() != null);
 		assertTrue("liste vide", gradeService.lister().isEmpty() == false);
 		
-		// TODO vérifier qu'il est possible de récupérer le nouveau grade via la
-		Optional<Grade> gradeRes = gradeService.lister().stream().filter(g -> g.getCode().equals("abc")).findFirst();
-		assertTrue("pas trouvé abc", gradeRes.isPresent());
+		// TODO vérifier qu'il est possible de récupérer le nouveau grade via la // méthode lister
 		
-		// méthode lister
-		gradeService.lister();
+		
+		assertEquals("abc", gradeService.findByCode("abc").getCode());
+		//Optional<Grade> gradeRes = gradeService.lister().stream().filter(g -> g.getCode().equals("abc")).findFirst();
+		//assertTrue("pas trouvé abc", gradeRes.isPresent());
 		
 		// TODO modifier un grade
 		gradeService.mettreAJour(new Grade (3, "casp", new BigDecimal("80"), new BigDecimal("56")));
 		
 		// TODO vérifier que les modifications sont bien prises en compte via la
 		// méthode lister
-		Optional<Grade> gradeModif = gradeService.lister().stream().filter(g -> g.getCode().equals("casp")).findFirst();
-		assertTrue("pas trouvé casp", gradeModif.isPresent());
-		
-		gradeService.lister();
+		//Optional<Grade> gradeModif = gradeService.lister().stream().filter(g -> g.getCode().equals("casp")).findFirst();
+		//assertTrue("pas trouvé casp", gradeModif.isPresent());
+		assertEquals("casp", gradeService.findByCode("casp").getCode());
 		
 		
 	}
