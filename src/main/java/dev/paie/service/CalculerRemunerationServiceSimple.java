@@ -20,6 +20,7 @@ import dev.paie.util.PaieUtils;
 @Service
 public class CalculerRemunerationServiceSimple implements CalculerRemunerationService {
 
+	/**paieUtils : PaieUtils*/
 	@Autowired
 	private PaieUtils paieUtils;
 

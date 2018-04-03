@@ -23,8 +23,12 @@ import dev.paie.entite.Grade;
 @Service
 public class GradeServiceJdbcTemplate implements GradeService {
 
+	/**jdbcTemplate : JdbcTemplate*/
 	private JdbcTemplate jdbcTemplate;
 
+	/** Constructeur
+	 * @param dataSource
+	 */
 	@Autowired
 	public GradeServiceJdbcTemplate(DataSource dataSource) {
 		super();

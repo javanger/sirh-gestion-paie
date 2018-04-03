@@ -9,11 +9,17 @@ package dev.paie.entite;
  */
 public class ResultatCalculRemuneration {   
 	
+	/**salaireDeBase : String*/
 	private String salaireDeBase;   
+	/**salaireBrut : String*/
 	private String salaireBrut;   
+	/**totalRetenueSalarial : String*/
 	private String totalRetenueSalarial;   
+	/**totalCotisationsPatronales : String*/
 	private String totalCotisationsPatronales;   
+	/**netImposable : String*/
 	private String netImposable;   
+	/**netAPayer : String*/
 	private String netAPayer;   
  
 	/** Getter

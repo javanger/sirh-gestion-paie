@@ -12,6 +12,10 @@ import dev.paie.entite.ResultatCalculRemuneration;
  */
 public interface CalculerRemunerationService {   
 	
+	/** calcul un bulletin de salaire 
+	 * @param bulletin
+	 * @return un bulletin de salaire
+	 */
 	ResultatCalculRemuneration calculer(BulletinSalaire bulletin); 
 	
 }
