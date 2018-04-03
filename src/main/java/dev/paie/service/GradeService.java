@@ -11,7 +11,12 @@ public interface GradeService {
 
 	List<Grade> lister();
 	
-	public Grade findGradeById (int id);
+	public Grade findGradeByCode (String code);
+	
+	 void deleteGrade (String code);
+		
+		
+	
 		
 		
 	

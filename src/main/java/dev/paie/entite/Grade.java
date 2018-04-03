@@ -35,13 +35,17 @@ public class Grade {
 		this.id = id;
 	}
 
-	public Grade(Integer id, String code, BigDecimal nbHeuresBase, BigDecimal tauxBase) {
+	public Grade (String code, BigDecimal nbHeuresBase, BigDecimal tauxBase) {
 		super();
 		
-		this.id = id;
+		this.id = compteur++;
 		this.code = code;
 		this.nbHeuresBase = nbHeuresBase;
 		this.tauxBase = tauxBase;
+	}
+	
+	public Grade() {
+		// TODO Auto-generated constructor stub
 	}
 	
 	
