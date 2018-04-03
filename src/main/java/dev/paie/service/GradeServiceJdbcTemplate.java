@@ -3,7 +3,6 @@ package dev.paie.service;
 
 import java.math.BigDecimal;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -41,7 +40,6 @@ public class GradeServiceJdbcTemplate implements GradeService {
 
 	@Override
 	public List<Grade> lister() {
-		List<Grade> listGrade= new ArrayList<Grade>();
 		
 		RowMapper<Grade> mapper = (ResultSet rs, int rowNum) -> {
 			Grade g = new Grade();
@@ -54,10 +52,8 @@ public class GradeServiceJdbcTemplate implements GradeService {
 		};
 		
 		String sql= "Select * FROM Grade";
-		listGrade = this.jdbcTemplate.query(sql, mapper);
 		
-		
-		return listGrade;
+		return this.jdbcTemplate.query(sql, mapper);
 	}
 
 	@Override
