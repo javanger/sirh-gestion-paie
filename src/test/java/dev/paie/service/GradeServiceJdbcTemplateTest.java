@@ -13,7 +13,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import dev.paie.config.DataSourceH2Config;
-// import dev.paie.config.DataSourceMariadbConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Grade;
 
