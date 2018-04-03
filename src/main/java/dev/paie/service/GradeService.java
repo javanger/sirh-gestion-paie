@@ -18,4 +18,9 @@ public interface GradeService {
 
 	List<Grade> lister();
 
+	/**
+	 * @param res
+	 */
+	void supprimer(Grade res);
+
 }

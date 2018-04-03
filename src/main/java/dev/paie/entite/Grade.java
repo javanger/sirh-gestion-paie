@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class Grade {
 	
+	
 	private Integer id;
 	private String code;
 	private BigDecimal nbHeuresBase;

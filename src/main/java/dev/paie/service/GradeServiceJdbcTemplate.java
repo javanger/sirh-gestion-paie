@@ -3,11 +3,15 @@
  */
 package dev.paie.service;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import dev.paie.entite.Grade;
@@ -28,36 +32,44 @@ public class GradeServiceJdbcTemplate implements GradeService {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see dev.paie.service.GradeService#sauvegarder(dev.paie.entite.Grade)
-	 */
 	@Override
 	public void sauvegarder(Grade nouveauGrade) {
-		// TODO Auto-generated method stub
+		String sql = "INSERT INTO `grade`(`code`, `nbHeuresBase`, `tauxBase`) VALUES (?,?,?)";
+		jdbcTemplate.update(sql, nouveauGrade.getCode(), nouveauGrade.getNbHeuresBase(), nouveauGrade.getTauxBase());
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see dev.paie.service.GradeService#mettreAJour(dev.paie.entite.Grade)
-	 */
 	@Override
 	public void mettreAJour(Grade grade) {
-		// TODO Auto-generated method stub
+		String sql = "UPDATE `grade` SET `code`=?,`nbHeuresBase`=?,`tauxBase`=? WHERE CODE = ?";
+		jdbcTemplate.update(sql, grade.getCode(), grade.getNbHeuresBase(), grade.getTauxBase(), grade.getCode());
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see dev.paie.service.GradeService#lister()
-	 */
 	@Override
 	public List<Grade> lister() {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<Grade> grades = new ArrayList<Grade>();
+		String sql = "SELECT * FROM grade";
+		RowMapper<Grade> mapper = (ResultSet rs, int rowNum) -> {
+			Grade g = new Grade();
+			g.setCode(rs.getString("code"));
+			g.setNbHeuresBase(rs.getBigDecimal("nbHeuresBase"));
+			g.setTauxBase(rs.getBigDecimal("nbHeuresBase"));
+			return g;
+
+		};
+
+		grades = jdbcTemplate.query(sql, mapper);
+		return grades;
 	}
+
+	@Override
+	public void supprimer(Grade grade) {
+
+		String sql = "DELETE FROM grade WHERE CODE = ?";
+		jdbcTemplate.update(sql, grade.getCode());
+
+	}
+
 }
