@@ -17,6 +17,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import dev.paie.config.DataSourceH2Config;
 import dev.paie.config.DataSourceMySQLConfig;
 import dev.paie.entite.Grade;
 
@@ -24,7 +25,7 @@ import dev.paie.entite.Grade;
  * @author GOBERT Guillaume
  *
  */
-@ContextConfiguration(classes = { DataSourceMySQLConfig.class, GradeServiceJdbcTemplate.class })
+@ContextConfiguration(classes = { DataSourceH2Config.class, GradeServiceJdbcTemplate.class })
 @RunWith(SpringRunner.class)
 public class GradeServiceJdbcTemplateTest {
 

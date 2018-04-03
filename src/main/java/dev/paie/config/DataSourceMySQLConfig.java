@@ -15,6 +15,10 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
  */
 @Configuration
 public class DataSourceMySQLConfig {
+	/**
+	 * Connection a une base donnée MySQL
+	 * @return
+	 */
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -24,5 +28,4 @@ public class DataSourceMySQLConfig {
 		dataSource.setPassword("");
 		return dataSource;
 	}
-
 }
