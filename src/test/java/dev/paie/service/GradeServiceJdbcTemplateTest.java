@@ -14,11 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import dev.paie.config.DataSourceH2Config;
 import dev.paie.config.DataSourceMySQLConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Grade;
 
-@ContextConfiguration(classes = { DataSourceMySQLConfig.class, ServicesConfig.class})
+@ContextConfiguration(classes = { DataSourceH2Config.class, ServicesConfig.class, DataSourceMySQLConfig.class})
 
 @RunWith(SpringRunner.class)
 public class GradeServiceJdbcTemplateTest {
