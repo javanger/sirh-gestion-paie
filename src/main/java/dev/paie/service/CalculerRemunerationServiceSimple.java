@@ -49,7 +49,11 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 				.getCotisationsNonImposables().stream().filter(c -> c.getTauxSalarial() != null)
 				.map(c -> c.getTauxSalarial().multiply(new BigDecimal(salaireBrut))).reduce((s1, s2) -> s1.add(s2));
 
-		BigDecimal totalRetenueSalarial = totalRetenueSalarialOptional.get();
+		BigDecimal totalRetenueSalarial = null;
+		
+		if (totalRetenueSalarialOptional.isPresent()) {
+			totalRetenueSalarial = totalRetenueSalarialOptional.get();
+		}
 
 		remuneration.setTotalRetenueSalarial(paieUtils.formaterBigDecimal(totalRetenueSalarial));
 
@@ -59,7 +63,11 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 				.getProfilRemuneration().getCotisationsNonImposables().stream().filter(c -> c.getTauxPatronal() != null)
 				.map(c -> c.getTauxPatronal().multiply(new BigDecimal(salaireBrut))).reduce((s1, s2) -> s1.add(s2));
 
-		BigDecimal totalCotisationsPatriobales = totalCotisationsPatriobalesOptional.get();
+		BigDecimal totalCotisationsPatriobales = null;
+
+		if(totalCotisationsPatriobalesOptional.isPresent()) {
+			totalCotisationsPatriobales = totalCotisationsPatriobalesOptional.get();
+		}
 
 		remuneration.setTotalCotisationsPatronales(paieUtils.formaterBigDecimal(totalCotisationsPatriobales));
 
@@ -75,7 +83,11 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 				.getCotisationsImposables().stream().filter(c -> c.getTauxSalarial() != null)
 				.map(c -> c.getTauxSalarial().multiply(new BigDecimal(salaireBrut))).reduce((c1, c2) -> c1.add(c2));
 
-		BigDecimal netAPayer = netImposable.subtract(totalCotisationsSalarial.get());
+		BigDecimal netAPayer = null;
+		
+		if(totalCotisationsSalarial.isPresent()) {
+			netAPayer = netImposable.subtract(totalCotisationsSalarial.get());
+		}		 
 
 		remuneration.setNetAPayer(paieUtils.formaterBigDecimal(netAPayer));
 
