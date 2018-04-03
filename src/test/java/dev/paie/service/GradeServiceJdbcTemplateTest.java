@@ -34,7 +34,7 @@ public class GradeServiceJdbcTemplateTest {
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {
 
-		// TODO sauvegarder un nouveau grade
+		//  sauvegarder un nouveau grade
 		List<Grade> grades = new ArrayList<Grade>();
 		List<Grade> listGrade = new ArrayList<Grade>();
 		Grade res = new Grade();
@@ -45,7 +45,7 @@ public class GradeServiceJdbcTemplateTest {
 
 		gradeService.sauvegarder(res);
 		
-		// TODO vérifier qu'il est possible de récupérer le nouveau grade via la
+		//  vérifier qu'il est possible de récupérer le nouveau grade via la
 		// méthode lister
 
 //		grades = gradeService.lister();
@@ -59,14 +59,14 @@ public class GradeServiceJdbcTemplateTest {
 		}
 		
 
-		// TODO modifier un grade
+		//  modifier un grade
 		
 		res.setCode("test");
 		res.setNbHeuresBase(new BigDecimal("38"));
 		res.setTauxBase(new BigDecimal("1.18"));
 		gradeService.mettreAJour(res);
 		
-		// TODO vérifier que les modifications sont bien prises en compte via la
+		//  vérifier que les modifications sont bien prises en compte via la
 		// méthode lister
 		
 		

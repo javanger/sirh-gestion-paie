@@ -34,14 +34,14 @@ public class GradeServiceJdbcTemplate implements GradeService {
 
 	@Override
 	public void sauvegarder(Grade nouveauGrade) {
-		String sql = "INSERT INTO `grade`(`code`, `nbHeuresBase`, `tauxBase`) VALUES (?,?,?)";
+		String sql = "INSERT INTO `GRADE`(`CODE`, `NBHEURESBASE`, `TAUXBASE`) VALUES (?,?,?)";
 		jdbcTemplate.update(sql, nouveauGrade.getCode(), nouveauGrade.getNbHeuresBase(), nouveauGrade.getTauxBase());
 
 	}
 
 	@Override
 	public void mettreAJour(Grade grade) {
-		String sql = "UPDATE `grade` SET `code`=?,`nbHeuresBase`=?,`tauxBase`=? WHERE CODE = ?";
+		String sql = "UPDATE `GRADE` SET `CODE`=?,`NBHEURESBASE`=?,`TAUXBASE`=? WHERE CODE = ?";
 		jdbcTemplate.update(sql, grade.getCode(), grade.getNbHeuresBase(), grade.getTauxBase(), grade.getCode());
 
 	}
@@ -50,12 +50,12 @@ public class GradeServiceJdbcTemplate implements GradeService {
 	public List<Grade> lister() {
 
 		List<Grade> grades = new ArrayList<Grade>();
-		String sql = "SELECT * FROM grade";
+		String sql = "SELECT * FROM GRADE";
 		RowMapper<Grade> mapper = (ResultSet rs, int rowNum) -> {
 			Grade g = new Grade();
-			g.setCode(rs.getString("code"));
-			g.setNbHeuresBase(rs.getBigDecimal("nbHeuresBase"));
-			g.setTauxBase(rs.getBigDecimal("nbHeuresBase"));
+			g.setCode(rs.getString("CODE"));
+			g.setNbHeuresBase(rs.getBigDecimal("NBHEURESBASE"));
+			g.setTauxBase(rs.getBigDecimal("TAUXBASE"));
 			return g;
 
 		};
@@ -67,7 +67,7 @@ public class GradeServiceJdbcTemplate implements GradeService {
 	@Override
 	public void supprimer(Grade grade) {
 
-		String sql = "DELETE FROM grade WHERE CODE = ?";
+		String sql = "DELETE FROM GRADE WHERE CODE = ?";
 		jdbcTemplate.update(sql, grade.getCode());
 
 	}

@@ -17,11 +17,12 @@ import dev.paie.config.ServicesConfig;
 import dev.paie.entite.BulletinSalaire;
 import dev.paie.entite.ResultatCalculRemuneration;
 import dev.paie.service.CalculerRemunerationService;
+import dev.paie.util.PaieUtils;
 /**
  * @author Axel B.
  *
  */
-@ContextConfiguration(classes = { ServicesConfig.class,  JeuxDeDonneesConfig.class })
+@ContextConfiguration(classes = { CalculerRemunerationServiceSimple.class , PaieUtils.class, JeuxDeDonneesConfig.class})
 @RunWith(SpringRunner.class)
 public class CalculerRemunerationServiceSimpleTest {
 
