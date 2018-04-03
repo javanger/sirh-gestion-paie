@@ -8,11 +8,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Service;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
-import dev.paie.config.JpaConfig;
 import dev.paie.entite.Cotisation;
 
 /**
@@ -25,14 +23,6 @@ public class CotisationServiceJpa implements CotisationService {
 	@PersistenceContext
 	private EntityManager em;
 
-	/**
-	 * Constructor
-	 * 
-	 */
-	public CotisationServiceJpa() {
-		// TODO Auto-generated constructor stub
-	}
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -40,9 +30,9 @@ public class CotisationServiceJpa implements CotisationService {
 	 * Cotisation)
 	 */
 	@Override
+	@Transactional
 	public void sauvegarder(Cotisation nouvelleCotisation) {
-		// TODO Auto-generated method stub
-
+		em.persist(nouvelleCotisation);
 	}
 
 	/*
@@ -52,9 +42,9 @@ public class CotisationServiceJpa implements CotisationService {
 	 * Cotisation)
 	 */
 	@Override
+	@Transactional
 	public void mettreAjour(Cotisation cotisation) {
-		// TODO Auto-generated method stub
-
+		em.merge(cotisation);
 	}
 
 	/*
@@ -64,8 +54,7 @@ public class CotisationServiceJpa implements CotisationService {
 	 */
 	@Override
 	public List<Cotisation> lister() {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("from Cotisation", Cotisation.class).getResultList();
 	}
 
 }

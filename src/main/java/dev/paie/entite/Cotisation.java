@@ -10,10 +10,10 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "cotisation")
+@Table(name="cotisations")
 public class Cotisation {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String code;
 	private String libelle;

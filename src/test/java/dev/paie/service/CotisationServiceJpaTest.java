@@ -25,7 +25,7 @@ public class CotisationServiceJpaTest {
 
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {
-		// TODO sauvegarder une nouvelle cotisation
+		// sauvegarder une nouvelle cotisation
 		Cotisation cotisation = new Cotisation();
 		cotisation.setCode("CO01");
 		cotisation.setLibelle("Coti 01");
@@ -33,16 +33,20 @@ public class CotisationServiceJpaTest {
 		cotisation.setTauxSalarial(new BigDecimal("14.25"));
 		cotisationService.sauvegarder(cotisation);
 
-		// TODO vérifier qu'il est possible de récupérer la nouvelle cotisation via la
+		// vérifier qu'il est possible de récupérer la nouvelle cotisation via
+		// la
 		// méthode lister
 		List<Cotisation> cotisations = cotisationService.lister();
 		assertTrue("list null", cotisations != null);
 		assertTrue("list vide", cotisations.isEmpty() == false);
 
+		System.out.println("list count =" + cotisations.size());
 		Optional<Cotisation> cotisation1 = cotisations.stream().filter(c -> c.getCode().equals("CO01")).findFirst();
-		assertTrue("element non trouvé", cotisation1.isPresent());
+		System.out.println("element prensent : " + cotisation1.get().getCode());
+		assertTrue("create : element non trouvé 3", cotisation1.isPresent());
+		assertTrue("create : CO01 non trouvé", cotisation1.get().getCode().equals("CO01"));
 
-		// TODO modifier une cotisation
+		// modifier une cotisation
 		Cotisation current = cotisation1.get();
 		current.setCode("CO02");
 		current.setLibelle("Coti 02");
@@ -50,10 +54,16 @@ public class CotisationServiceJpaTest {
 		current.setTauxSalarial(new BigDecimal("20.25"));
 		cotisationService.mettreAjour(current);
 
-		// TODO vérifier que les modifications sont bien prises en compte via la méthode
+		// vérifier que les modifications sont bien prises en compte via la
+		// méthode
 		// lister
+		cotisations = cotisationService.lister();
+		assertTrue("list null", cotisations != null);
+		assertTrue("list vide", cotisations.isEmpty() == false);
+
 		Optional<Cotisation> cotisation2 = cotisations.stream().filter(c -> c.getCode().equals("CO02")).findFirst();
-		assertTrue("element non trouvé", cotisation2.isPresent());
+		assertTrue("update : element non trouvé ", cotisation2.isPresent());
+		assertTrue("update : CO02 non trouvé", cotisation1.get().getCode().equals("CO02"));
 	}
 
 }
