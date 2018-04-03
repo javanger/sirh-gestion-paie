@@ -12,7 +12,7 @@ public class DataSourceMySQLConfig {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
-		dataSource.setUrl("jdbc:mariadb://localhost:3306/sirh_paie");
+		dataSource.setUrl("jdbc:mariadb://localhost:3306/sirhpaie");
 		dataSource.setUsername("root");
 		dataSource.setPassword("");
 		return dataSource;

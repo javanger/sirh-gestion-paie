@@ -1,6 +1,7 @@
 package dev.paie.service;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
+
 
 import dev.paie.entite.Grade;
 
@@ -24,8 +26,8 @@ public class GradeServiceJdbcTemplate implements GradeService {
 
 	@Override
 	public void sauvegarder(Grade nouveauGrade) {
-		String sql = "insert into grade (Id, code, nbHeuresBase, tauxBase) values(?,?,?,?)";
-		jdbcTemplate.update(sql, nouveauGrade.getId(), nouveauGrade.getCode(), nouveauGrade.getNbHeuresBase(), nouveauGrade.getTauxBase());
+		String sql = "insert into grade (code, nbHeuresBase, tauxBase) values(?,?,?)";
+		jdbcTemplate.update(sql, nouveauGrade.getCode(), nouveauGrade.getNbHeuresBase(), nouveauGrade.getTauxBase());
 	}
 
 	@Override
@@ -37,15 +39,19 @@ public class GradeServiceJdbcTemplate implements GradeService {
 
 	@Override
 	public List<Grade> lister() {
+		List<Grade> gradeList = new ArrayList<>();
 		RowMapper<Grade> mapper = (ResultSet rs, int rowNum) ->{
 		Grade grade= new Grade();
 		grade.setId(rs.getInt("Id"));
 		grade.setCode(rs.getString("code"));
 		grade.setNbHeuresBase(rs.getBigDecimal("nbheuresbase"));
 		grade.setTauxBase(rs.getBigDecimal("tauxBase"));
+		
 		return grade;
 		};
-		return null;
+		String sql = "SELECT * FROM grade";
+		gradeList = jdbcTemplate.query(sql, mapper);
+		return gradeList;
 	}
 
 }
