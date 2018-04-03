@@ -19,7 +19,7 @@ import dev.paie.config.DataSourceMySQLConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Grade;
 
-@ContextConfiguration(classes = { DataSourceH2Config.class, ServicesConfig.class, DataSourceMySQLConfig.class})
+@ContextConfiguration(classes = { DataSourceH2Config.class, ServicesConfig.class})
 
 @RunWith(SpringRunner.class)
 public class GradeServiceJdbcTemplateTest {
@@ -44,24 +44,27 @@ public class GradeServiceJdbcTemplateTest {
 		// TODO vérifier qu'il est possible de récupérer le nouveau grade via la // méthode lister
 		
 		
-		assertEquals("abc", gradeService.findByCode("abc").getCode());
-		assert new BigDecimal("15.00").compareTo(gradeService.findByCode("abc").getNbHeuresBase()) == 0;
-		assert new BigDecimal("13.00").compareTo(gradeService.findByCode("abc").getTauxBase()) == 0;
+		Grade gradeCree = gradeService.findByCode("abc");
+		assertEquals("abc", gradeCree.getCode());
+		assert new BigDecimal("15.00").compareTo(gradeCree.getNbHeuresBase()) == 0;
+		assert new BigDecimal("13.00").compareTo(gradeCree.getTauxBase()) == 0;
 		
 				
 		//Optional<Grade> gradeRes = gradeService.lister().stream().filter(g -> g.getCode().equals("abc")).findFirst();
 		//assertTrue("pas trouvé abc", gradeRes.isPresent());
 		
 		// TODO modifier un grade
-		gradeService.mettreAJour(new Grade (3, "casp", new BigDecimal("80"), new BigDecimal("56")));
+		gradeCree.setCode("casp");
+		gradeCree.setNbHeuresBase(new BigDecimal("80"));
+		gradeCree.setTauxBase(new BigDecimal("56"));
+		gradeService.mettreAJour(gradeCree);
 		
-		// TODO vérifier que les modifications sont bien prises en compte via la
-		// méthode lister
-		//Optional<Grade> gradeModif = gradeService.lister().stream().filter(g -> g.getCode().equals("casp")).findFirst();
-		//assertTrue("pas trouvé casp", gradeModif.isPresent());
 		assertEquals("casp", gradeService.findByCode("casp").getCode());
 		assert new BigDecimal("80.00").compareTo(gradeService.findByCode("casp").getNbHeuresBase()) == 0;
 		assert new BigDecimal("56.00").compareTo(gradeService.findByCode("casp").getTauxBase()) == 0;
-		
+		// TODO vérifier que les modifications sont bien prises en compte via la
+				// méthode lister
+				//Optional<Grade> gradeModif = gradeService.lister().stream().filter(g -> g.getCode().equals("casp")).findFirst();
+				//assertTrue("pas trouvé casp", gradeModif.isPresent());
 	}
 }
