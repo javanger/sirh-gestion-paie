@@ -28,7 +28,6 @@ import dev.paie.entite.Grade;
 
 //Configuration JUnit pour que Spring prenne la main sur le cycle de vie du test
 @RunWith(SpringRunner.class)
-
 public class GradeServiceJdbcTemplateTest {   
 	
 	@Autowired 
