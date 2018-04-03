@@ -5,8 +5,6 @@ package dev.paie.service;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +21,17 @@ import dev.paie.util.PaieUtils;
 @Service
 public class CalculerRemunerationServiceSimple implements CalculerRemunerationService {
 
-	@Autowired
 	private PaieUtils paieUtils;
+
+	/**
+	 * Constructor
+	 * 
+	 * @param paieUtils
+	 */
+	@Autowired
+	public CalculerRemunerationServiceSimple(PaieUtils paieUtils) {
+		this.paieUtils = paieUtils;
+	}
 
 	@Override
 	public ResultatCalculRemuneration calculer(BulletinSalaire bulletin) {
@@ -48,8 +55,7 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 
 		// TOTAL_RETENUE_SALARIALE =
 		// SOMME(COTISATION_NON_IMPOSABLE.TAUX_SALARIAL*SALAIRE_BRUT)
-		BigDecimal totalRetenueSalariale = cotisationsNonImposables.stream()
-				.filter(c -> c.getTauxSalarial() != null)
+		BigDecimal totalRetenueSalariale = cotisationsNonImposables.stream().filter(c -> c.getTauxSalarial() != null)
 				.map(c -> c.getTauxSalarial().multiply(salaireBrut)).reduce(BigDecimal::add)
 				.orElse(new BigDecimal("0.0"));
 
@@ -58,8 +64,7 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 		// TOTAL_COTISATIONS_PATRONALES =
 		// SOMME(COTISATION_NON_IMPOSABLE.TAUX_PATRONAL*SALAIRE_BRUT)
 		BigDecimal totalCotisationsPatronales = cotisationsNonImposables.stream()
-				.filter(c -> c.getTauxPatronal() != null)
-				.map(c -> c.getTauxPatronal().multiply(salaireBrut))
+				.filter(c -> c.getTauxPatronal() != null).map(c -> c.getTauxPatronal().multiply(salaireBrut))
 				.reduce(BigDecimal::add).orElse(new BigDecimal("0.0"));
 
 		result.setTotalCotisationsPatronales(paieUtils.formaterBigDecimal(totalCotisationsPatronales));
@@ -70,11 +75,9 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 
 		// NET_A_PAYER = NET_IMPOSABLE -
 		// SOMME(COTISATION_IMPOSABLE.TAUX_SALARIAL*SALAIRE_BRUT)
-		BigDecimal netAPayer = netImposable
-				.subtract(cotisationsNonImposables.stream()
-						.filter(c -> c.getTauxSalarial() != null)
-						.map(c -> c.getTauxSalarial().multiply(salaireBrut))
-						.reduce(BigDecimal::add).orElse(new BigDecimal("0.0")));
+		BigDecimal netAPayer = netImposable.subtract(cotisationsNonImposables.stream()
+				.filter(c -> c.getTauxSalarial() != null).map(c -> c.getTauxSalarial().multiply(salaireBrut))
+				.reduce(BigDecimal::add).orElse(new BigDecimal("0.0")));
 		result.setNetAPayer(paieUtils.formaterBigDecimal(netAPayer));
 
 		return result;
