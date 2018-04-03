@@ -1,7 +1,7 @@
 /**
  * 
  */
-package dev.paie.service;
+package dev.paie.services;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -9,10 +9,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dev.paie.entite.BulletinSalaire;
-import dev.paie.entite.Cotisation;
-import dev.paie.entite.ResultatCalculRemuneration;
-import dev.paie.util.PaieUtils;
+import dev.paie.entites.BulletinSalaire;
+import dev.paie.entites.Cotisation;
+import dev.paie.entites.ResultatCalculRemuneration;
+import dev.paie.utils.PaieUtils;
 
 /**
  * @author Kevin M.

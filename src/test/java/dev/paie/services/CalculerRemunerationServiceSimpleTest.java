@@ -1,4 +1,4 @@
-package dev.paie.service;
+package dev.paie.services;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -10,9 +10,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import dev.paie.config.JeuxDeDonneesConfig;
-import dev.paie.entite.BulletinSalaire;
-import dev.paie.entite.ResultatCalculRemuneration;
-import dev.paie.util.PaieUtils;
+import dev.paie.entites.BulletinSalaire;
+import dev.paie.entites.ResultatCalculRemuneration;
+import dev.paie.services.CalculerRemunerationService;
+import dev.paie.services.CalculerRemunerationServiceSimple;
+import dev.paie.utils.PaieUtils;
 
 // Sélection des classes de configuration Spring à utiliser lors du test
 @ContextConfiguration(classes = { CalculerRemunerationServiceSimple.class, PaieUtils.class, JeuxDeDonneesConfig.class })

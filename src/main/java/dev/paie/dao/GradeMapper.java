@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import dev.paie.entite.Grade;
+import dev.paie.entites.Grade;
 
 /**
  * @author Kevin M.

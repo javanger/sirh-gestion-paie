@@ -1,10 +1,10 @@
 /**
  * 
  */
-package dev.paie.service;
+package dev.paie.services;
 
-import dev.paie.entite.BulletinSalaire;
-import dev.paie.entite.ResultatCalculRemuneration;
+import dev.paie.entites.BulletinSalaire;
+import dev.paie.entites.ResultatCalculRemuneration;
 
 /**
  * @author Kevin M.

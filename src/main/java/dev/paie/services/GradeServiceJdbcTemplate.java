@@ -1,7 +1,7 @@
 /**
  * 
  */
-package dev.paie.service;
+package dev.paie.services;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import dev.paie.dao.GradeMapper;
-import dev.paie.entite.Grade;
+import dev.paie.entites.Grade;
 
 /**
  * @author Kevin M.

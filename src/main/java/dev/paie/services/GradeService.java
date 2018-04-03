@@ -1,11 +1,11 @@
 /**
  * 
  */
-package dev.paie.service;
+package dev.paie.services;
 
 import java.util.List;
 
-import dev.paie.entite.Grade;
+import dev.paie.entites.Grade;
 
 /**
  * @author Kevin M.

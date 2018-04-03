@@ -1,4 +1,4 @@
-package dev.paie.service;
+package dev.paie.services;
 
 import static org.junit.Assert.assertTrue;
 
@@ -13,7 +13,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import dev.paie.config.DataSourceH2Config;
-import dev.paie.entite.Grade;
+import dev.paie.entites.Grade;
+import dev.paie.services.GradeService;
+import dev.paie.services.GradeServiceJdbcTemplate;
 
 //Sélection des classes de configuration Spring à utiliser lors du test
 @ContextConfiguration(classes = { GradeServiceJdbcTemplate.class, DataSourceH2Config.class })

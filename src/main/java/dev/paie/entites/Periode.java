@@ -1,4 +1,4 @@
-package dev.paie.entite;
+package dev.paie.entites;
 
 import java.time.LocalDate;
 

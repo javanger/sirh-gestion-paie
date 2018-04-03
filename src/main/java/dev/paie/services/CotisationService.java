@@ -1,11 +1,11 @@
 /**
  * 
  */
-package dev.paie.service;
+package dev.paie.services;
 
 import java.util.List;
 
-import dev.paie.entite.Cotisation;
+import dev.paie.entites.Cotisation;
 
 /**
  * @author Kevin M.

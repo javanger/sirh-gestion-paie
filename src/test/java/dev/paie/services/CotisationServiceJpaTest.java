@@ -1,4 +1,4 @@
-package dev.paie.service;
+package dev.paie.services;
 
 import static org.junit.Assert.assertTrue;
 
@@ -14,7 +14,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import dev.paie.config.DataSourceH2Config;
 import dev.paie.config.JpaConfig;
-import dev.paie.entite.Cotisation;
+import dev.paie.entites.Cotisation;
+import dev.paie.services.CotisationService;
+import dev.paie.services.CotisationServiceJpa;
 
 @ContextConfiguration(classes = { CotisationServiceJpa.class, DataSourceH2Config.class, JpaConfig.class })
 @RunWith(SpringRunner.class)

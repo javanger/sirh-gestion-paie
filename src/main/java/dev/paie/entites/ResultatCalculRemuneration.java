@@ -1,7 +1,7 @@
 /**
  * 
  */
-package dev.paie.entite;
+package dev.paie.entites;
 
 /**
  * @author Kevin M.

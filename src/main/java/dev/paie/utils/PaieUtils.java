@@ -1,7 +1,7 @@
 /**
  * 
  */
-package dev.paie.util;
+package dev.paie.utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

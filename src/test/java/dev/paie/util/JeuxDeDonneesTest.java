@@ -13,8 +13,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import dev.paie.entite.BulletinSalaire;
-import dev.paie.entite.Cotisation;
+import dev.paie.entites.BulletinSalaire;
+import dev.paie.entites.Cotisation;
 
 public class JeuxDeDonneesTest {
 
