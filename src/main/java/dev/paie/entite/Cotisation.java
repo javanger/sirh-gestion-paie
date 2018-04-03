@@ -26,11 +26,6 @@ public class Cotisation {
 	@Column(name = "TAUX_PATRONAL", nullable = false)
 	private BigDecimal tauxPatronal;
 	
-	public Cotisation(){
-		
-	}
-	
-	
 	public String getCode() {
 		return code;
 	}

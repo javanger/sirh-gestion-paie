@@ -1,6 +1,4 @@
 package dev.paie.service;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -34,7 +32,7 @@ public class CotisationServiceJpa implements CotisationService {
 
 	@Override
 	public List<Cotisation> lister() {
-		List<Cotisation> listCotisation = new ArrayList<Cotisation>();
+		List<Cotisation> listCotisation;
 
 		TypedQuery<Cotisation> query = em.createQuery("SELECT c FROM Cotisation c", Cotisation.class);
 		listCotisation = query.getResultList();

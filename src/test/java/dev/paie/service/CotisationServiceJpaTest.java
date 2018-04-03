@@ -25,8 +25,8 @@ public class CotisationServiceJpaTest {
 
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {
-		// TODO sauvegarder une nouvelle cotisation
-		// TODO vérifier qu'il est possible de récupérer la nouvelle cotisation
+		//  sauvegarder une nouvelle cotisation
+		//  vérifier qu'il est possible de récupérer la nouvelle cotisation
 		// via laméthode lister
 		Cotisation cotisation = new Cotisation();
 		cotisation.setCode("1548484");
@@ -43,8 +43,8 @@ public class CotisationServiceJpaTest {
 		
 		
 
-		// TODO modifier une cotisation
-		// TODO vérifier que les modifications sont bien prises en compte via la
+		//  modifier une cotisation
+		//  vérifier que les modifications sont bien prises en compte via la
 		// méthode lister
 		
 		Cotisation cotisationUpdate = new Cotisation();

@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import dev.paie.config.DataSourceMySQLConfig;
 import dev.paie.config.JeuxDeDonneesConfig;
-import dev.paie.config.ServicesConfig;
 import dev.paie.entite.BulletinSalaire;
 import dev.paie.entite.ResultatCalculRemuneration;
 import dev.paie.util.PaieUtils;

@@ -11,9 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import dev.paie.config.DataSourceH2;
-import dev.paie.config.DataSourceMySQLConfig;
 import dev.paie.config.JeuxDeDonneesConfig;
-import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Grade;
 
 //Sélection des classes de configuration Spring à utiliser lors du test
@@ -28,8 +26,8 @@ public class GradeServiceJdbcTemplateTest {
 
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {
-		// TODO sauvegarder un nouveau grade
-		// TODO vérifier qu'il est possible de récupérer le nouveau grade via la
+		//  sauvegarder un nouveau grade
+		//  vérifier qu'il est possible de récupérer le nouveau grade via la
 		// méthode lister
 		Grade grade = new Grade();
 		grade.setCode("1548484");
@@ -42,8 +40,8 @@ public class GradeServiceJdbcTemplateTest {
 		assert new BigDecimal("2665.3").compareTo(gradeService.findGradeByCode("1548484").getNbHeuresBase()) == 0;
 		assert new BigDecimal("36.30").compareTo(gradeService.findGradeByCode("1548484").getTauxBase()) == 0;
 
-		// TODO modifier un grade
-		// TODO vérifier que les modifications sont bien prises en compte via la
+		//  modifier un grade
+		//  vérifier que les modifications sont bien prises en compte via la
 		// méthode lister
 
 		Grade gradeUpdate = new Grade();
