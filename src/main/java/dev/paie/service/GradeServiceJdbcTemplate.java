@@ -15,7 +15,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import dev.paie.entite.Grade;
-import dev.paie.util.PaieUtils;
 
 /**
  * @author GOBERT Guillaume
