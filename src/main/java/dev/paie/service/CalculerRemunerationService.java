@@ -7,6 +7,7 @@ import dev.paie.entite.ResultatCalculRemuneration;
  * @author Emmanuel
  *
  */
+@FunctionalInterface
 public interface CalculerRemunerationService {
 	
 	ResultatCalculRemuneration calculer(BulletinSalaire bulletin);
