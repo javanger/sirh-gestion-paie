@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import dev.paie.config.DataSourceH2Config;
 import dev.paie.config.DataSourceMySQLConfig;
 import dev.paie.entite.Grade;
 
@@ -19,7 +20,7 @@ import dev.paie.entite.Grade;
  * @author Emmanuel
  *
  */
-@ContextConfiguration(classes = { DataSourceMySQLConfig.class, GradeServiceJdbcTemplate.class })
+@ContextConfiguration(classes = { DataSourceH2Config.class, GradeServiceJdbcTemplate.class })
 
 @RunWith(SpringRunner.class)
 public class GradeServiceJdbcTemplateTest {
