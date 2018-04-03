@@ -33,20 +33,20 @@ public class GradeServiceJdbcTemplate implements GradeService {
 
 	@Override
 	public void sauvegarder(Grade nouveauGrade) {
-		String sql = "INSERT INTO grade (CODE, NB_HEURES_BASE, TAUX_BASE) VALUE (?,?,?)";
+		String sql = "INSERT INTO GRADE (CODE, NB_HEURES_BASE, TAUX_BASE) VALUES (?,?,?)";
 		jdbcTemplate.update(sql, nouveauGrade.getCode(), nouveauGrade.getNbHeuresBase(), nouveauGrade.getTauxBase());
 
 	}
 
 	@Override
 	public void mettreAJour(Grade grade) {
-		String sql = "UPDATE grade SET NB_HEURES_BASE = ? , TAUX_BASE = ? WHERE CODE = ?";
+		String sql = "UPDATE GRADE SET NB_HEURES_BASE = ? , TAUX_BASE = ? WHERE CODE = ?";
 		jdbcTemplate.update(sql, grade.getNbHeuresBase(), grade.getTauxBase(), grade.getCode());
 	}
 	
 	@Override
 	public void supprimer(Grade grade) {
-		String sql = "DELETE FROM grade WHERE CODE = ?";
+		String sql = "DELETE FROM GRADE WHERE CODE = ?";
 		jdbcTemplate.update(sql, grade.getCode());
 	}
 

@@ -16,6 +16,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
  */
 @Configuration
 public class DataSourceH2Config {
+	
 	@Bean
 	public DataSource dataSource() {
 		

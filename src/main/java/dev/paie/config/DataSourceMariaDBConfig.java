@@ -16,6 +16,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
  */
 @Configuration
 public class DataSourceMariaDBConfig {
+	
 	@Bean
 	public DataSource dataSource() {
 		
