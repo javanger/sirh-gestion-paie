@@ -43,12 +43,19 @@ public class GradeServiceJdbcTemplateTest {
 		Optional<Grade> gradeRes = gradeService.lister().stream().filter(g -> g.getCode().equals("abc")).findFirst();
 		assertTrue("pas trouvé abc", gradeRes.isPresent());
 		
+		// méthode lister
 		gradeService.lister();
 		
-		gradeService.mettreAJour(new Grade (1, "capp", new BigDecimal("220"), new BigDecimal("256")));
-		// méthode lister
 		// TODO modifier un grade
+		gradeService.mettreAJour(new Grade (3, "casp", new BigDecimal("80"), new BigDecimal("56")));
+		
 		// TODO vérifier que les modifications sont bien prises en compte via la
 		// méthode lister
+		Optional<Grade> gradeModif = gradeService.lister().stream().filter(g -> g.getCode().equals("casp")).findFirst();
+		assertTrue("pas trouvé casp", gradeModif.isPresent());
+		
+		gradeService.lister();
+		
+		
 	}
 }

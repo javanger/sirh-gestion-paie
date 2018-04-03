@@ -32,8 +32,8 @@ public class GradeServiceJdbcTemplate implements GradeService {
 
 	@Override
 	public void mettreAJour(Grade grade) {
-		String sqlUpdate = "update grade set code = ? where Id = ? ";
-		jdbcTemplate.update(sqlUpdate,grade.getCode(), grade.getId());
+		String sqlUpdate = "update grade set code = ? ,nbHeuresBase = ? ,tauxBase = ? where Id = ? ";
+		jdbcTemplate.update(sqlUpdate,grade.getCode(), grade.getNbHeuresBase(), grade.getTauxBase(), grade.getId() );
 		
 	}
 
