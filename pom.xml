@@ -51,7 +51,13 @@
 				<version>1.1.7</version>
 			</dependency>
 
-
+			<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<version>1.4.197</version>
+				<scope>test</scope>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
@@ -81,6 +87,12 @@
 		<dependency>
 			<groupId>org.mariadb.jdbc</groupId>
 			<artifactId>mariadb-java-client</artifactId>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 		</dependency>
 	</dependencies>
 </project>

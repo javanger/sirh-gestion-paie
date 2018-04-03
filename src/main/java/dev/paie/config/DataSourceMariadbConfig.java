@@ -14,9 +14,9 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
  *
  */
 @Configuration
-public class DataSourceMariaDbConfig {
+public class DataSourceMariadbConfig {
 
-	@Bean
+	/* @Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
@@ -25,5 +25,5 @@ public class DataSourceMariaDbConfig {
 		dataSource.setPassword("");
 		return dataSource;
 	}
-
+*/
 }

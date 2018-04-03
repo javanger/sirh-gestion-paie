@@ -12,13 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import dev.paie.config.DataSourceMariaDbConfig;
+import dev.paie.config.DataSourceH2Config;
+// import dev.paie.config.DataSourceMariadbConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Grade;
 
 //Sélection des classes de configuration Spring à utiliser lors du test
-@ContextConfiguration(classes = { ServicesConfig.class, DataSourceMariaDbConfig.class })
-
+@ContextConfiguration(classes = { ServicesConfig.class,	DataSourceH2Config.class })
 // Configuration JUnit pour que Spring prenne la main sur le cycle de vie du
 @RunWith(SpringRunner.class)
 public class GradeServiceJdbcTemplateTest {
