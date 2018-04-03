@@ -10,13 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import dev.paie.config.DataSourceH2;
 import dev.paie.config.DataSourceMySQLConfig;
 import dev.paie.config.JeuxDeDonneesConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Grade;
 
 //Sélection des classes de configuration Spring à utiliser lors du test
-@ContextConfiguration(classes = { ServicesConfig.class, JeuxDeDonneesConfig.class, DataSourceMySQLConfig.class })
+@ContextConfiguration(classes = { GradeServiceJdbcTemplate.class, JeuxDeDonneesConfig.class, DataSourceH2.class })
 // Configuration JUnit pour que Spring prenne la main sur le cycle de vie du
 // test
 @RunWith(SpringRunner.class)
