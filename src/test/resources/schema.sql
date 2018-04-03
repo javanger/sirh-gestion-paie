@@ -4,4 +4,4 @@ CREATE TABLE grade (
 	nbheurebase DECIMAL(10,2) NULL DEFAULT NULL,
 	tauxbase DECIMAL(10,4) NULL DEFAULT NULL,
 	PRIMARY KEY (id)
-)
+);
