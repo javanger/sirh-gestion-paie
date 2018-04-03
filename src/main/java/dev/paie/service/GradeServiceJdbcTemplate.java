@@ -1,6 +1,5 @@
 package dev.paie.service;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 
 import java.math.BigDecimal;
 import java.sql.ResultSet;

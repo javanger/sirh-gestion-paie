@@ -5,10 +5,12 @@ import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 @Configuration
 public class DataSourceMySQLConfig {
-	@Bean
+	/*@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
@@ -16,5 +18,13 @@ public class DataSourceMySQLConfig {
 		dataSource.setUsername("root");
 		dataSource.setPassword("");
 		return dataSource;
+	}*/
+	
+	@Bean
+	public DataSource datasource() {
+	return new EmbeddedDatabaseBuilder()
+	.setType(EmbeddedDatabaseType.H2)
+	.addScript("Sirh-paie.sql")
+	.build();
 	}
 }
