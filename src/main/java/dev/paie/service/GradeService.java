@@ -12,8 +12,24 @@ import dev.paie.entite.Grade;
  *
  */
 public interface GradeService {
+	/**
+	 * 
+	 * @param nouveauGrade
+	 */
 	void sauvegarder(Grade nouveauGrade);
+	/**
+	 * 
+	 * @param grade
+	 */
 	void mettreAJour(Grade grade);
+	/**
+	 * 
+	 * @return
+	 */
 	List<Grade> lister();
+	/**
+	 * 
+	 * @param supprimerGrade
+	 */
 	void supprimer(Grade supprimerGrade);
 }

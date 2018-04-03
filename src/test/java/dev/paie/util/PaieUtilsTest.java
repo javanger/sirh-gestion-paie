@@ -12,6 +12,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import dev.paie.util.PaieUtils;
+
 /**
  * @author GOBERT Guillaume
  *
