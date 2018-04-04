@@ -1,6 +1,6 @@
 package dev.paie.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
 
@@ -10,14 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import dev.paie.config.DataSourceH2Config;
-
+import dev.paie.config.DataSourceH2JpaConfig;
 import dev.paie.config.JpaConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Cotisation;
 
 
-@ContextConfiguration(classes = { JpaConfig.class, ServicesConfig.class, DataSourceH2Config.class})
+@ContextConfiguration(classes = { JpaConfig.class, ServicesConfig.class, DataSourceH2JpaConfig.class})
 
 @RunWith(SpringRunner.class)
 public class CotisationServiceJpaTest {

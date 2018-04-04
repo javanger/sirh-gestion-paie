@@ -10,13 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import dev.paie.config.DataSourceH2Config;
+import dev.paie.config.DataSourceH2JpaConfig;
 import dev.paie.config.JpaConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Avantage;
 
 
-@ContextConfiguration(classes = { JpaConfig.class, DataSourceH2Config.class, ServicesConfig.class})
+@ContextConfiguration(classes = { JpaConfig.class, DataSourceH2JpaConfig.class, ServicesConfig.class})
 //TODO compléter la configuration
 @RunWith(SpringRunner.class)
 public class AvantageRepositoryTest {
