@@ -10,33 +10,30 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Cotisation")
+@Table(name = "Cotisation")
 public class Cotisation {
-	
-	
+
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
- 	private Integer id;
-	
-	@Column(name = "CODE", length = 20, nullable = false)
- 	private String code;
-	
-	@Column(name = "LIBELLE", length = 50, nullable = false)
- 	private String libelle;
-	
-	@Column(name = "TAUX_SALARIALE", nullable = false)
- 	private BigDecimal tauxSalarial;
-	
-	@Column(name = "TAUX_PATRONAL", nullable = false)
- 	private BigDecimal tauxPatronal;
- 	
+	private Integer id;
 
-	
-	public Cotisation(){
-		
+	@Column(name = "CODE", length = 20, nullable = false)
+	private String code;
+
+	@Column(name = "LIBELLE", length = 50, nullable = false)
+	private String libelle;
+
+	@Column(name = "TAUX_SALARIALE", nullable = false)
+	private BigDecimal tauxSalarial;
+
+	@Column(name = "TAUX_PATRONAL", nullable = false)
+	private BigDecimal tauxPatronal;
+
+	public Cotisation() {
+
 	}
-	
+
 	public Cotisation(Integer id, String code, String libelle, BigDecimal tauxSalarial, BigDecimal tauxPatronal) {
 		super();
 		this.id = id;
@@ -45,40 +42,45 @@ public class Cotisation {
 		this.tauxSalarial = tauxSalarial;
 		this.tauxPatronal = tauxPatronal;
 	}
+
 	public String getCode() {
 		return code;
 	}
+
 	public void setCode(String code) {
 		this.code = code;
 	}
-	
+
 	public String getLibelle() {
 		return libelle;
 	}
+
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
+
 	public BigDecimal getTauxSalarial() {
 		return tauxSalarial;
 	}
+
 	public void setTauxSalarial(BigDecimal tauxSalarial) {
 		this.tauxSalarial = tauxSalarial;
 	}
+
 	public BigDecimal getTauxPatronal() {
 		return tauxPatronal;
 	}
+
 	public void setTauxPatronal(BigDecimal tauxPatronal) {
 		this.tauxPatronal = tauxPatronal;
 	}
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	
-	
-	
 
 }

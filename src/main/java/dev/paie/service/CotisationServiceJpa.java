@@ -1,6 +1,6 @@
 package dev.paie.service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import dev.paie.entite.Cotisation;
-import dev.paie.entite.Grade;
+
 
 @Service
 public class CotisationServiceJpa implements CotisationService {

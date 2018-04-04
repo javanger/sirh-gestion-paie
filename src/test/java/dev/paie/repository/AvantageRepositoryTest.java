@@ -1,4 +1,4 @@
-package dev.paie.repository;
+/*package dev.paie.repository;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,3 +18,4 @@ public class AvantageRepositoryTest {
 		// méthode findOne
 	}
 }
+*/

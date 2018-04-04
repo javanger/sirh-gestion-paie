@@ -26,16 +26,13 @@ public class CotisationServiceJpaTest {
 
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {
+		
 	// TODO sauvegarder une nouvelle cotisation
 		Cotisation cotisation = new Cotisation();
 		cotisation.setCode("def");
 		cotisation.setLibelle("defu");
 		cotisation.setTauxSalarial(new BigDecimal("13.00"));
 		cotisation.setTauxPatronal(new BigDecimal("25.00"));
-		
-		//assertTrue("liste null", cotisationService.lister() != null);
-		//assertTrue("liste vide", cotisationService.lister().isEmpty() == false);
-		
 		cotisationService.sauvegarder(cotisation);
 		
 		Cotisation cotisationcreer = cotisationService.findCotisationByCode("def");
