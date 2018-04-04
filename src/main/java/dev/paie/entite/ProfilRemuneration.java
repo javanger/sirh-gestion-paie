@@ -30,7 +30,6 @@ public class ProfilRemuneration {
 	@OneToMany
 	private List<Avantage> avantages;
 
-	@OneToMany
 	public Integer getId() {
 		return id;
 	}
