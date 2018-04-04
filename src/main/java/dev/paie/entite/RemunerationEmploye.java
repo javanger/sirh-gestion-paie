@@ -16,7 +16,7 @@ public class RemunerationEmploye {
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(name = "MATRICULE", length = 20, nullable = false)
+	@Column(name = "MATRICULE", length = 20)
 	private String matricule;
 	@ManyToOne
 	private Entreprise entreprise;
