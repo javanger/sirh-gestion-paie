@@ -48,16 +48,18 @@ public class CotisationServiceJpaTest {
 		// TODO vérifier que les modifications sont bien prises en compte via la
 		// méthode lister
 
-		Cotisation newCotisation = new Cotisation();
-		newCotisation.setCode("beta");
-		newCotisation.setLibelle("nouveau");
-		newCotisation.setTauxPatronal(new BigDecimal("12547.15"));
-		newCotisation.setTauxSalarial(new BigDecimal("74123.25"));
+		Cotisation cotisationModifie = cotisationService.lister().stream().filter(p -> p.getCode().equals("beta")).findFirst().get();
 
-		cotisationService.mettreAJour(newCotisation);
+		//Cotisation newCotisation = new Cotisation();
+		//cotisation.setCode("beta");
+		cotisationModifie.setLibelle("nouveau");
+		cotisationModifie.setTauxPatronal(new BigDecimal("12547.15"));
+		cotisationModifie.setTauxSalarial(new BigDecimal("74123.25"));
+
+		cotisationService.mettreAJour(cotisationModifie);
 	
-		/*Cotisation cotisationModifie = cotisationService.lister().stream().filter(p -> p.getCode().equals("beta")).findFirst().get();
-		System.out.println(cotisationModifie.getCode());
+		//Cotisation cotisationModifie = cotisationService.lister().stream().filter(p -> p.getCode().equals("beta")).findFirst().get();
+		/*System.out.println(cotisationModifie.getCode());
 		System.out.println(cotisationModifie.getTauxPatronal());
 		System.out.println(cotisationModifie.getLibelle());*/
 		
@@ -65,10 +67,12 @@ public class CotisationServiceJpaTest {
 		for (Cotisation c : list) {
 			System.out.println(c.getCode());
 			System.out.println(c.getLibelle());
+			System.out.println(c.getTauxPatronal());
+			System.out.println(c.getTauxSalarial());
 		}
-		/*assert new BigDecimal("12547.15").compareTo(cotisationModifie.getTauxPatronal())==0;
-		assert new BigDecimal("74123.25").compareTo(cotisationModifie.getTauxSalarial()) == 0;
-		assertEquals("nouveau", cotisationModifie.getLibelle());*/
+		assert new BigDecimal("12547.15").compareTo(cotisation.getTauxPatronal())==0;
+		assert new BigDecimal("74123.25").compareTo(cotisation.getTauxSalarial()) == 0;
+		assertEquals("nouveau", cotisation.getLibelle());
 	}
 
 }

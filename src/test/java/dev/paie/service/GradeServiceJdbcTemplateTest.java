@@ -13,12 +13,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import dev.paie.config.DataSourceH2Config;
 import dev.paie.config.DataSourceMySQLConfig;
+import dev.paie.config.JpaConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Grade;
 
 //TODO compléter la configuration
 //Sélection des classes de configuration Spring à utiliser lors du test
-@ContextConfiguration(classes = { DataSourceH2Config.class, ServicesConfig.class })
+@ContextConfiguration(classes = { DataSourceH2Config.class, GradeServiceJdbcTemplate.class })
 // Configuration JUnit pour que Spring prenne la main sur le cycle de vie du
 // test
 @RunWith(SpringRunner.class)
@@ -45,19 +46,19 @@ public class GradeServiceJdbcTemplateTest {
 		// TODO modifier un grade
 		// TODO vérifier que les modifications sont bien prises en compte via la
 		// méthode lister
+		Grade gradeModifie = gradeService.lister().stream().filter(p->p.getCode().equals("jdb")).findFirst().get();
+		//Grade newGrade = new Grade();
+		gradeModifie.setCode("triban");
+		gradeModifie.setNbHeuresBase(new BigDecimal("154.89"));
+		gradeModifie.setTauxBase(new BigDecimal("45.98"));
 		
-		Grade newGrade = new Grade();
-		newGrade.setCode("triban");
-		newGrade.setNbHeuresBase(new BigDecimal("154.89"));
-		newGrade.setTauxBase(new BigDecimal("45.98"));
-		
-		gradeService.mettreAJour(newGrade, "jdb");
+		gradeService.mettreAJour(gradeModifie, "jdb");
 
-		Grade gradeModifie = gradeService.lister().stream().filter(p->p.getCode().equals("triban")).findAny().get();
-		assertTrue("154.89", new BigDecimal("154.89").compareTo(gradeModifie.getNbHeuresBase()) == 0);
-		assertTrue("45.98", new BigDecimal("45.98").compareTo(gradeModifie.getTauxBase())==0);
+		
+		assert new BigDecimal("154.89").compareTo(gradeModifie.getNbHeuresBase()) == 0;
+		assert new BigDecimal("45.98").compareTo(gradeModifie.getTauxBase())== 0;
 		
 	
 
-	}
+	} 
 }
