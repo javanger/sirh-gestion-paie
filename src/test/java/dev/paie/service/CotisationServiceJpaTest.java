@@ -20,7 +20,7 @@ import dev.paie.entite.Cotisation;
 @ContextConfiguration(classes = { JpaConfig.class, ServicesConfig.class, DataSourceH2Config.class})
 
 @RunWith(SpringRunner.class)
-public class cotisationServiceJpaTest {
+public class CotisationServiceJpaTest {
 	@Autowired
 	private CotisationService cotisationService;
 
@@ -54,10 +54,10 @@ public class cotisationServiceJpaTest {
 		cotisationService.mettreAJour(cotisationcreer);
 		
 	// TODO vérifier que les modifications sont bien prises en compte via la méthode lister
-		assertEquals("sdep", cotisationcreer.getCode());
-		assertEquals("dif", cotisationcreer.getLibelle());
-		assert new BigDecimal("22.00").compareTo(cotisationcreer.getTauxSalarial()) == 0;
-		assert new BigDecimal("56.00").compareTo(cotisationcreer.getTauxPatronal()) == 0;
+		assertEquals("sdep", cotisationService.findCotisationByCode("sdep").getCode());
+		assertEquals("dif", cotisationService.findCotisationByCode("sdep").getLibelle());
+		assert new BigDecimal("22.00").compareTo(cotisationService.findCotisationByCode("sdep").getTauxSalarial()) == 0;
+		assert new BigDecimal("56.00").compareTo(cotisationService.findCotisationByCode("sdep").getTauxPatronal()) == 0;
 	 
 		
 	}
