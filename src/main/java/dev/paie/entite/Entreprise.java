@@ -12,6 +12,7 @@ import javax.persistence.Table;
 public class Entreprise {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ID")
 	private Integer id;
 	@Column(name="SIRET", unique=true)
 	private String siret;
@@ -19,9 +20,9 @@ public class Entreprise {
 	private String denomination;
 	@Column(name="ADRESSE")
 	private String adresse;
-	@Column(name="URSSAF", unique=true)
+	@Column(name="URSSAF")
 	private String urssaf;
-	@Column(name="CODE_NAF",unique=true)
+	@Column(name="CODE_NAF")
 	private String codeNaf;
 	
 	public String getDenomination() {

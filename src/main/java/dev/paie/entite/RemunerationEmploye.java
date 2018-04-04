@@ -13,6 +13,7 @@ import javax.persistence.Table;
 public class RemunerationEmploye {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ID")
 	private Integer id;
 	@Column(name="MATRICULE", unique=true)
 	private String matricule;

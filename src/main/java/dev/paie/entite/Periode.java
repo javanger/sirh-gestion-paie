@@ -14,6 +14,7 @@ import javax.persistence.Table;
 public class Periode {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ID")
 	private Integer id;
 	@Column(name="DATE_DEBUT")
 	private LocalDate dateDebut;

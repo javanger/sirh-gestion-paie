@@ -16,6 +16,7 @@ import javax.persistence.Table;
 public class BulletinSalaire {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ID")
 	private Integer id;
 	@OneToOne
 	private RemunerationEmploye remunerationEmploye;

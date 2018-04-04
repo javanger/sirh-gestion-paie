@@ -14,6 +14,7 @@ import javax.persistence.Table;
 public class Grade {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ID")
 	private Integer id;
 	@Column(name="CODE", unique=true)
 	private String code;
