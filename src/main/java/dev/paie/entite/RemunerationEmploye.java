@@ -1,11 +1,32 @@
 package dev.paie.entite;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "RemunerationEmploye")
 public class RemunerationEmploye {
 	
+	@Id
+	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(name = "MATRICULE", length = 20, nullable = false)
 	private String matricule;
+	
+	@ManyToOne
 	private Entreprise entreprise;
+	
+	@ManyToOne
 	private ProfilRemuneration profilRemuneration;
+	
+	@ManyToOne
 	private Grade grade;
 	
 	public String getMatricule() {
