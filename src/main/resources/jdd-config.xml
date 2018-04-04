@@ -5,6 +5,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
+	<!-- importer une configuration dans une autre -->
+	<import resource="classpath:cotisations-imposables.xml" />
+	<import resource="classpath:cotisations-non-imposables.xml" />
+	
 	<bean id="bulletin1" class="dev.paie.entite.BulletinSalaire">
 		<property name="primeExceptionnelle" value="1000"></property>
 		<property name="remunerationEmploye" ref="remuneration1"></property>
@@ -55,7 +59,4 @@
 			</util:list>
 		</property>
 	</bean> 
-	<!-- importer une configuration dans une autre -->
-	<import resource="classpath:cotisations-imposables.xml" />
-	<import resource="classpath:cotisations-non-imposables.xml" />
 </beans>
