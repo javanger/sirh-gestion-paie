@@ -2,18 +2,35 @@ package dev.paie.entite;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "ProfilRemuneration")
 public class ProfilRemuneration {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	
+	@Column (name = "CODE")
 	private String code;
 
+	@OneToMany
 	private List<Cotisation> cotisationsNonImposables;
 	
+	@OneToMany
 	private List<Cotisation> cotisationsImposables;
 	
+	@OneToMany
 	private List<Avantage> avantages;
 
+	@OneToMany
 	public Integer getId() {
 		return id;
 	}
