@@ -10,11 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="COTISATION")
+@Table(name = "COTISATION")
 public class Cotisation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
 	private Integer id;
 
 	/**
@@ -42,11 +43,10 @@ public class Cotisation {
 	@Column(name = "TAUXPATRONAL")
 	private BigDecimal tauxPatronal;
 
-	
-	public Cotisation(){
-		
+	public Cotisation() {
+
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Cotisation [code= " + code + ", libelle= " + libelle + ", tauxSalarial= " + tauxSalarial

@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 import javax.persistence.*;
 
+
+
 @Entity
 @Table(name="BULLETINSALAIRE")
 public class BulletinSalaire {
@@ -17,12 +19,14 @@ public class BulletinSalaire {
 	 * 
 	 */
 	@ManyToOne
+	
 	private RemunerationEmploye remunerationEmploye;
 	/** periode : Periode
 	 * 
 	 */
 	@ManyToOne
 	private Periode periode;
+	
 	/** primeExceptionnelle : BigDecimal
 	 * 
 	 */

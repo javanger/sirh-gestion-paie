@@ -2,42 +2,48 @@ package dev.paie.entite;
 
 import java.math.BigDecimal;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="AVANTAGE")
+@Table(name = "AVANTAGE")
 public class Avantage {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
 	private Integer id;
-	/** code : String
+	/**
+	 * code : String
 	 * 
 	 */
 	@Column(name = "CODE")
 	private String code;
-	/** nom : String
+	/**
+	 * nom : String
 	 * 
 	 */
 	@Column(name = "NOM")
 	private String nom;
-	/** montant : BigDecimal
+	/**
+	 * montant : BigDecimal
 	 * 
 	 */
 	@Column(name = "MONTANT")
 	private BigDecimal montant;
-	
-	public Avantage(){
-		
-	}
-	
 
-	
+	public Avantage() {
+
+	}
+
 	@Override
 	public String toString() {
 		return "Avantage [code=" + code + ", nom=" + nom + ", montant=" + montant + "]";
 	}
-
 
 	public String getCode() {
 		return code;
