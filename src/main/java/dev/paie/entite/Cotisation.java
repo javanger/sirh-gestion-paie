@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
-@Table(name = "cotisation")
+@Table(name = "Cotisation")
 public class Cotisation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +28,10 @@ public class Cotisation {
 	private BigDecimal tauxPatronal;
 	
 	
+	public Cotisation() {
+		
+		// TODO Auto-generated constructor stub
+	}
 	public String getCode() {
 		return code;
 	}
@@ -58,6 +62,13 @@ public class Cotisation {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public Cotisation(String code, String libelle, BigDecimal tauxSalarial, BigDecimal tauxPatronal) {
+		super();
+		this.code = code;
+		this.libelle = libelle;
+		this.tauxSalarial = tauxSalarial;
+		this.tauxPatronal = tauxPatronal;
 	}
 	
 	

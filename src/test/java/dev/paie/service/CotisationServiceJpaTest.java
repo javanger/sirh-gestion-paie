@@ -8,12 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import dev.paie.config.DataSourceH2Config;
 import dev.paie.config.DataSourceMySQLConfig;
 import dev.paie.config.JpaConfig;
 import dev.paie.entite.Cotisation;
 
 //Sélection des classes de configuration Spring à utiliser lors du test
-@ContextConfiguration(classes = { JpaConfig.class, CotisationServiceJpa.class,  DataSourceMySQLConfig.class })
+@ContextConfiguration(classes = { JpaConfig.class, CotisationServiceJpa.class, DataSourceH2Config.class  })
 // Configuration JUnit pour que Spring prenne la main sur le cycle de vie du
 // test
 @RunWith(SpringRunner.class)
@@ -27,14 +28,10 @@ public class CotisationServiceJpaTest {
 	public void test_sauvegarder_lister_mettre_a_jour() {
 		// TODO sauvegarder une nouvelle cotisation
 		
-		Cotisation nouvelleCotisation = new Cotisation();
-		
-		nouvelleCotisation.setCode("SAL");
-		nouvelleCotisation.setLibelle("salaire");
-		nouvelleCotisation.setTauxPatronal(new BigDecimal("0.6"));
-		nouvelleCotisation.setTauxSalarial(new BigDecimal("0.7"));
-		
+		Cotisation nouvelleCotisation = new Cotisation("PAT", "patronal", new BigDecimal("0.5"),new BigDecimal("0.2"));
 		cotisationService.sauvegarder(nouvelleCotisation);
+		
+
 		
 		
 		// TODO vérifier qu'il est possible de récupérer la nouvelle cotisation

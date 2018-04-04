@@ -13,12 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import dev.paie.config.DataSourceH2Config;
 import dev.paie.config.DataSourceMySQLConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Grade;
 
 //Sélection des classes de configuration Spring à utiliser lors du test
-@ContextConfiguration(classes = { DataSourceMySQLConfig.class, GradeServiceJdbcTemplate.class })
+//@ContextConfiguration(classes = { DataSourceMySQLConfig.class, GradeServiceJdbcTemplate.class })
+@ContextConfiguration(classes = { DataSourceH2Config.class, GradeServiceJdbcTemplate.class })
 // Configuration JUnit pour que Spring prenne la main sur le cycle de vie du
 // test
 @RunWith(SpringRunner.class)
@@ -30,7 +32,7 @@ public class GradeServiceJdbcTemplateTest {
 
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {
-		// TODO sauvegarder un nouveau grade
+//		 TODO sauvegarder un nouveau grade
 		Grade nouveauGrade = new Grade("dev", new BigDecimal(12.50), new BigDecimal(1.50));
 		gradeService.sauvegarder(nouveauGrade);
 

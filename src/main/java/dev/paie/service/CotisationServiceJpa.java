@@ -12,7 +12,8 @@ import dev.paie.entite.Cotisation;
 
 @Service
 public class CotisationServiceJpa implements CotisationService {
-@PersistenceContext private EntityManager em;
+@PersistenceContext 
+private EntityManager em;
 
 @Override
 @Transactional
