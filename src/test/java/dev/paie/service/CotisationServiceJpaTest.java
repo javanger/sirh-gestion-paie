@@ -73,6 +73,8 @@ public class CotisationServiceJpaTest {
 		assert new BigDecimal("12547.15").compareTo(cotisationModifie.getTauxPatronal())==0;
 		assert new BigDecimal("74123.25").compareTo(cotisationModifie.getTauxSalarial()) == 0;
 		assertEquals("nouveau", cotisationModifie.getLibelle());
+		
+		
 	}
 
 }
