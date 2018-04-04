@@ -37,6 +37,7 @@ public class cotisationServiceJpaTest {
 		//assertTrue("liste vide", cotisationService.lister().isEmpty() == false);
 		
 		cotisationService.sauvegarder(cotisation);
+		
 		Cotisation cotisationcreer = cotisationService.findCotisationByCode("def");
 		assertEquals("def", cotisationcreer.getCode());
 		assertEquals("defu", cotisationcreer.getLibelle());
@@ -58,7 +59,7 @@ public class cotisationServiceJpaTest {
 		assert new BigDecimal("22.00").compareTo(cotisationcreer.getTauxSalarial()) == 0;
 		assert new BigDecimal("56.00").compareTo(cotisationcreer.getTauxPatronal()) == 0;
 	 
-		//cotisationService.supprimer(cotisationcreer);
+		
 	}
 	
 }
