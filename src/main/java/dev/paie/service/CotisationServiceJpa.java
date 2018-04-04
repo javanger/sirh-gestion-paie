@@ -41,20 +41,20 @@ public class CotisationServiceJpa implements CotisationService {
 		return cotis;
 	}
 
-	/*public Cotisation findByCode(String code) {
+	public Cotisation findCotisationByCode(String code) {
 		Cotisation cotisationFind = null;
 		for (Cotisation c : this.lister()) {
 			if (c.getCode().equals(code))
 				cotisationFind = c;
 		}
-		return cotisationFind;*/
+		return cotisationFind;
+	}
 
-	
 	@Override
 	@Transactional
-	public void supprimer (Cotisation supprimerCotisation) {
-	Query delete = em.createQuery("DELETE FROM Cotisation c WHERE c.code = ?");	
-	delete.setParameter(1, supprimerCotisation.getCode());
-	delete.executeUpdate();
-		}
+	public void supprimer(Cotisation supprimerCotisation) {
+		Query delete = em.createQuery("DELETE FROM Cotisation c WHERE c.code = ?");
+		delete.setParameter(1, supprimerCotisation.getCode());
+		delete.executeUpdate();
+	}
 }

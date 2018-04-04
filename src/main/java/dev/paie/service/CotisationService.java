@@ -12,7 +12,7 @@ public interface CotisationService {
 	
 	List<Cotisation> lister();
 	
-	Cotisation findByCode(String code);
+	Cotisation findCotisationByCode(String code);
 
 	void supprimer(Cotisation supprimerCotisation);
 
