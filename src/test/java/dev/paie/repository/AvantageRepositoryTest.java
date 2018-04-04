@@ -25,7 +25,8 @@ import dev.paie.entite.Avantage;
  */
 // Sélection des classes de configuration Spring à utiliser lors du test
 @ContextConfiguration(classes = { ServicesConfig.class, JpaConfig.class, DataSourceH2.class })
-// Configuration JUnit pour que Spring prenne la main sur le cycle de vie du test
+// Configuration JUnit pour que Spring prenne la main sur le cycle de vie du
+// test
 @RunWith(SpringRunner.class)
 public class AvantageRepositoryTest {
 
