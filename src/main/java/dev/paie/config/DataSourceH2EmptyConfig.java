@@ -9,13 +9,9 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 @Configuration
-public class DataSourceH2Config {
+public class DataSourceH2EmptyConfig {
 	@Bean
 	public DataSource datasource() {
-	return new EmbeddedDatabaseBuilder()
-	.setType(EmbeddedDatabaseType.H2)
-	.setName("DBSQL")
-	.addScript("schema.sql")
-	.build();
+		return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
 	}
 }
