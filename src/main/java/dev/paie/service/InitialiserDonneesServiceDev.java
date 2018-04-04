@@ -34,6 +34,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService{
 		.forEach(em::persist);
 	
 		context.close();
+		
 		Stream.of(Month.values())
 		.map(mois -> {
 			Periode periode = new Periode();
