@@ -1,4 +1,4 @@
-package _dev.paie.service;
+package dev.paie.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
