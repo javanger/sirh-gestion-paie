@@ -5,18 +5,13 @@ package dev.paie.service;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.hibernate.jpa.event.internal.jpa.ListenerFactoryStandardImpl;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
