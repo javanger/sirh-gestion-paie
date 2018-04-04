@@ -18,7 +18,7 @@ import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Avantage;
 import dev.paie.service.CotisationServiceJpa;
 
-@ContextConfiguration(classes = { ServicesConfig.class, DataSourceH2Config.class })
+@ContextConfiguration(classes = { ServicesConfig.class, DataSourceH2Config.class, JpaConfig.class })
 // TODO compléter la configuration
 @RunWith(SpringRunner.class)
 public class AvantageRepositoryTest {
