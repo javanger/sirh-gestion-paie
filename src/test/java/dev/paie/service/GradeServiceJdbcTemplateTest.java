@@ -33,13 +33,13 @@ public class GradeServiceJdbcTemplateTest {
 		// TODO vérifier qu'il est possible de récupérer le nouveau grade via la
 		// méthode lister
 
-		Grade grade = new Grade();
+		Grade newgrade = new Grade();
 		
-		grade.setCode("jdb");
-		grade.setNbHeuresBase(new BigDecimal("100.00"));
-		grade.setTauxBase(new BigDecimal("50.00"));
+		newgrade.setCode("jdb");
+		newgrade.setNbHeuresBase(new BigDecimal("100.00"));
+		newgrade.setTauxBase(new BigDecimal("50.00"));
 
-		gradeService.sauvegarder(grade);
+		gradeService.sauvegarder(newgrade);
 
 		assertTrue("list vide", gradeService.lister().isEmpty() == false);
 

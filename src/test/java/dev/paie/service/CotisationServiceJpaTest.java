@@ -34,13 +34,13 @@ public class CotisationServiceJpaTest {
 		// TODO vérifier qu'il est possible de récupérer la nouvelle cotisation
 		// via la méthode lister
 
-		Cotisation cotisation = new Cotisation();
+		Cotisation newcotisation = new Cotisation();
 
-		cotisation.setCode("beta");
-		cotisation.setLibelle("dicotomie");
-		cotisation.setTauxPatronal(new BigDecimal("145.15"));
-		cotisation.setTauxSalarial(new BigDecimal("4569.25"));
-		cotisationService.sauvegarder(cotisation);
+		newcotisation.setCode("beta");
+		newcotisation.setLibelle("dicotomie");
+		newcotisation.setTauxPatronal(new BigDecimal("145.15"));
+		newcotisation.setTauxSalarial(new BigDecimal("4569.25"));
+		cotisationService.sauvegarder(newcotisation);
 
 		assertTrue("list vide", cotisationService.lister().isEmpty() == false);
 
@@ -70,9 +70,9 @@ public class CotisationServiceJpaTest {
 			System.out.println(c.getTauxPatronal());
 			System.out.println(c.getTauxSalarial());
 		}
-		assert new BigDecimal("12547.15").compareTo(cotisation.getTauxPatronal())==0;
-		assert new BigDecimal("74123.25").compareTo(cotisation.getTauxSalarial()) == 0;
-		assertEquals("nouveau", cotisation.getLibelle());
+		assert new BigDecimal("12547.15").compareTo(cotisationModifie.getTauxPatronal())==0;
+		assert new BigDecimal("74123.25").compareTo(cotisationModifie.getTauxSalarial()) == 0;
+		assertEquals("nouveau", cotisationModifie.getLibelle());
 	}
 
 }
