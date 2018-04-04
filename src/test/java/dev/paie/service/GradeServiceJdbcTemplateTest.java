@@ -15,11 +15,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import dev.paie.config.DataSourceH2Config;
-
+import dev.paie.config.JpaConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Grade;
 
-@ContextConfiguration(classes = { GradeServiceJdbcTemplate.class ,DataSourceH2Config.class, ServicesConfig.class})
+@ContextConfiguration(classes = { GradeServiceJdbcTemplate.class , JpaConfig.class, DataSourceH2Config.class, ServicesConfig.class})
 
 @RunWith(SpringRunner.class)
 public class GradeServiceJdbcTemplateTest {
