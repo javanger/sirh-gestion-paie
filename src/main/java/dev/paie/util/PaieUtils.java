@@ -9,10 +9,13 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
+import org.springframework.stereotype.Service;
+
 /**
  * @author Axel B.
  *
  */
+@Service
 public class PaieUtils {
 
 	public String formaterBigDecimal(BigDecimal decimal)
