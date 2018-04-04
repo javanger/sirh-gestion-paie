@@ -2,16 +2,39 @@ package dev.paie.entite;
 
 import java.util.List;
 
+import javax.persistence.*;
 
+@Entity
+@Table(name="PERIODE")
 public class ProfilRemuneration {
-
+	/** id : Integer
+	 * 
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	/** code : String
+	 * 
+	 */
+	@Column(name = "CODE")
 	private String code;
 
+	/** cotisationsNonImposables : List<Cotisation>
+	 * 
+	 */
+	@ManyToMany
 	private List<Cotisation> cotisationsNonImposables;
 	
+	/** cotisationsImposables : List<Cotisation>
+	 * 
+	 */
+	@ManyToMany
 	private List<Cotisation> cotisationsImposables;
 	
+	/** avantages : List<Avantage>
+	 * 
+	 */
+	@ManyToMany
 	private List<Avantage> avantages;
 
 	public Integer getId() {

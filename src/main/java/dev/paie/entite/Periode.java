@@ -2,13 +2,33 @@ package dev.paie.entite;
 
 import java.time.LocalDate;
 
+import javax.persistence.*;
 
+@Entity
+@Table(name="PERIODE")
 public class Periode {
 	
+	/** id : Integer
+	 * 
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	/** dateDebut : LocalDate
+	 * 
+	 */
+	@Column(name = "DATEDEBUT")
 	private LocalDate dateDebut;
+	/** dateFin : LocalDate
+	 * 
+	 */
+	@Column(name = "DATEFIN")
 	private LocalDate dateFin;
+	
+	public Periode(){
+		
+	}
 	
 	public LocalDate getDateDebut() {
 		return dateDebut;
