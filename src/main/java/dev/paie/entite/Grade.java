@@ -3,11 +3,12 @@ package dev.paie.entite;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name = "GRADE")
 public class Grade {
-
+@Id
 	private Integer id;
 	
 	private String code;

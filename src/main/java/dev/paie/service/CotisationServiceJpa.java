@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import dev.paie.entite.Cotisation;
+import dev.paie.entite.Grade;
 
 @Service
 public class CotisationServiceJpa implements CotisationService {
@@ -34,7 +35,13 @@ public class CotisationServiceJpa implements CotisationService {
 	public List<Cotisation> lister() {
 
 		TypedQuery<Cotisation> query = em.createQuery("SELECT c FROM Cotisation c", Cotisation.class);
-		return null;
+		
+		return query.getResultList();
+		
 	}
 
+	
+	
+	
 }
+
