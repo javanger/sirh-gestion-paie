@@ -7,6 +7,7 @@ package dev.paie.entites;
  * @author Kevin M.
  *
  */
+
 public class ResultatCalculRemuneration {
 
 	/** salaireDeBase : String */
@@ -135,4 +136,5 @@ public class ResultatCalculRemuneration {
 	public void setNetAPayer(String netAPayer) {
 		this.netAPayer = netAPayer;
 	}
+
 }

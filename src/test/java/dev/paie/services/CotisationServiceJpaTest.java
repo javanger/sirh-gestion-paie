@@ -15,15 +15,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 import dev.paie.config.DataSourceH2Config;
 import dev.paie.config.JpaConfig;
 import dev.paie.entites.Cotisation;
-import dev.paie.services.CotisationService;
-import dev.paie.services.CotisationServiceJpa;
 
 @ContextConfiguration(classes = { CotisationServiceJpa.class, DataSourceH2Config.class, JpaConfig.class })
 @RunWith(SpringRunner.class)
 public class CotisationServiceJpaTest {
 
 	@Autowired
-	private CotisationService cotisationService;
+	private CotisationServiceJpa cotisationService;
 
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {

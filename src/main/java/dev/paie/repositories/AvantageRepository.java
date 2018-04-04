@@ -13,4 +13,5 @@ import dev.paie.entites.Avantage;
  */
 public interface AvantageRepository extends JpaRepository<Avantage, Integer>{
 
+	Avantage findByCode(String code);
 }

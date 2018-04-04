@@ -16,4 +16,6 @@ public interface CotisationService {
 	void sauvegarder(Cotisation nouvelleCotisation);
 	void mettreAjour(Cotisation cotisation);
 	List<Cotisation> lister();
+	void supprimer(Cotisation cotisation);
+	Cotisation trouverParId(Integer id);
 }

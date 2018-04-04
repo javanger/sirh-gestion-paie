@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
@@ -15,6 +16,8 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
  *
  */
 @Configuration
+// permettre l'injection via la classe l'implementation
+@EnableAspectJAutoProxy(proxyTargetClass = true) 
 public class DataSourceH2Config {
 
 	@Bean

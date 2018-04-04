@@ -57,4 +57,17 @@ public class CotisationServiceJpa implements CotisationService {
 		return em.createQuery("from Cotisation", Cotisation.class).getResultList();
 	}
 
+	@Override
+	public void supprimer(Cotisation cotisation) {
+		em.remove(cotisation);
+		;
+	}
+
+	@Override
+	public Cotisation trouverParId(Integer id) {
+		List<Cotisation> list = em.createQuery("from Cotisation c WHERE c.id = " + id, Cotisation.class)
+				.getResultList();
+		return list.isEmpty() ? null : list.get(0);
+	}
+
 }
