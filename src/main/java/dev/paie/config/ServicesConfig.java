@@ -14,7 +14,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  */
 @Configuration
 @ComponentScan({ "dev.paie.services", "dev.paie.utils" })
-@Import({ JpaConfig.class, DataSourceH2Config.class })
+@Import({ JpaConfig.class, JeuxDeDonneesConfig.class, DataSourceMariadbConfig.class })
 @EnableJpaRepositories("dev.paie.repositories")
 public class ServicesConfig {
 

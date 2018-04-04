@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -15,17 +16,29 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import dev.paie.entites.BulletinSalaire;
 import dev.paie.entites.Cotisation;
+import dev.paie.entites.Grade;
 
 public class JeuxDeDonneesTest {
 
 	private ClassPathXmlApplicationContext context;
 	private BulletinSalaire bulletin1;
 
+	private ClassPathXmlApplicationContext gradeContext;
+
+
 	@Before
 	public void onSetup() {
 		context = new ClassPathXmlApplicationContext("jdd-config.xml");
 		bulletin1 = context.getBean("bulletin1", BulletinSalaire.class);
+
+		gradeContext = new ClassPathXmlApplicationContext("grades.xml");
+		List<Grade> gradesList = new ArrayList<>();
+		Stream.of(gradeContext.getBeanDefinitionNames()).forEach(name -> {
+			gradesList.add(gradeContext.getBean(name, Grade.class));
+		});
+
 	}
+
 
 	@Test
 	public void test_primeExceptionnelle() {
