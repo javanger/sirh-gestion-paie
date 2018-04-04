@@ -2,12 +2,19 @@ package dev.paie.entite;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name = "GRADE")
 public class Grade {
-	
+@Id
 	private Integer id;
+	
 	private String code;
 	private BigDecimal nbHeuresBase;
 	private BigDecimal tauxBase;
+	private static int compteur;
 	
 	public String getCode() {
 		return code;
@@ -32,6 +39,19 @@ public class Grade {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Grade (String code, BigDecimal nbHeuresBase, BigDecimal tauxBase) {
+		super();
+		
+		this.id = compteur++;
+		this.code = code;
+		this.nbHeuresBase = nbHeuresBase;
+		this.tauxBase = tauxBase;
+	}
+	
+	public Grade() {
+		// TODO Auto-generated constructor stub
 	}
 	
 	
