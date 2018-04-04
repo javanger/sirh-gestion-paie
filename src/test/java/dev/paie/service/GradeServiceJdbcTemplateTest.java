@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import dev.paie.config.DataSourceMySQLConfig;
+import dev.paie.config.DataSourceH2;
 import dev.paie.entite.Grade;
 
 /**
@@ -24,7 +24,7 @@ import dev.paie.entite.Grade;
  *
  */
 
-@ContextConfiguration(classes = { DataSourceMySQLConfig.class, GradeServiceJdbcTemplate.class })
+@ContextConfiguration(classes = { DataSourceH2.class, GradeServiceJdbcTemplate.class })
 @RunWith(SpringRunner.class)
 public class GradeServiceJdbcTemplateTest {
 
@@ -34,21 +34,21 @@ public class GradeServiceJdbcTemplateTest {
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {
 
-		//  sauvegarder un nouveau grade
+		// sauvegarder un nouveau grade
 		List<Grade> grades = new ArrayList<Grade>();
 		List<Grade> listGrade = new ArrayList<Grade>();
 		Grade res = new Grade();
-		
+
 		res.setCode("test");
 		res.setNbHeuresBase(new BigDecimal("35"));
 		res.setTauxBase(new BigDecimal("0.2"));
 
 		gradeService.sauvegarder(res);
-		
-		//  vérifier qu'il est possible de récupérer le nouveau grade via la
+
+		// vérifier qu'il est possible de récupérer le nouveau grade via la
 		// méthode lister
 
-//		grades = gradeService.lister();
+		// grades = gradeService.lister();
 
 		for (Grade g : grades) {
 			if (g.getCode().equals("test")) {
@@ -57,19 +57,17 @@ public class GradeServiceJdbcTemplateTest {
 				assert new BigDecimal("50.2").compareTo(g.getTauxBase()) == 0;
 			}
 		}
-		
 
-		//  modifier un grade
-		
+		// modifier un grade
+
 		res.setCode("test");
 		res.setNbHeuresBase(new BigDecimal("38"));
 		res.setTauxBase(new BigDecimal("1.18"));
 		gradeService.mettreAJour(res);
-		
-		//  vérifier que les modifications sont bien prises en compte via la
+
+		// vérifier que les modifications sont bien prises en compte via la
 		// méthode lister
-		
-		
+
 		listGrade = gradeService.lister();
 		for (Grade g : grades) {
 			if (g.getCode().equals("tester")) {
@@ -79,11 +77,11 @@ public class GradeServiceJdbcTemplateTest {
 
 			}
 		}
-		
+
 		gradeService.supprimer(res);
 		listGrade = gradeService.lister();
 		assertThat(listGrade.size(), equalTo(0));
-		
+
 	}
 
 }

@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import dev.paie.config.DataSourceMySQLConfig;
+import dev.paie.config.DataSourceH2;
 import dev.paie.config.JpaConfig;
 import dev.paie.entite.Cotisation;
 
@@ -24,7 +24,7 @@ import dev.paie.entite.Cotisation;
  * @author Axel B.
  *
  */
-@ContextConfiguration(classes = { DataSourceMySQLConfig.class,JpaConfig.class, CotisationServiceJpa.class })
+@ContextConfiguration(classes = { DataSourceH2.class, JpaConfig.class, CotisationServiceJpa.class })
 @RunWith(SpringRunner.class)
 public class CotisationServiceJpaTest {
 
@@ -45,7 +45,7 @@ public class CotisationServiceJpaTest {
 
 		cotisationService.sauvegarder(cot);
 
-		//  vérifier qu'il est possible de récupérer la nouvelle cotisation
+		// vérifier qu'il est possible de récupérer la nouvelle cotisation
 		// via la méthode lister
 		for (Cotisation c : cotisations) {
 			if (c.getCode().equals("test")) {
@@ -55,14 +55,14 @@ public class CotisationServiceJpaTest {
 			}
 		}
 
-		//  modifier une cotisation
+		// modifier une cotisation
 		cot.setCode("test");
 		cot.setLibelle("libelleTest");
 		cot.setTauxPatronal(new BigDecimal("0.8"));
 		cot.setTauxSalarial(new BigDecimal("1.2"));
 		cotisationService.mettreAJour(cot);
 
-		//  vérifier que les modifications sont bien prises en compte via la
+		// vérifier que les modifications sont bien prises en compte via la
 		// méthode lister
 		listCotisation = cotisationService.lister();
 		for (Cotisation c : listCotisation) {
@@ -70,11 +70,11 @@ public class CotisationServiceJpaTest {
 				assertThat(c.getLibelle(), equalTo("libelleTest"));
 				assert new BigDecimal("0.8").compareTo(c.getTauxPatronal()) == 0;
 				assert new BigDecimal("1.2").compareTo(c.getTauxSalarial()) == 0;
-				
+
 			}
 		}
 		cotisationService.supprimer(cot);
-		 listCotisation = cotisationService.lister();
-		 assertThat(listCotisation.size(), equalTo(0));
+		listCotisation = cotisationService.lister();
+		assertThat(listCotisation.size(), equalTo(0));
 	}
 }
