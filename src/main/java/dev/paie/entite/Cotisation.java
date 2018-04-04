@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Table(name = "Cotisation")
 public class Cotisation {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
 	@Column(name = "CODE")
@@ -28,10 +28,7 @@ public class Cotisation {
 	private BigDecimal tauxPatronal;
 	
 	
-	public Cotisation() {
-		
-		// TODO Auto-generated constructor stub
-	}
+	
 	public String getCode() {
 		return code;
 	}
@@ -72,7 +69,10 @@ public class Cotisation {
 	}
 	
 	
-	
+public Cotisation() {
+		
+		// TODO Auto-generated constructor stub
+	}
 	
 
 }

@@ -1,6 +1,9 @@
 package dev.paie.service;
 
+import static org.junit.Assert.assertEquals;
+
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +17,7 @@ import dev.paie.config.JpaConfig;
 import dev.paie.entite.Cotisation;
 
 //Sélection des classes de configuration Spring à utiliser lors du test
-@ContextConfiguration(classes = { JpaConfig.class, CotisationServiceJpa.class, DataSourceH2Config.class  })
+@ContextConfiguration(classes = { JpaConfig.class, CotisationServiceJpa.class, DataSourceH2Config.class,DataSourceMySQLConfig.class  })
 // Configuration JUnit pour que Spring prenne la main sur le cycle de vie du
 // test
 @RunWith(SpringRunner.class)
@@ -27,17 +30,34 @@ public class CotisationServiceJpaTest {
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {
 		// TODO sauvegarder une nouvelle cotisation
-		
-		Cotisation nouvelleCotisation = new Cotisation("PAT", "patronal", new BigDecimal("0.5"),new BigDecimal("0.2"));
-		cotisationService.sauvegarder(nouvelleCotisation);
-		
 
-		
-		
+		Cotisation nouvelleCotisation = new Cotisation("PAT", "patronal", new BigDecimal("0.5"), new BigDecimal("0.2"));
+		cotisationService.sauvegarder(nouvelleCotisation);
+
 		// TODO vérifier qu'il est possible de récupérer la nouvelle cotisation
 		// via la méthode lister
-		// TODO modifier une cotisation
-		// TODO vérifier que les modifications sont bien prises en compte via la
-		// méthode lister
+
+		List<Cotisation> cotisations = cotisationService.lister();
+		for (Cotisation c : cotisations) {
+			assertEquals("PAT", c.getCode());
+			assertEquals("patronal", c.getLibelle());
+			assertEquals(new BigDecimal("0.5"), c.getTauxSalarial());
+			assertEquals(new BigDecimal("0.2"), c.getTauxPatronal());
+			
+		}
+		
+		nouvelleCotisation.setLibelle("salarial");
+		
+		cotisationService.mettreAJour(nouvelleCotisation);
+		
+		for (Cotisation c : cotisations){
+			
+			assertEquals("salarial", c.getLibelle());
+		}
 	}
+	// TODO modifier une cotisation
+	
+	
+	// TODO vérifier que les modifications sont bien prises en compte via la
+	// méthode lister
 }

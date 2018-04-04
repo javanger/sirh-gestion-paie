@@ -2,9 +2,14 @@ package dev.paie.entite;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+@Entity
+@Table(name = "GRADE")
 public class Grade {
-	
+
 	private Integer id;
+	
 	private String code;
 	private BigDecimal nbHeuresBase;
 	private BigDecimal tauxBase;
