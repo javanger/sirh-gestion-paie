@@ -19,10 +19,10 @@ public class Cotisation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	/**code : String*/
-	@Column(name = "CODE", unique = true)
+	@Column(name = "CODE", length = 20, nullable = false)
 	private String code;
 	/**libelle : String*/
-	@Column(name = "LIBELLE")
+	@Column(name = "LIBELLE", length = 50)
 	private String libelle;
 	/**tauxSalarial : BigDecimal*/
 	@Column(name = "TAUX_SALARIAL")
