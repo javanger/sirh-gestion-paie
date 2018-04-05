@@ -38,7 +38,7 @@ public class RemunerationEmployeController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("employes/creerEmploye");
 		mv.addObject("entreprises", entrepriseServ.list());
-		mv.addObject("grades", gradeServ.list());
+		mv.addObject("grades", gradeServ.salaireAnnuel());
 		mv.addObject("profils", profilServ.list());
 		mv.addObject("remunerationEmploye", new RemunerationEmploye());
 		return mv;

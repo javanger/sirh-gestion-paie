@@ -19,7 +19,7 @@
 		        <a class="nav-link" href='<c:url value="/mvc/employes/lister.jsp"/>'>Employés</a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="#">Bulletins</a>
+		        <a class="nav-link" href='<c:url value="/mvc/bulletins/lister.jsp"/>'>Bulletins</a>
 		      </li>
 		    </ul>
 		  </div>
