@@ -18,16 +18,16 @@ import javax.persistence.Table;
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
  	private Integer id;
 	
-	@Column(name = "CODE", length = 20, nullable = false)
+	@Column(name = "CODE", length = 20)
  	private String code;
 	
-	@Column(name = "LIBELLE", length = 50, nullable = false)
+	@Column(name = "LIBELLE", length = 50)
  	private String libelle;
 	
-	@Column(name = "TAUX_SALARIALE", nullable = false)
+	@Column(name = "TAUX_SALARIALE")
  	private BigDecimal tauxSalarial;
 	
-	@Column(name = "TAUX_PATRONAL", nullable = false)
+	@Column(name = "TAUX_PATRONAL")
  	private BigDecimal tauxPatronal;
 	
 	/** Constructor
