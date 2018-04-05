@@ -4,6 +4,7 @@
 package dev.paie.web.controller;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,9 +57,6 @@ public class RemunerationEmployeController {
 			gradesEtCalculs.put(grade, PaieUtils.arrondie(calcul));
 		}
 
-		for (Map.Entry<Grade, String> map : gradesEtCalculs.entrySet()) {
-
-		}
 		List<ProfilRemuneration> profils = pRepo.findAll();
 
 		ModelAndView mv = new ModelAndView();
@@ -66,13 +64,6 @@ public class RemunerationEmployeController {
 		mv.addObject("entreprises", entreprises);
 		mv.addObject("gradesEtCalculs", gradesEtCalculs);
 		mv.addObject("profils", profils);
-		return mv;
-	}
-
-	@RequestMapping(method = RequestMethod.GET, path = { "", "/" })
-	public ModelAndView lister() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("remunerations/lister");
 		return mv;
 	}
 
@@ -86,9 +77,25 @@ public class RemunerationEmployeController {
 		remuneration.setEntreprise(eRepo.findOne(idEntreprise));
 		remuneration.setGrade(gRepo.findOne(idGrade));
 		remuneration.setProfilRemuneration(pRepo.findOne(idProfil));
+		remuneration.setDateCreation(LocalDateTime.now());
 
 		rRepo.save(remuneration);
 		return lister();
 	}
 
+	@RequestMapping(method = RequestMethod.GET, path = { "", "/" })
+	public ModelAndView lister() {
+		// récupérer la liste de remunerations
+
+		List<RemunerationEmploye> remunerations = rRepo.findAll();
+		// Map<RemunerationEmploye, String> remuEtDate = new HashMap<>();
+		// for (RemunerationEmploye r : remunerations) {
+		// remuEtDate.put(r, PaieUtils.formatDateTime(r.getDateCreation()));
+		// }
+		//
+		ModelAndView mv = new ModelAndView();
+		// mv.addObject("map", remuEtDate);
+		mv.setViewName("remunerations/lister");
+		return mv;
+	}
 }

@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 import org.springframework.stereotype.Service;
@@ -47,5 +49,9 @@ public class PaieUtils {
 		df.setGroupingUsed(false);
 		return df.format(decimal);
 	}	
+
+	public static String formatDateTime(LocalDateTime date) {
+		return date.format(DateTimeFormatter.ofPattern("dd-MM-YYYY H:m:s"));
+	}
 
 }
