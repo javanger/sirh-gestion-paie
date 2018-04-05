@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -52,6 +53,10 @@ public class PaieUtils {
 
 	public static String formatDateTime(LocalDateTime date) {
 		return date.format(DateTimeFormatter.ofPattern("dd-MM-YYYY H:m:s"));
+	}
+
+	public static String formatDate(LocalDate date) {
+		return date.format(DateTimeFormatter.ofPattern("dd-MM-YYYY"));
 	}
 
 }
