@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,13 +61,12 @@ public class CotisationServiceJpa implements CotisationService {
 	@Override
 	public void supprimer(Cotisation cotisation) {
 		em.remove(cotisation);
-		;
 	}
 
 	@Override
 	public Cotisation trouverParId(Integer id) {
-		List<Cotisation> list = em.createQuery("from Cotisation c WHERE c.id = " + id, Cotisation.class)
-				.getResultList();
+		TypedQuery<Cotisation> query = em.createQuery("from Cotisation c WHERE c.id = ?", Cotisation.class);
+		List<Cotisation> list = query.setParameter(1, id).getResultList();
 		return list.isEmpty() ? null : list.get(0);
 	}
 
