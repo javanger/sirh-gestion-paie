@@ -16,7 +16,7 @@ import dev.paie.repository.RemunerationEmployeRepository;
  *
  */
 @Service
-public class RemunerationEmployeServiceJpa implements RemunerationEmployeService {
+public class RemunerationEmployeServiceDataJpa implements RemunerationEmployeService {
 
 	@Autowired
 	private RemunerationEmployeRepository remunerationEmployeRepository;

@@ -35,12 +35,12 @@
 			<article>
 				<div class="row p-3">
 					<div class="col-6 offset-3 text-center">
-						<h1>Liste des employés</h1>
+						<h1>Liste des Bulletins</h1>
 					</div>
 				</div>
 				<div class="row">
                     <div class="col-xl-12 col-md-12 col-12 text-right">
-                        <a href='<c:url value="/mvc/employes/creer" />' class="btn btn-secondary">Ajouter un employé</a>
+                        <a href='<c:url value="/mvc/bulletins/creer" />' class="btn btn-secondary">Créer un nouveau bulletin</a>
                     </div>
                 </div>
 				<div class="row p-3">
@@ -48,20 +48,24 @@
 						<thead>
 							<tr>
 								<th scope="col">Date/heure création</th>
+								<th scope="col">Période</th>
 								<th scope="col">Matricule</th>
-								<th scope="col">Grade</th>
-								<th scope="col">Entreprise</th>
-								<th scope="col">Profil</th>
+								<th scope="col">Salaire brut</th>
+								<th scope="col">Net Imposable</th>
+								<th scope="col">Net A Payer</th>
+								<th scope="col">Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${employes}" var="employe" varStatus="status">
+							<c:forEach items="${bulletinServices}" var="bulletinService" varStatus="status">
 								<tr>
-									<td><c:out value="${employe.dateCreationString}"></c:out></td>
-									<td><c:out value="${employe.matricule}"></c:out></td>
-									<td><c:out value="${employe.grade.code}"></c:out></td>
-									<td><c:out value="${employe.entreprise.denomination}"></c:out></td>
-									<td><c:out value="${employe.profilRemuneration.code}"></c:out></td>
+									<td><c:out value="${bulletinService.key.dateCreationString}"></c:out></td>
+									<td><c:out value="${bulletinService.key.periode.dateString}"></c:out></td>
+									<td><c:out value="${bulletinService.key.remunerationEmploye.matricule}"></c:out></td>
+									<td><c:out value="${bulletinService.value.salaireBrut}"></c:out></td>
+									<td><c:out value="${bulletinService.value.netImposable}"></c:out></td>
+									<td><c:out value="${bulletinService.value.netAPayer}"></c:out></td>
+									<td><c:out value="Visualiser"></c:out></td>
 								</tr>
 							</c:forEach>
 						</tbody>

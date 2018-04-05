@@ -35,55 +35,40 @@
 		<section>
 			<article>
 				<div class="row pl-5">
-					<div class="col-3 p-3">
-						<a href="<c:url value="/mvc/employes/lister" />">
-							<img src='<c:out value="${pageContext.servletContext.contextPath}/images/fleche.png"/>' class="img-fluid" alt="Responsive image"/>
-						</a>
-					</div>
-					<div class="col-6 text-center p-2 p-m-4">
-						<h1>Ajouter un employé</h1>
+					<div class="col-6 offset-3 text-center p-2 p-m-4">
+						<h1>Créer Bulletin de Salaire</h1>
 					</div>
 				</div>
-				<form:form method="POST" modelAttribute="remunerationEmploye" accept-charset="UTF-8">
+				<form:form method="POST" modelAttribute="bulletinSalaire" accept-charset="UTF-8">
 					<div class="form-group row p-3 pl-5">
-						<label for="inputMatricule" class="col-sm-2 col-form-label">Matricule
+						<label for="selectPeriode" class="col-sm-2 col-form-label">Période
 							: </label>
 						<div class="col-sm-8">
-							<form:input type="text" path="matricule" class="form-control" id="inputMatricule"
-								name="matricule" placeholder="Matricule"/>
-						</div>
-					</div>
-					<div class="form-group row p-3 pl-5">
-						<label for="selectEntreprise" class="col-sm-2 col-form-label">Entreprise
-							: </label>
-						<div class="col-sm-8">
-							<form:select path="entreprise.id" items="${entreprises}" itemValue="id" itemLabel="denomination" class="form-control"  id="selectEntreprise"
-								name="entreprise">
+							<form:select path="periode.id" items="${periodes}" itemValue="id" itemLabel="dateString" class="form-control"  id="selectPeriode"
+								name="periode">
 							</form:select>
 						</div>
 					</div>
 					<div class="form-group row p-3 pl-5">
-						<label for="selectProfil" class="col-sm-2 col-form-label">Profil
+						<label for="selectEmploye" class="col-sm-2 col-form-label">Matricule
 							: </label>
 						<div class="col-sm-8">
-							<form:select path="profilRemuneration.id" items="${profils}" itemValue="id" itemLabel="code" class="form-control" id="selectProfil" name="profil">
+							<form:select path="remunerationEmploye.id" items="${employes}" itemValue="id" itemLabel="matricule" class="form-control"  id="selectEmploye"
+								name="employe">
 							</form:select>
 						</div>
 					</div>
 					<div class="form-group row p-3 pl-5">
-						<label for="selectGrade" class="col-sm-2 col-form-label">Grade
+						<label for="inputPrimeExceptionnelle" class="col-sm-2 col-form-label">Prime exeptionnelle
 							: </label>
 						<div class="col-sm-8">
-							<form:select path="grade.id" class="form-control" id="selectGrade" name="grade">
-								<c:forEach items="${grades}" var="grade">
-									<form:option value="${grade.key.id}" label="${grade.value}"></form:option>
-								</c:forEach>
-							</form:select>
+							<form:input type="text" path="primeExceptionnelle" class="form-control" id="inputPrimeExceptionnelle"
+								name="primeExceptionnelle" placeholder="Prime Exceptionnelle"/>
 						</div>
 					</div>
 					<div class="col-sm-10 text-right p-3">
 						<button class="btn btn-primary" id="creerCollaboratuer"
-							type="submit">Ajouter</button>
+							type="submit">Créer</button>
 					</div>
 				</form:form>
 			</article>

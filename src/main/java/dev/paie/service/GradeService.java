@@ -4,6 +4,7 @@
 package dev.paie.service;
 
 import java.util.List;
+import java.util.Map;
 
 import dev.paie.entite.Grade;
 
@@ -32,4 +33,6 @@ public interface GradeService {
 	 * @return tout les grades
 	 */
 	List<Grade> lister();
+
+	Map<Grade, String> salaireAnnuel();
 }

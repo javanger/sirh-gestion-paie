@@ -6,6 +6,7 @@ package dev.paie.service;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -73,5 +74,11 @@ public class GradeServiceJdbcTemplate implements GradeService {
 		listGrade = jdbcTemplate.query(sql, mapper);
 		
 		return listGrade;
+	}
+
+	@Override
+	public Map<Grade, String> salaireAnnuel() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
