@@ -26,12 +26,16 @@ public class ProfilRemuneration {
 
 	/** cotisationsNonImposables : List<Cotisation> */
 	@ManyToMany
-	@JoinTable(name = "COTISATION_NON_IMPOSSABLES", joinColumns = @JoinColumn(name = "ID_PROFIL", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_COTISATION", referencedColumnName = "ID"))
+	@JoinTable(name = "COTISATION_NON_IMPOSSABLES", 
+	joinColumns = @JoinColumn(name = "ID_PROFIL", referencedColumnName = "ID"), 
+	inverseJoinColumns = @JoinColumn(name = "ID_COTISATION", referencedColumnName = "ID"))
 	private List<Cotisation> cotisationsNonImposables;
 
 	/** cotisationsImposables : List<Cotisation> */
 	@ManyToMany
-	@JoinTable(name = "COTISATION_IMPOSSABLES", joinColumns = @JoinColumn(name = "ID_PROFIL", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_COTISATION", referencedColumnName = "ID"))
+	@JoinTable(name = "COTISATION_IMPOSSABLES", 
+	joinColumns = @JoinColumn(name = "ID_PROFIL", referencedColumnName = "ID"), 
+	inverseJoinColumns = @JoinColumn(name = "ID_COTISATION", referencedColumnName = "ID"))
 	private List<Cotisation> cotisationsImposables;
 
 	/** avantages : List<Avantage> */

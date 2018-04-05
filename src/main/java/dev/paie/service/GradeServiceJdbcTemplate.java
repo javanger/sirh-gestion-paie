@@ -16,7 +16,7 @@ import dev.paie.util.GradeMapper;
  *
  */
 @Service
-public class GradeServiceJdbcTemplate implements GradeService {
+public class GradeServiceJdbcTemplate implements IGradeService {
 	
 	private JdbcTemplate jdbcTemplate;
 

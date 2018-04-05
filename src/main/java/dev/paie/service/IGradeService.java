@@ -8,7 +8,7 @@ import dev.paie.entite.Grade;
  * @author Emmanuel
  *
  */
-public interface GradeService {
+public interface IGradeService {
 	void sauvegarder(Grade nouveauGrade);
 
 	void mettreAJour(Grade grade);

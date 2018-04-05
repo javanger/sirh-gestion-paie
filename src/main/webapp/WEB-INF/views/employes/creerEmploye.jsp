@@ -1,5 +1,8 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,14 +54,13 @@
 
 	<div class="container-fluid">
 
-		<form class="needs-validation mt-4" onsubmit=""
-			action="creer" method="post" novalidate>
+		<form:form class="needs-validation mt-4" method="post"
+			modelAttribute="remunerationEmploye" novalidate="novalidate">
 
 			<div class="form-row justify-content-center">
 				<div class="col-10 col-sm-8 col-md-6 col-lg-4 mb-3">
-					<label for="matriculeInput">Matricule</label> <input type="text"
-						class="form-control" id="nomInput" name="nomInput"
-						placeholder="Nom" required>
+					<label for="matriculeInput">Matricule</label>
+					<form:input path="matricule" type="text" class="form-control"  placeholder="matricule" required="required" />
 					<div class="invalid-feedback">Veuillez saisir un matricule
 						correct.</div>
 				</div>
@@ -66,63 +68,50 @@
 
 			<div class="form-row justify-content-center">
 				<div class="col-10 col-sm-8 col-md-6 col-lg-4 mb-3">
-				
-					<label for="matriculeInput">Entreprise</label>
-					<div class="input-group col-12 col-sm-6 col-lg-4">
-						<select class="custom-select" id="entrepriseInput"
-							name="entrepriseInput">
 
-							<option selected value=0>Tous</option>
-
-							<c:forEach items="${entreprises}" var="entreprise">
-								<option value="${entreprise.id}">${entreprise.id}-${entreprise.denomination}
-								</option>
-							</c:forEach>
-
-						</select>
-					</div>
+					<label for="entrepriseInput">Entreprise</label>
 					
+					<form:select class="custom-select" items="${entreprises}" itemLabel="denomination" itemValue="id" path="entreprise.id"></form:select>
+
 				</div>
 			</div>
 
 			<div class="form-row justify-content-center">
 				<div class="col-10 col-sm-8 col-md-6 col-lg-4 mb-3">
-					<label for="dateInput">Date de naissance</label> <input type="date"
-						class="form-control" id="dateDeNaissanceInput"
-						name="dateDeNaissanceInput" placeholder="dd/mm/yyyy"
-						value="25/01/1995" required>
-					<div class="invalid-feedback">Veuillez saisir une date de
-						naissance correct.</div>
+
+					<label for="profilInput">Profil</label>
+					
+					<form:select class="custom-select" items="${profils}" itemLabel="code" itemValue="id" path="profilRemuneration.id"></form:select>
+
 				</div>
 			</div>
 
 			<div class="form-row justify-content-center">
 				<div class="col-10 col-sm-8 col-md-6 col-lg-4 mb-3">
-					<label for="adresseInput">Adresse</label> <input type="text"
-						class="form-control" id="adresseInput" name="adresseInput"
-						placeholder="Adresse" value="Une adresse" required>
-					<div class="invalid-feedback">Veuillez saisir une adresse
-						correct.</div>
+
+					<label for="gradeInput">Grade</label>
+					<form:select path="grade.id" class="custom-select">
+
+						<c:forEach items="${grades}" var="grade">
+
+							<fmt:parseNumber var="i" type="number"
+								value="${grade.nbHeuresBase.multiply(grade.tauxBase).multiply(12)}" />
+
+							<option value="${grade.id}">${grade.code} - ${i} € / an</option>
+							
+						</c:forEach>
+
+					</form:select>
+
 				</div>
 			</div>
 
-			<div class="form-row justify-content-center">
-				<div class="col-10 col-sm-8 col-md-6 col-lg-4 mb-3">
-					<label for="numSecuInput">Numéro de sécurité sociale</label> <input
-						type="text" class="form-control" id="numeroSecuriteSocialeInput"
-						name="numeroSecuriteSocialeInput"
-						placeholder="Numéro de sécurité sociale" value="016830598248"
-						required>
-					<div class="invalid-feedback">Veuillez saisir un numéro de
-						sécurité sociale correct.</div>
-				</div>
-			</div>
 			<div class="form-row justify-content-end">
 				<div class="col-10 col-sm-8 col-md-6 col-lg-4 mb-3">
-					<button id="actionmodal" class="btn btn-primary">Créer</button>
+					<button type="submit" class="btn btn-primary">Valider</button>
 				</div>
 			</div>
-		</form>
+		</form:form>
 
 
 
