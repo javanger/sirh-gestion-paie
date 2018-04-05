@@ -79,4 +79,6 @@ public class ResultatCalculRemuneration {
 	public void setNetAPayer(String netAPayer) {
 		this.netAPayer = netAPayer;
 	}
+
+
 }

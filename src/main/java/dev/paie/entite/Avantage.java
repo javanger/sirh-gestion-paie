@@ -18,13 +18,13 @@ public class Avantage {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "CODE", length = 20, nullable = false)
+	@Column(name = "CODE", length = 20)
 	private String code;
 	
-	@Column(name = "NOM", length = 20, nullable = false)
+	@Column(name = "NOM", length = 20)
 	private String nom;
 	
-	@Column(name = "MONTANT", nullable = false)
+	@Column(name = "MONTANT")
 	private BigDecimal montant;
 
 	public String getCode() {
@@ -58,4 +58,6 @@ public class Avantage {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
 }

@@ -52,6 +52,7 @@ public class BulletinSalaire {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	
 	
 	

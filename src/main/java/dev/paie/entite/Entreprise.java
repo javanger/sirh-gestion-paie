@@ -16,19 +16,19 @@ public class Entreprise {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "SIRET", length = 20, nullable = false)
+	@Column(name = "SIRET", length = 20)
 	private String siret;
 	
-	@Column(name = "DENOMINATION", length = 20, nullable = false)
+	@Column(name = "DENOMINATION", length = 20)
 	private String denomination;
 	
-	@Column(name = "ADRESSE", length = 20, nullable = false)
+	@Column(name = "ADRESSE", length = 20)
 	private String adresse;
 	
-	@Column(name = "URSSAF", length = 20, nullable = false)
+	@Column(name = "URSSAF", length = 20)
 	private String urssaf;
 	
-	@Column(name = "CODE_NAF", length = 20, nullable = false)
+	@Column(name = "CODE_NAF", length = 20)
 	private String codeNaf;
 	
 	public String getDenomination() {
@@ -67,6 +67,8 @@ public class Entreprise {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	
 	
+
 }

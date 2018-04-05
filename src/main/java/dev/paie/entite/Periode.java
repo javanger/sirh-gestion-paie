@@ -18,10 +18,10 @@ public class Periode {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "DATE_DEBUT", length = 20, nullable = false)
+	@Column(name = "DATE_DEBUT", length = 20)
 	private LocalDate dateDebut;
 	
-	@Column(name = "DATE_FIN", length = 20, nullable = false)
+	@Column(name = "DATE_FIN", length = 20)
 	private LocalDate dateFin;
 	
 	public LocalDate getDateDebut() {
@@ -42,9 +42,8 @@ public class Periode {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	
-	
+
+
 	
 
 }
