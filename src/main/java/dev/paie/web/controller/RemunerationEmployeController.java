@@ -52,4 +52,13 @@ public class RemunerationEmployeController {
 		return creerEmploye();
 	}
 
+	@RequestMapping(method = RequestMethod.GET, path = "/lister")
+	public ModelAndView listerEmploye() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("employes/listerEmploye");
+
+		mv.addObject("remunerationEmployes", remunerationEmployeS.list());
+		return mv;
+	}
+
 }

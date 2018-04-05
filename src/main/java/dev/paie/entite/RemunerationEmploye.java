@@ -1,5 +1,8 @@
 package dev.paie.entite;
 
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +34,9 @@ public class RemunerationEmploye {
 	 * entreprise : Entreprise
 	 * 
 	 */
+	@Column(name = "CREATION")
+	private ZonedDateTime creation;
+
 	@ManyToOne
 	@JoinColumn(name = "ID_ENTREPRISE")
 	private Entreprise entreprise;
@@ -50,6 +57,30 @@ public class RemunerationEmploye {
 
 	public RemunerationEmploye() {
 
+	}
+
+	/**
+	 * @return the creation
+	 */
+	public ZonedDateTime getCreation() {
+		return creation;
+	}
+
+	public String getCreationMois() {
+		return creation.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+	}
+
+	/**
+	 * @param creation
+	 *            the creation to set
+	 */
+	public void setCreation(ZonedDateTime creation) {
+		this.creation = creation;
+	}
+
+	@PrePersist
+	public void onPrePersist() {
+		setCreation(ZonedDateTime.now());
 	}
 
 	public String getMatricule() {
