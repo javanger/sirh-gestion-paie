@@ -33,6 +33,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
 		 * <url-pattern>/mvc/*</url-pattern> </servlet-mapping>
 		 */
 		dispatcher.addMapping("/mvc/*");
+
 		/*
 		 * <listener>
 		 * 
