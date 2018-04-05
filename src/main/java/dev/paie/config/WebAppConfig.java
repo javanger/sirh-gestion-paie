@@ -11,16 +11,14 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import dev.paie.services.InitialiserDonneesServiceDev;
-
 /**
  * @author Kevin M.
  *
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan("dev.paie.web.controller")
-@Import({ ServicesConfig.class, InitialiserDonneesServiceDev.class })
+@ComponentScan({ "dev.paie.web.controller", "dev.paie.web.listener" })
+@Import({ ServicesConfig.class })
 public class WebAppConfig {
 
 	@Bean

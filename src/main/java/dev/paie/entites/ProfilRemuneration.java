@@ -6,7 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,13 +19,16 @@ public class ProfilRemuneration {
 	private Integer id;
 	private String code;
 
-	@OneToMany
+	@ManyToMany
+	@JoinTable(name = "cotisation_non_imposable", joinColumns = @JoinColumn(name = "id_profil", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "id_cotisation", referencedColumnName = "id"))
 	private List<Cotisation> cotisationsNonImposables;
 
-	@OneToMany
+	@ManyToMany
+	@JoinTable(name = "cotisation_imposable", joinColumns = @JoinColumn(name = "id_profil", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "id_cotisation", referencedColumnName = "id"))
 	private List<Cotisation> cotisationsImposables;
 
-	@OneToMany
+	@ManyToMany
+	@JoinTable(name = "profil_avantage", joinColumns = @JoinColumn(name = "id_profil", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "id_avantage", referencedColumnName = "id"))
 	private List<Avantage> avantages;
 
 	public Integer getId() {
