@@ -22,7 +22,7 @@ public class ProfilRemuneration {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	/**code : String*/
-	@Column(name = "CODE", length = 20, nullable = false)
+	@Column(name = "CODE", length = 20, nullable = true)
 	private String code;
 	/**cotisationsNonImposables : List<Cotisation>*/
 	@ManyToMany

@@ -17,7 +17,7 @@ public class Entreprise {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	/**siret : String*/
-	@Column(name = "SIRET", length = 20, nullable = false)
+	@Column(name = "SIRET", length = 20, nullable = true)
 	private String siret;
 	/**denomination : String*/
 	@Column(name = "DENOMINATION", length = 50)
