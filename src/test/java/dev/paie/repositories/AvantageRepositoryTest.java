@@ -19,11 +19,6 @@ public class AvantageRepositoryTest {
 
 	@Autowired
 	AvantageRepository repository;
-
-//	@Test
-//	public void test_mappage_entites() {
-//		repo
-//	}
 	
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {

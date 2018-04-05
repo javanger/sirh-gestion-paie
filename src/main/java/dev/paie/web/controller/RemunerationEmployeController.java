@@ -87,7 +87,7 @@ public class RemunerationEmployeController {
 	public ModelAndView lister() {
 		// récupérer la liste de remunerations
 
-		List<RemunerationEmploye> remunerations = rRepo.findAll();
+		// List<RemunerationEmploye> remunerations = rRepo.findAll();
 		// Map<RemunerationEmploye, String> remuEtDate = new HashMap<>();
 		// for (RemunerationEmploye r : remunerations) {
 		// remuEtDate.put(r, PaieUtils.formatDateTime(r.getDateCreation()));

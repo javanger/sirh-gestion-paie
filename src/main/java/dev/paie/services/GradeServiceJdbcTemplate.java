@@ -3,6 +3,7 @@
  */
 package dev.paie.services;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -11,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import dev.paie.dao.GradeMapper;
 import dev.paie.entites.Grade;
 
 /**
@@ -48,7 +48,14 @@ public class GradeServiceJdbcTemplate implements GradeService {
 	@Override
 	public List<Grade> lister() {
 		String sql = "Select * from grade";
-		return this.jdbcTemplate.query(sql, new GradeMapper());
+		return this.jdbcTemplate.query(sql, (ResultSet res, int rowNum) -> {
+			Grade grade = new Grade();
+			grade.setCode(res.getString("code"));
+			grade.setId(res.getInt("id"));
+			grade.setNbHeuresBase(res.getBigDecimal("nb_heures_base"));
+			grade.setTauxBase(res.getBigDecimal("taux_base"));
+			return grade;
+		});
 	}
 
 }

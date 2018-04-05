@@ -39,6 +39,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 	public void initialiser() {
 
 		// extraire les grades du fichier xml
+		@SuppressWarnings("resource")
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("grades.xml", "entreprises.xml",
 				"cotisations-imposables.xml", "cotisations-non-imposables.xml", "profils-remuneration.xml");
 		Map<String, Cotisation> cotisations = context.getBeansOfType(Cotisation.class);
@@ -81,8 +82,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 			periode.setDateDebut(debutDeLaPriode);
 			periode.setDateFin(finDeLaPriode);
 
-			if (periode != null)
-				em.persist(periode);
+			em.persist(periode);
 		}
 
 	}
