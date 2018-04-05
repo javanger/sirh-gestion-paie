@@ -24,11 +24,11 @@ public class JpaConfig {
 		return txManager;
 	}
 
-	@Bean
+
 	// Cette configuration nécessite une source de données configurée.
 	// Elle s'utilise donc en association avec un autre fichier de configuration
 	// définissant un bean DataSource.
-
+	@Bean
 	public EntityManagerFactory entityManagerFactory(DataSource dataSource) {
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 //		vendorAdapter.setGenerateDdl(true);
