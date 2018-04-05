@@ -36,5 +36,16 @@ public class PaieUtils {
 		df.setGroupingUsed(false);
 		return df.format(decimal);
 	}
+	
+	public static String arrondie(BigDecimal decimal) {
+		DecimalFormat df = new DecimalFormat();
+		// forcer le séparateur "." même sur un poste en français
+		df.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.UK));
+		df.setMaximumFractionDigits(0);
+		df.setRoundingMode(RoundingMode.UP);
+		df.setMinimumFractionDigits(0);
+		df.setGroupingUsed(false);
+		return df.format(decimal);
+	}	
 
 }
