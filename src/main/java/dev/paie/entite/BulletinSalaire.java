@@ -24,7 +24,7 @@ public class BulletinSalaire {
 	@ManyToOne
 	private Periode periode;
 
-	@Column(name = "PRIME_EXCEPTIONNELLE", length = 20, nullable = false)
+	@Column(name = "PRIME_EXCEPTIONNELLE", length = 20, nullable = true)
 	private BigDecimal primeExceptionnelle;
 
 	public RemunerationEmploye getRemunerationEmploye() {

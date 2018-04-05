@@ -17,13 +17,13 @@ public class Grade {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@Column(name = "CODE", length = 20, nullable = false)
+	@Column(name = "CODE", length = 20, nullable = true)
 	private String code;
 	
-	@Column(name = "NB_HEURE_BASE", nullable = false)
+	@Column(name = "NB_HEURE_BASE", nullable = true)
 	private BigDecimal nbHeuresBase;
 	
-	@Column(name = "TAUX_BASE", nullable = false)
+	@Column(name = "TAUX_BASE", nullable = true)
 	private BigDecimal tauxBase;
 	
 	public String getCode() {

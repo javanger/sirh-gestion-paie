@@ -46,10 +46,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		entrep.forEach((id, obj) -> {
 			em.persist(obj);
 		});
-		Map<String, Periode> period = context.getBeansOfType(Periode.class);
-		period.forEach((id, obj) -> {
-			em.persist(obj);
-		});
+
 		Map<String, ProfilRemuneration> profilRem = context.getBeansOfType(ProfilRemuneration.class);
 		profilRem.forEach((id, obj) -> {
 			em.persist(obj);

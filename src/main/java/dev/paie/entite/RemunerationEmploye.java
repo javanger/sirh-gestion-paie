@@ -16,7 +16,7 @@ public class RemunerationEmploye {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@Column(name = "MATRICULE", length = 20, nullable = false)
+	@Column(name = "MATRICULE", length = 20, nullable = true)
 	private String matricule;
 	
 	@ManyToOne

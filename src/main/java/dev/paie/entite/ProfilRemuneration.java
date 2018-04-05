@@ -20,15 +20,15 @@ public class ProfilRemuneration {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@Column(name = "CODE", length = 20, nullable = false)
+	@Column(name = "CODE", length = 20, nullable = true)
 	private String code;
 	
 	@ManyToMany
-	@JoinTable(name = "COTISATION_NON_IMPOSSABLES", joinColumns = @JoinColumn(name = "ID_PROFIL", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_COTISATION", referencedColumnName = "ID"))
+	@JoinTable(name = "COTISATION_NON_IMPOSSABLES", joinColumns = @JoinColumn(name = "ID_PROFIL", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_NON_IMPOSSABLES", referencedColumnName = "ID"))
 	private List<Cotisation> cotisationsNonImposables;
 	
 	@ManyToMany
-	@JoinTable(name = "COTISATION_IMPOSSABLES", joinColumns = @JoinColumn(name = "ID_PROFIL", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_COTISATION", referencedColumnName = "ID"))
+	@JoinTable(name = "COTISATION_IMPOSSABLES", joinColumns = @JoinColumn(name = "ID_PROFIL", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_IMPOSSABLES", referencedColumnName = "ID"))
 	private List<Cotisation> cotisationsImposables;
 	
 	@ManyToMany

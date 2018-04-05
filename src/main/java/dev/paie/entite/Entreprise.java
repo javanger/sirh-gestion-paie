@@ -15,19 +15,19 @@ public class Entreprise {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@Column(name = "SIRET", length = 20, nullable = false)
+	@Column(name = "SIRET", length = 20, nullable = true)
 	private String siret;
 	
-	@Column(name = "DENOMINATION", length = 20, nullable = false)
+	@Column(name = "DENOMINATION", length = 20, nullable = true)
 	private String denomination;
 	
-	@Column(name = "ADRESSSE", length = 20, nullable = false)
+	@Column(name = "ADRESSSE", length = 20, nullable = true)
 	private String adresse;
 	
-	@Column(name = "URSSAF", length = 20, nullable = false)
+	@Column(name = "URSSAF", length = 20, nullable = true)
 	private String urssaf;
 	
-	@Column(name = "CODENATIF", length = 20, nullable = false)
+	@Column(name = "CODENATIF", length = 20, nullable = true)
 	private String codeNaf;
 
 	public String getDenomination() {

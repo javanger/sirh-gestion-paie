@@ -17,16 +17,16 @@ public class Cotisation {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@Column(name = "CODE", length = 20, nullable = false)
+	@Column(name = "CODE", length = 20, nullable = true)
 	private String code;
 	
-	@Column(name = "LIBELLE", length = 30, nullable = false)
+	@Column(name = "LIBELLE", length = 40, nullable = true)
 	private String libelle;
 	
-	@Column(name = "TAUX_SALARIAL", nullable = false)
+	@Column(name = "TAUX_SALARIAL", nullable = true)
 	private BigDecimal tauxSalarial;
 	
-	@Column(name = "TAUX_PATRONAL", nullable = false)
+	@Column(name = "TAUX_PATRONAL", nullable = true)
 	private BigDecimal tauxPatronal;
 	
 	

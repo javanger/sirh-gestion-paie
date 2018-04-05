@@ -17,10 +17,10 @@ public class Periode {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@Column(name = "DATE_DEBUT", nullable = false)
+	@Column(name = "DATE_DEBUT", nullable = true)
 	private LocalDate dateDebut;
 	
-	@Column(name = "DATE_FIN", length = 20, nullable = false)
+	@Column(name = "DATE_FIN", length = 20, nullable = true)
 	private LocalDate dateFin;
 	
 	public LocalDate getDateDebut() {
