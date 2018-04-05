@@ -3,6 +3,10 @@
  */
 package dev.paie.service;
 
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
@@ -15,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import dev.paie.entite.Cotisation;
 import dev.paie.entite.Entreprise;
 import dev.paie.entite.Grade;
+import dev.paie.entite.Periode;
 import dev.paie.entite.ProfilRemuneration;
 
 /**
@@ -54,6 +59,18 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		profilsRemuneration.forEach((k, v) -> {
 			em.persist(v);
 		});
+
+		List<Periode> periodes = new ArrayList<Periode>();
+		LocalDate date = LocalDate.now().with(TemporalAdjusters.firstDayOfYear());
+		for (int i = 0; i < 12; i++) {
+			Periode periode = new Periode();
+			periode.setDateDebut(date);
+			date = date.with(TemporalAdjusters.lastDayOfMonth());
+			periode.setDateFin(date);
+			periodes.add(periode);
+			date = date.with(TemporalAdjusters.firstDayOfNextMonth());
+		}
+		periodes.forEach(x -> em.persist(x));
 
 	}
 
