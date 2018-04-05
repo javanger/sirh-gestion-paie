@@ -6,10 +6,11 @@
 
 	<jsp:attribute name="header">
 	<h1>Créer Employe</h1>
- </jsp:attribute>
+    </jsp:attribute>
+	<jsp:attribute name="footer"></jsp:attribute>
 
 	<jsp:body>
-<form method="post" action="${ contextPath }/remunerations">
+<form method="post" action="${ path }/remunerations">
 	<div class="form-group">
 		<label for="inputMatricule">Matricule</label> <input type="text"
 					class="form-control" id="inputMatricule" name="inputMatricule"
@@ -47,5 +48,4 @@
 	<button type="submit" class="btn btn-primary">Ajouter</button>
 </form>
 </jsp:body>
-	<jsp:attribute name="footer">Tous droits reservés - copyright 2018</jsp:attribute>
 </t:app>
