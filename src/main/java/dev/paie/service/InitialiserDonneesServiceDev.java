@@ -17,7 +17,7 @@ import dev.paie.entite.Cotisation;
 import dev.paie.entite.Entreprise;
 import dev.paie.entite.Grade;
 import dev.paie.entite.Periode;
-import dev.paie.entite.RemunerationEmploye;
+import dev.paie.entite.ProfilRemuneration;
 
 @Service
 public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
@@ -44,12 +44,12 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		});
 
 		Map<String, Grade> grades = ctx.getBeansOfType(Grade.class);
-		entreprises.forEach((cle, valeur) -> {
+		grades.forEach((cle, valeur) -> {
 			em.persist(valeur);
 		});
 
-		Map<String, RemunerationEmploye> remuEmpl = ctx.getBeansOfType(RemunerationEmploye.class);
-		entreprises.forEach((cle, valeur) -> {
+		Map<String, ProfilRemuneration> remuEmpl = ctx.getBeansOfType(ProfilRemuneration.class);
+		remuEmpl.forEach((cle, valeur) -> {
 			em.persist(valeur);
 		});
 

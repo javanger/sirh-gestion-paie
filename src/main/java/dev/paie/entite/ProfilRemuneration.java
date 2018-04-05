@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,10 +24,14 @@ public class ProfilRemuneration {
 	@Column (name = "CODE")
 	private String code;
 
-	@OneToMany
+	@ManyToMany
+	@JoinTable(name = "cotisationsNonImposable", joinColumns = @JoinColumn(name = "ID_PROFIL", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "ID_COT", referencedColumnName = "id"))
+
 	private List<Cotisation> cotisationsNonImposables;
 	
-	@OneToMany
+	@ManyToMany
+	@JoinTable(name = "cotisationsImposable", joinColumns = @JoinColumn(name = "ID_PROFIL", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "ID_COT", referencedColumnName = "id"))
+
 	private List<Cotisation> cotisationsImposables;
 	
 	@OneToMany
