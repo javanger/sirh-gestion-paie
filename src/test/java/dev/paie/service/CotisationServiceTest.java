@@ -15,20 +15,19 @@ import org.springframework.test.context.junit4.SpringRunner;
 import dev.paie.config.DataSourceH2Config;
 import dev.paie.config.JpaConfig;
 import dev.paie.entite.Cotisation;
-import dev.paie.service.CotisationService;
-import dev.paie.service.CotisationServiceJpa;
 
 /**
  * @author Emmanuel
  *
  */
 // TODO compléter la configuration
-@ContextConfiguration(classes = { CotisationServiceJpa.class, JpaConfig.class, DataSourceH2Config.class })
+@ContextConfiguration(classes = { CotisationService.class, JpaConfig.class, DataSourceH2Config.class })
 // Configuration JUnit pour que Spring prenne la main sur le cycle de vie du test
 @RunWith(SpringRunner.class)
-public class CotisationServiceJpaTest {
+public class CotisationServiceTest {
+	
 	@Autowired
-	private CotisationService cotisationService;
+	private ICotisationService cotisationService;
 
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {
