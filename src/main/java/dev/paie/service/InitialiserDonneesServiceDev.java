@@ -28,7 +28,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 	@Transactional
 	@Override
 	public void initialiser() {
-		// TODO Auto-generated method stub
+
 
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("donnees.xml");
 		Map<String, Cotisation> cotis = ctx.getBeansOfType(Cotisation.class);

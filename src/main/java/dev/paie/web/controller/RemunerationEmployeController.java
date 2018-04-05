@@ -1,6 +1,5 @@
 package dev.paie.web.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,14 +33,12 @@ public class RemunerationEmployeController {
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
 	public ModelAndView creerEmploye() {
 		ModelAndView mv = new ModelAndView();
-		List<Entreprise> entreprises = new ArrayList<Entreprise>();
-		List<Grade> grades = new ArrayList<Grade>();
-		List<ProfilRemuneration> profilRemus = new ArrayList<ProfilRemuneration>();
 		
 
-		entreprises = entrepriseRepository.findAll();
-		grades = gradeRepository.findAll();
-		profilRemus = profilRemunerationRepository.findAll();
+
+		List<Entreprise> entreprises = entrepriseRepository.findAll();
+		List<Grade> grades = gradeRepository.findAll();
+		List<ProfilRemuneration> profilRemus = profilRemunerationRepository.findAll();
 
 		mv.setViewName("employes/creerEmploye");
 		mv.addObject("entreprises", entreprises);
