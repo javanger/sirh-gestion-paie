@@ -6,13 +6,13 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package'
+                sh 'mvn clean verify'
             }
         }
         stage('quality') {
             steps {
                 withSonarQubeEnv('Sonar-Nantes') {
-                  sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.projectKey=${DEV_ID}-sirh-paie -Dsonar.projectName=${DEV_ID}-sirh-paie -Dsonar.projectVersion=1.0 -Dsonar.sourceEncoding=UTF-8"
+                  sh "mvn org.jacoco:jacoco-maven-plugin:prepare-agent verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.projectKey=${DEV_ID}-sirh-paie -Dsonar.projectName=${DEV_ID}-sirh-paie -Dsonar.projectVersion=1.0 -Dsonar.sourceEncoding=UTF-8"
                 }
             }
         }
