@@ -25,5 +25,6 @@ public class StartUpAppListener {
 		// capture du démarrage de l'application
 		// à un moment où le contexte Spring est complètement créé
 		initService.initialiser();
+
 	}
 }

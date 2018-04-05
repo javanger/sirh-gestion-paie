@@ -21,7 +21,7 @@ import dev.paie.entite.Grade;
  *
  */
 @Service
-public class GradeServiceJdbcTemplate implements GradeService {
+public class GradeServiceJdbcTemplate implements GradeServiceInterface {
 
 	private JdbcTemplate jdbcTemplate;
 
