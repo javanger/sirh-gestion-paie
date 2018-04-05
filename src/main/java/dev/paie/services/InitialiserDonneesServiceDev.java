@@ -3,6 +3,7 @@
  */
 package dev.paie.services;
 
+import java.time.LocalDate;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import dev.paie.entites.Cotisation;
 import dev.paie.entites.Entreprise;
 import dev.paie.entites.Grade;
+import dev.paie.entites.Periode;
 import dev.paie.entites.ProfilRemuneration;
 
 /**
@@ -29,6 +31,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see dev.paie.services.InitialiserDonneesService#initialiser()
 	 */
 	@Override
@@ -63,5 +66,25 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 				em.persist(valeur);
 		});
 
+		Periode periode = null;
+		// generer 12 périodes de l'année courante
+		for (int i = 1; i <= 12; i++) {
+
+			LocalDate currentDate = LocalDate.now();
+			int dernierJourDuMois = currentDate.withMonth(i).lengthOfMonth();
+			int premierJourDuMois = 1;
+
+			LocalDate debutDeLaPriode = currentDate.withMonth(i).withDayOfMonth(premierJourDuMois);
+			LocalDate finDeLaPriode = currentDate.withMonth(i).withDayOfMonth(dernierJourDuMois);
+
+			periode = new Periode();
+			periode.setDateDebut(debutDeLaPriode);
+			periode.setDateFin(finDeLaPriode);
+
+			if (periode != null)
+				em.persist(periode);
+		}
+
 	}
+
 }

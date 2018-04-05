@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Table(name = "cotisations")
 public class Cotisation {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String code;
 	private String libelle;
