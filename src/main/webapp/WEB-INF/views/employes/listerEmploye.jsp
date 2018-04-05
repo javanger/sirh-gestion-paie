@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import = "java.util.List,dev.paie.entite.Entreprise,dev.paie.entite.RemunerationEmploye"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -25,43 +24,37 @@
 		    </ul>
 		  </div>
 		</nav>
-		<div class="container-fluid">
-			<div class="row justify-content-start mt-2 p-2">
-	        	<div class=".col-auto">
-	          		<a href='<c:url value="/index.jsp"/>'><img src="<%=request.getContextPath()%>/image/retour.jpg" class="rounded"></a>
-	        	</div>
-      		</div>		
+		<div class="container-fluid">	
       		<div class="row justify-content-center p-2">
       			<header>
-					<h1>Ajouter un employé</h1>
+					<h1>Liste des employés</h1>
 				</header>	
-      		</div>	 
-       	
-			
-			<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-			<form:form method="post" modelAttribute="remunerationEmploye">
-				<div class="form-group">
-	    			<label for="formMatricule">Matricule</label>
-	    			<form:input type="text" path="matricule" class="form-control" id="formMatricule" placeholder="Matricule"/>
-	  			</div>
-	  			<label for="formEnteprise">Entreprise</label>
-	  			<form:select path="entreprise.id" class="form-control" id="formEnteprise">
-					<form:options items="${entreprises}" itemValue="id" itemLabel="denomination"/>	
-				</form:select>
-				<label for="formProfil">Profil</label>
-				<form:select path="profilRemuneration.id" class="form-control" id="formProfil">
-					<form:options items="${profils}" itemValue="id" itemLabel="code"/>	
-				</form:select>
-				<label for="formGrade">Grade</label>
-				<form:select path="grade.id" class="form-control" id="formGrade">
-					<form:options items="${grades}" itemValue="id" itemLabel="code"/>	
-				</form:select>
-				<div class="row justify-content-center mt-3 p-2">
-					<input class="btn btn-primary" type="submit" value="Ajouter">
-				</div>
-
-			</form:form>
-		</div>
+      		</div>	     				
+		</div>			
+			<div class="row justify-content-end mt-2 p-2">
+	        	<div class=".col-auto">
+	          		<a href='<c:url value="/mvc/employes/creer.jsp"/>'><button class="btn btn-primary">Ajouter un employé</button></a>
+	        	</div>
+      		</div>
+		
+		<table class="table table-hover table-dark">
+		  <thead>
+		    <tr>
+		      <th scope="col">Date/Heure de création</th>
+		      <th scope="col">Matricule</th>
+		      <th scope="col">Grade</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  <c:forEach items="${remunerationEmployes}" var="remuneration">
+		    <tr>
+		      <td>${remuneration.creationString}</td>
+		      <td>${remuneration.matricule}</td>
+		      <td>${remuneration.grade.code}</td>
+		    </tr>
+		   </c:forEach>
+		  </tbody>
+		</table>
 	
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

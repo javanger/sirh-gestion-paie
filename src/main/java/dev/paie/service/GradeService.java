@@ -5,31 +5,27 @@ package dev.paie.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import dev.paie.entite.Grade;
+import dev.paie.repository.GradeRepository;
 
 /**
  * @author GOBERT Guillaume
  *
  */
-public interface GradeService {
-	/**
-	 * Fonction qui sauvegarde un nouveau grade en base
-	 * @param nouveauGrade Grade a enregistrer
-	 */
-	void sauvegarder(Grade nouveauGrade);
-	/**
-	 * Fonctoin qui met a jour un grade en base
-	 * @param grade Grade a modifier
-	 */
-	void mettreAJour(Grade grade);
-	/**
-	 * Retourne la liste des grades qui sont en base
-	 * @return Une liste de grade
-	 */
-	List<Grade> lister();
-	/**
-	 * Supprime un grade en base
-	 * @param supprimerGrade Grade a supprimer
-	 */
-	void supprimer(Grade supprimerGrade);
+@Component
+public class GradeService {
+
+	@Autowired
+	GradeRepository gradeRepository;
+
+	public List<Grade> list() {
+		return gradeRepository.findAll();
+	}
+
+	public void save(Grade grade) {
+		gradeRepository.save(grade);
+	}
 }

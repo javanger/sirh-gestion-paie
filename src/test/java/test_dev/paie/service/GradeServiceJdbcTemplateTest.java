@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import dev.paie.config.DataSourceH2Config;
 import dev.paie.config.DataSourceMySQLConfig;
 import dev.paie.entite.Grade;
-import dev.paie.service.GradeService;
+import dev.paie.service.GradeServiceInterface;
 import dev.paie.service.GradeServiceJdbcTemplate;
 
 /**
@@ -32,7 +32,7 @@ import dev.paie.service.GradeServiceJdbcTemplate;
 public class GradeServiceJdbcTemplateTest {
 
 	@Autowired
-	private GradeService gradeService;
+	private GradeServiceInterface gradeService;
 
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {
