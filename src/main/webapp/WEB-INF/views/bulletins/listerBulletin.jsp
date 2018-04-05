@@ -8,7 +8,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/sketchy/bootstrap.min.css" rel="stylesheet" integrity="sha384-QAdi7HQouHzrMcg66qFdsKV2BCFW/iVhCRvooAkqS4d5rXV8Hlu+X8MY3ao03fgn" crossorigin="anonymous">
-		<title>Employe</title>
+		<title>Bulletins</title>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,10 +26,10 @@
 	
 		<div class="container-fluid">
 			<div class="row justify-content-center p-2">
-				<h1>Liste des employés</h1>
+				<h1>Liste des bulletins</h1>
 			</div>
 			<div class="row justify-content-end">
-	        	<a href="../employes/creer"><button type="submit"  class="btn btn-primary">Ajouter un nouvel employé</button></a>
+	        	<a href="../bulletins/creer"><button type="submit"  class="btn btn-primary">Ajouter un nouveau bulletin</button></a>
 	       	</div>
 	       	
 	       	<div class = "row mt-3">
@@ -38,27 +38,44 @@
 						<thead class="table-dark">
 							<tr>
 								<th>Date/heure de création</th>
+								<th>Periode</th>
 								<th>Matricule</th>
-								<th>Grade</th>
+								<th>Salaire brut</th>
+								<th>Net impossable</th>
+								<th>Net à payer</th>
+								<th>Actions</th>
+								
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${employe }" var="employe">
+							<c:forEach items="${bulletin }" var="bulletin">
 								<tr>
 									<td>
-										${employe.dateCreation} 
+										${bulletin.dateCreation} 
 									</td>
 									<td>
-										${employe.matricule } 
+										${bulletin.periode.debutFin }
 									</td>
 									<td>
-										${employe.grade.code }
+										${bulletin.remunerationEmploye.matricule }
+									</td>
+									<td>
+										XXXXX
+									</td>
+									<td>
+										XXXXX
+									</td>
+									<td>
+										XXXXX
+									</td>
+									<td>
+										<a href="">Visualiser</a>
 									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
-					</table>  
-				</div>    	
+					</table> 
+				</div>     	
 	       	</div>
 	       	
 	       	

@@ -66,7 +66,7 @@ public class RemunerationEmploye {
 	 * @return the dateCreation
 	 */
 	public String getDateCreation() {
-		return dateCreation.format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss"));
+		return dateCreation.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
 	}
 
 	/**

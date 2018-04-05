@@ -13,7 +13,7 @@
 			rel="stylesheet"
 			integrity="sha384-QAdi7HQouHzrMcg66qFdsKV2BCFW/iVhCRvooAkqS4d5rXV8Hlu+X8MY3ao03fgn"
 			crossorigin="anonymous">
-		<title>Employe</title>
+		<title>Bulletins</title>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
@@ -34,28 +34,31 @@
 		<div class="container-fluid">
 			<div class="row justify-content-center p-2">
 				
-					<h1>Ajouter un employé</h1>
+					<h1>Ajouter un bulletin</h1>
 				
 			</div>
-			<form:form method="POST" modelAttribute="remunerationEmploye">
+			<form:form method="POST" modelAttribute="bulletinSalaire">
+				<div class="row mb-3">
+					<div class="col-2 offset-2">
+						<label class="col-form-label">Période</label>
+					</div>
+					<div class="col-4">
+						<form:select path="periode.id" class="form-control" >
+								<c:forEach items="${periode }" var="periode">
+									<form:option value="${periode.id}"> ${periode.debutFin} </form:option>
+								</c:forEach>
+							</form:select>
+					</div>
+				</div>
 				<div class="row mb-3">
 					<div class="col-2 offset-2">
 						<label class="col-form-label">Matricule</label>
 					</div>
 					<div class="col-4">
-						<form:input path="matricule" class="form-control" />
-					</div>
-					
-				</div>
-				<div class="row mb-3">
-					<div class="col-2 offset-2">
-						<label class="col-form-label">Entreprise</label>
-					</div>
-					<div class="col-4">
 						<div class="form-group">
-							<form:select path="entreprise.id" class="form-control" >
-								<c:forEach items="${entreprise }" var="entreprise">
-									<form:option value="${entreprise.getId()}"> ${entreprise.getDenomination()} </form:option>
+							<form:select path="remunerationEmploye.id" class="form-control" >
+								<c:forEach items="${remuneration }" var="employe">
+									<form:option value="${employe.id}"> ${employe.matricule} </form:option>
 								</c:forEach>
 							</form:select>
 						</div>
@@ -63,29 +66,11 @@
 				</div>
 				<div class="row mb-3">
 					<div class="col-2 offset-2">
-						<label class="col-form-label">Profil</label>
+						<label class="col-form-label">Prime exceptionnelle</label>
 					</div>
 					<div class="col-4">
 						<div class="form-group">
-							<form:select path="profilRemuneration.id" class="form-control" >
-								<c:forEach items="${profil }" var="profil">
-									<form:option value="${profil.getId()}"> ${profil.getCode()} </form:option>
-								</c:forEach>
-							</form:select>
-						</div>
-					</div>
-				</div>
-				<div class="row mb-3">
-					<div class="col-2 offset-2">
-						<label class="col-form-label">Grade</label>
-					</div>
-					<div class="col-4">
-						<div class="form-group">
-							<form:select path="grade.id" class="form-control" >
-								<c:forEach items="${grade }" var="grade">
-									<form:option value="${grade.getId()}"> ${grade.getCode()} </form:option>
-								</c:forEach>
-							</form:select>
+							<form:input path="primeExceptionnelle" class="form-control" />
 						</div>
 					</div>
 				</div>

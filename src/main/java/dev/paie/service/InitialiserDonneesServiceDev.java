@@ -40,6 +40,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService{
 			Periode periode = new Periode();
 			periode.setDateDebut(LocalDate.of( LocalDate.now().getYear(), mois, 1));
 			periode.setDateFin(periode.getDateDebut().with(TemporalAdjusters.lastDayOfMonth()));
+			periode.setDebutFin();
 			return periode;
 		})
 		.forEach(em::persist);
