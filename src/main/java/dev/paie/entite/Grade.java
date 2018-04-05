@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import dev.paie.util.PaieUtils;
+
 @Entity
 @Table(name = "Grade")
 public class Grade {
@@ -26,6 +28,14 @@ public class Grade {
 	@Column(name = "TAUX_BASE", nullable = true)
 	private BigDecimal tauxBase;
 	
+	public String calculerSalaire() {
+		PaieUtils paie = new PaieUtils();
+		String salaire = paie.formaterBigDecimalArrondi(nbHeuresBase.multiply(tauxBase).multiply(new BigDecimal("12")));
+
+		return salaire;
+
+	}
+
 	public String getCode() {
 		return code;
 	}

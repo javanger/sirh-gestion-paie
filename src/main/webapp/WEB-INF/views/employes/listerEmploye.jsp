@@ -6,7 +6,6 @@
 <%@ page language="java" pageEncoding="UTF-8"
 	contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +13,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Creer employé</title>
+<title>Liste employé</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -44,24 +43,29 @@
 
 
 
-	<div class="container-fluid" class="mx-auto">
+	<div class="container-fluid">
 		<div class="row">
 
 
-			<div class="text-center col-lg-8">
+			<div class="text-center col-lg-offset-2 col-lg-8">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col">
-							<h1>Ajouter un employé</h1>
+							<h1>Liste des employés</h1>
 						</div>
 
 					</div>
+					<div class="row">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <a class="btn btn-dark" href="creer-collab.html">Ajouter un nouveau collaborateur</a>
+                    </div>
+                </div>
 
 
 					<div class="row">
 
-						<form:form id="edit-form" class="needs-validation col-sm-12"
-							novalidate="novalidate" modelAttribute="employe">
+						<form id="edit-form" class="needs-validation col-sm-12" novalidate>
 							<div id="accordion">
 								<div class="card">
 									<div class="card-header" id="headingOne">
@@ -73,65 +77,62 @@
 										<div class="form-group row">
 											<label for="input-matricule" class="col-sm-3 col-form-label">Matricule</label>
 											<div class="col-sm-9">
-												<form:input path="matricule" type="text"
-													class="form-control" id="input-matricule"
-													placeholder="Matricule" required="required" />
+												<input type="text" class="form-control" id="input-matricule"
+													placeholder="Matricule" required>
 												<div class="invalid-feedback">Le nom est obligatoire</div>
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="input-entreprise" class="col-sm-3 col-form-label">Entreprise</label>
 											<div class="col-sm-9">
-												<form:select id="input-entreprise" class="custom-select"
-													path="entreprise.id" items="${entreprises}" itemValue="id"
-													itemLabel="denomination">
-
-												</form:select>
+												<select id="input-entreprise" class="custom-select">
+													<option value="1">Entreprise 3</option>
+													<option value="2">Entreprise 3</option>
+													<option value="2">Entreprise 3</option>
+												</select>
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="input-profil" class="col-sm-3 col-form-label">Profil</label>
 											<div class="col-sm-9">
-												<form:select path="profilRemuneration.id" id="input-profil"
-													class="custom-select" items="${profils}" itemValue="id"
-													itemLabel="code">
-												</form:select>
+												<select id="input-profil" class="custom-select">
+													<option value="1">Cadre</option>
+													<option value="2">Technicien</option>
+													<option value="2">Stagiaire</option>
+												</select>
 											</div>
 										</div>
 										<div class="form-group row">
 											<label for="input-grade" class="col-sm-3 col-form-label">Grade</label>
 											<div class="col-sm-9">
-												<select name="grade.id" id="input-grade"
-													class="custom-select">
-													<c:forEach items="${grades}" var="grade">
-														<option value="${grade.key.id}">${grade.key.code} -
-															${grade.value} /an</option>
-													</c:forEach>
+												<select id="input-grade" class="custom-select">
+													<option value="1">Grade A - 20 000 € /an</option>
+													<option value="2">Grade B - 30 000 € /an</option>
+													<option value="2">Grade C - 40 000 € /an</option>
 												</select>
 											</div>
 										</div>
-
+										
 									</div>
-									<div class="row">
-										<div class="col-md-2 ml-auto">
-											<button form="edit-form" type="submit"
-												class="btn btn-primary" data-toggle="modal"
-												data-target="#confirm">Sauvegarder</button>
-										</div>
+										<div class="row">
+						<div class="col-md-2 ml-auto">
+							<button form="edit-form" type="submit" class="btn btn-primary"
+								data-toggle="modal" data-target="#confirm">Sauvegarder</button>
+						</div>
 
-									</div>
+					</div>
 								</div>
 
 
 							</div>
-
-						</form:form>
+						
+						</form>
 
 
 
 					</div>
 
-
+					
 
 				</div>
 			</div>
