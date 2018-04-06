@@ -67,7 +67,7 @@ public class RemunerationEmployeController {
 		return mv;
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST, path = { "/creer" })
 	public ModelAndView creerProcess(@RequestParam("inputMatricule") String matricule,
 			@RequestParam("selectProfil") Integer idProfil, @RequestParam("selectEntreprise") Integer idEntreprise,
 			@RequestParam("selectGrade") Integer idGrade) {
@@ -80,10 +80,10 @@ public class RemunerationEmployeController {
 		remuneration.setDateCreation(LocalDateTime.now());
 
 		rRepo.save(remuneration);
-		return lister();
+		return new ModelAndView("redirect:lister");
 	}
 
-	@RequestMapping(method = RequestMethod.GET, path = { "", "/" })
+	@RequestMapping(method = RequestMethod.GET, path = { "", "/", "/lister" })
 	public ModelAndView lister() {
 		// récupérer la liste de remunerations
 

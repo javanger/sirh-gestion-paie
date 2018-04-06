@@ -10,6 +10,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,7 +19,7 @@ import dev.paie.entites.BulletinSalaire;
 import dev.paie.entites.Periode;
 import dev.paie.repositories.BulletinRepository;
 import dev.paie.repositories.PeriodeRepository;
-import dev.paie.repositories.ProfilRemunerationRepository;
+import dev.paie.repositories.RemunerationEmployeRepository;
 import dev.paie.utils.PaieUtils;
 
 /**
@@ -32,7 +33,7 @@ public class BulletinController {
 	@Autowired
 	private BulletinRepository bRepo;
 	@Autowired
-	private ProfilRemunerationRepository pRepo;
+	private RemunerationEmployeRepository rRepo;
 	@Autowired
 	private PeriodeRepository peRepo;
 
@@ -43,7 +44,7 @@ public class BulletinController {
 		List<Periode> periodes = peRepo.findAll();
 		Map<Integer, String> periodesMap = new HashMap<>();
 
-		if (periodes != null && periodes.isEmpty()) {
+		if (periodes != null && !periodes.isEmpty()) {
 			for (Periode p : periodes) {
 				String dateDebut = PaieUtils.formatDate(p.getDateDebut());
 				String dateFin = PaieUtils.formatDate(p.getDateFin());
@@ -53,16 +54,46 @@ public class BulletinController {
 		}
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("bulletin", bulletin);
-		mv.addObject("profils", pRepo.findAll());
-		mv.addObject("perioides", periodesMap);
+		mv.addObject("employes", rRepo.findAll());
+		mv.addObject("periodes", periodesMap);
 		mv.setViewName("bulletins/creer");
 
 		return mv;
 	}
 
-	@RequestMapping(method = RequestMethod.GET, path = { "", "/" })
-	public String lister() {
-		return "bulletins/lister";
+	// autre facon de faire
+	public String creer2(Model model) {
+		BulletinSalaire bulletin = new BulletinSalaire();
+
+		List<Periode> periodes = peRepo.findAll();
+		Map<Integer, String> periodesMap = new HashMap<>();
+
+		if (periodes != null && !periodes.isEmpty()) {
+			for (Periode p : periodes) {
+				String dateDebut = PaieUtils.formatDate(p.getDateDebut());
+				String dateFin = PaieUtils.formatDate(p.getDateFin());
+				String periodeFormate = "de " + dateDebut + " à " + dateFin;
+				periodesMap.put(p.getId(), periodeFormate);
+			}
+		}
+
+		model.addAttribute("bulletin", bulletin);
+		model.addAttribute("profils", rRepo.findAll());
+		model.addAttribute("periodes", periodesMap);
+
+		return "bulletins/creer";
+	}
+
+	@RequestMapping(method = RequestMethod.POST, path = "/creer")
+	public ModelAndView post(@ModelAttribute("bulletin") BulletinSalaire bulletin) {
+		bRepo.save(bulletin);
+		return new ModelAndView("redirect:lister");
+	}
+
+	@RequestMapping(method = RequestMethod.GET, path = { "", "/", "/lister" })
+	public ModelAndView lister() {
+		ModelAndView mv = new ModelAndView("bulletins/lister");
+		return mv;
 	}
 
 }

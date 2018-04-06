@@ -10,7 +10,7 @@
 	<jsp:attribute name="footer"></jsp:attribute>
 
 	<jsp:body>
-<form method="post" action="${ path }/remunerations">
+<form method="post" action="${ path }/remunerations/creer">
 	<div class="form-group">
 		<label for="inputMatricule">Matricule</label> <input type="text"
 					class="form-control" id="inputMatricule" name="inputMatricule"
