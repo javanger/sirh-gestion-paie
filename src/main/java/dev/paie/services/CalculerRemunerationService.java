@@ -4,7 +4,7 @@
 package dev.paie.services;
 
 import dev.paie.entites.BulletinSalaire;
-import dev.paie.services.models.ResultatCalculRemunerationServiceModel;
+import dev.paie.services.model.ResultatCalculRemunerationServiceModel;
 
 /**
  * @author Kevin M.

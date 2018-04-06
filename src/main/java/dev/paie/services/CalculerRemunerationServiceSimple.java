@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import dev.paie.entites.BulletinSalaire;
 import dev.paie.entites.Cotisation;
-import dev.paie.services.models.ResultatCalculRemunerationServiceModel;
+import dev.paie.services.model.ResultatCalculRemunerationServiceModel;
 import dev.paie.utils.PaieUtils;
 
 /**

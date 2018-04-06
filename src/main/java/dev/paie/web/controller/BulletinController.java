@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,8 +25,8 @@ import dev.paie.repositories.BulletinRepository;
 import dev.paie.repositories.PeriodeRepository;
 import dev.paie.repositories.RemunerationEmployeRepository;
 import dev.paie.services.CalculerRemunerationService;
-import dev.paie.services.models.BulletinSemiDetailleServiceModel;
-import dev.paie.services.models.ResultatCalculRemunerationServiceModel;
+import dev.paie.services.model.BulletinSemiDetailleServiceModel;
+import dev.paie.services.model.ResultatCalculRemunerationServiceModel;
 import dev.paie.utils.PaieUtils;
 
 /**
@@ -89,6 +90,17 @@ public class BulletinController {
 		}
 
 		ModelAndView mv = new ModelAndView("bulletins/lister", "bulletins", bulletins);
+		return mv;
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ModelAndView visualiser(@PathVariable Integer id) {
+		BulletinSalaire bulletin = new BulletinSalaire();
+
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("b", bRepo.findOne(id));
+		mv.setViewName("bulletins/detailsBulletin");
+
 		return mv;
 	}
 }

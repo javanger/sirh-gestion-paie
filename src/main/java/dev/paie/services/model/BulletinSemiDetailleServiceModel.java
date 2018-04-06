@@ -1,7 +1,7 @@
 /**
  * 
  */
-package dev.paie.services.models;
+package dev.paie.services.model;
 
 import dev.paie.entites.BulletinSalaire;
 

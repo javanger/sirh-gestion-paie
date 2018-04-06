@@ -13,7 +13,7 @@ import dev.paie.config.JeuxDeDonneesConfig;
 import dev.paie.entites.BulletinSalaire;
 import dev.paie.services.CalculerRemunerationService;
 import dev.paie.services.CalculerRemunerationServiceSimple;
-import dev.paie.services.models.ResultatCalculRemunerationServiceModel;
+import dev.paie.services.model.ResultatCalculRemunerationServiceModel;
 import dev.paie.utils.PaieUtils;
 
 // Sélection des classes de configuration Spring à utiliser lors du test
