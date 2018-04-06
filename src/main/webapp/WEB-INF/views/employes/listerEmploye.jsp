@@ -45,6 +45,18 @@
 			</div>
 		</nav>
 	</header>
+	    <section class="container-fluid">
+        <div class="row justify-content-end mt-3">
+
+
+            <a href="../employes/creer"  class="btn btn-outline-dark">Ajouter un nouvel employe</a>
+
+
+
+        </div>
+
+
+    </section>
 	<section class="container-fluid">
 		<h1>Statistiques</h1>
 

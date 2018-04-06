@@ -1,5 +1,3 @@
-
-
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -44,23 +42,24 @@
 			</div>
 		</nav>
 	</header>
- <section class="container-fluid">
-<h1>Statistiques</h1>
+	<section class="container-fluid">
+		<h1>Bulletin de salaire</h1>
+		<h2>Salaire</h2>
 
-<table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Date/heure de création</th>
-            <th scope="col">Periode</th>
-            <th scope="col">Matricule</th>
-            <th scope="col">Salaire brut</th>
-             <th scope="col">Net a payer</th>
-             <th scope="col">Net imposable</th>
-             <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${bulletins}" var="bul">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Rubriques</th>
+					<th scope="col">Base</th>
+					<th scope="col">Taux salarial</th>
+					<th scope="col">Montant salarial</th>
+					<th scope="col">Taux patronal</th>
+					<th scope="col">Cot. patronal</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%-- <c:forEach items="${bulletins}" var="bul">
         <tr>
             <th scope="row">${bul.key.dateTime }</th>
             <td>${bul.key.periode.dateDebut } -  ${bul.key.periode.dateFin }</td>
@@ -74,20 +73,104 @@
 
           </tr>
         
-        </c:forEach>
-
-         
-        </tbody>
-      </table>
+        </c:forEach> --%>
 
 
+			</tbody>
+		</table>
+
+
+
+
+
+
+
+
+	</section>
+	<section class="container-fluid">
+		<h2>Cotisations</h2>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Rubriques</th>
+					<th scope="col">Base</th>
+					<th scope="col">Taux salarial</th>
+					<th scope="col">Montant salarial</th>
+					<th scope="col">Taux patronal</th>
+					<th scope="col">Cot. patronal</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%-- <c:forEach items="${bulletins}" var="bul">
+        <tr>
+            <th scope="row">${bul.key.dateTime }</th>
+            <td>${bul.key.periode.dateDebut } -  ${bul.key.periode.dateFin }</td>
+            <td>${bul.key.remunerationEmploye.matricule}</td>
+            <td>${bul.value.salaireBrut}</td>
+            <td>${bul.value.netAPayer}</td>
+            <td>${bul.value.netImposable}</td>
+            <td><a href = "#">Visualiser</a></td>
+            
+            
+
+          </tr>
         
+        </c:forEach> --%>
+
+
+			</tbody>
+		</table>
 
 
 
 
+	</section>
+	
+		<section class="container-fluid">
+		<h2>NET Imposable</h2>
 
-    </section>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Rubriques</th>
+					<th scope="col">Base</th>
+					<th scope="col">Taux salarial</th>
+					<th scope="col">Montant salarial</th>
+					<th scope="col">Taux patronal</th>
+					<th scope="col">Cot. patronal</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%-- <c:forEach items="${bulletins}" var="bul">
+        <tr>
+            <th scope="row">${bul.key.dateTime }</th>
+            <td>${bul.key.periode.dateDebut } -  ${bul.key.periode.dateFin }</td>
+            <td>${bul.key.remunerationEmploye.matricule}</td>
+            <td>${bul.value.salaireBrut}</td>
+            <td>${bul.value.netAPayer}</td>
+            <td>${bul.value.netImposable}</td>
+            <td><a href = "#">Visualiser</a></td>
+            
+            
+
+          </tr>
+        
+        </c:forEach> --%>
+
+
+			</tbody>
+		</table>
+
+
+
+
+	</section>
+	
+
+
 
 
 	<!-- Optional JavaScript -->
