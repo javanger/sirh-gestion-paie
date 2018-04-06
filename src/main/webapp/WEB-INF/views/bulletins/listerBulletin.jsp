@@ -65,7 +65,7 @@
 									<td><c:out value="${bulletinService.value.salaireBrut}"></c:out></td>
 									<td><c:out value="${bulletinService.value.netImposable}"></c:out></td>
 									<td><c:out value="${bulletinService.value.netAPayer}"></c:out></td>
-									<td><c:out value="Visualiser"></c:out></td>
+									<td><a href='<c:url value="/mvc/bulletins/visualiser/${bulletinService.key.id}" />'><c:out value="Visualiser"></c:out></a></td>
 								</tr>
 							</c:forEach>
 						</tbody>

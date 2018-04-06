@@ -49,9 +49,9 @@ public class RemunerationEmployeController {
 
 
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
-	public ModelAndView ajouterEmploye(@ModelAttribute("remunerationEmploye") RemunerationEmploye remunerationEmploye) {
+	public String ajouterEmploye(@ModelAttribute("remunerationEmploye") RemunerationEmploye remunerationEmploye) {
 		remunerationEmployeServiceJpa.sauvegarder(remunerationEmploye);
-		return listerEmploye();
+		return "redirect:/mvc/employes/lister";
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")

@@ -1,6 +1,7 @@
 package dev.paie.entite;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 @Entity
@@ -29,14 +31,16 @@ public class ProfilRemuneration {
 	@JoinTable(name = "COTISATION_NON_IMPOSABLE",
 		joinColumns = @JoinColumn(name = "ID_PROFIL", referencedColumnName = "ID"),
 		inverseJoinColumns = @JoinColumn(name = "ID_NON_IMPOSABLE", referencedColumnName= "ID"))
-	private List<Cotisation> cotisationsNonImposables;
+	@OrderBy("code ASC")
+	private Set<Cotisation> cotisationsNonImposables;
 	
 	/**cotisationsImposables : List<Cotisation>*/
 	@ManyToMany
 	@JoinTable(name = "COTISATION_IMPOSABLE",
 		joinColumns = @JoinColumn(name = "ID_PROFIL", referencedColumnName = "ID"),
 		inverseJoinColumns = @JoinColumn(name = "ID_IMPOSABLE", referencedColumnName= "ID"))
-	private List<Cotisation> cotisationsImposables;
+	@OrderBy("code ASC")
+	private Set<Cotisation> cotisationsImposables;
 	
 	/**avantages : List<Avantage>*/
 	@ManyToMany
@@ -73,28 +77,28 @@ public class ProfilRemuneration {
 	/** Getter
 	 * @return the cotisationsNonImposables
 	 */
-	public List<Cotisation> getCotisationsNonImposables() {
+	public Set<Cotisation> getCotisationsNonImposables() {
 		return cotisationsNonImposables;
 	}
 
 	/** Setter
 	 * @param cotisationsNonImposables the cotisationsNonImposables to set
 	 */
-	public void setCotisationsNonImposables(List<Cotisation> cotisationsNonImposables) {
+	public void setCotisationsNonImposables(Set<Cotisation> cotisationsNonImposables) {
 		this.cotisationsNonImposables = cotisationsNonImposables;
 	}
 
 	/** Getter
 	 * @return the cotisationsImposables
 	 */
-	public List<Cotisation> getCotisationsImposables() {
+	public Set<Cotisation> getCotisationsImposables() {
 		return cotisationsImposables;
 	}
 
 	/** Setter
 	 * @param cotisationsImposables the cotisationsImposables to set
 	 */
-	public void setCotisationsImposables(List<Cotisation> cotisationsImposables) {
+	public void setCotisationsImposables(Set<Cotisation> cotisationsImposables) {
 		this.cotisationsImposables = cotisationsImposables;
 	}
 
@@ -111,4 +115,5 @@ public class ProfilRemuneration {
 	public void setAvantages(List<Avantage> avantages) {
 		this.avantages = avantages;
 	}
+
 }

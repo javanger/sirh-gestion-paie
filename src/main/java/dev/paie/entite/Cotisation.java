@@ -31,6 +31,19 @@ public class Cotisation {
 	@Column(name = "TAUX_PATRONAL")
 	private BigDecimal tauxPatronal;
 	
+	public Cotisation() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Cotisation(Integer id, String code, String libelle, BigDecimal tauxSalarial, BigDecimal tauxPatronal) {
+		super();
+		this.id = id;
+		this.code = code;
+		this.libelle = libelle;
+		this.tauxSalarial = tauxSalarial;
+		this.tauxPatronal = tauxPatronal;
+	}
 	/** Getter
 	 * @return the id
 	 */

@@ -26,6 +26,10 @@ public interface BulletinSalaireService {
 	
 	List<BulletinSalaire> lister();
 	
+	BulletinSalaire recuperer(Integer bulletinSalaire);
+
 	Map<BulletinSalaire, ResultatCalculRemuneration> calcul();
+
+	ResultatCalculRemuneration calcul(Integer bulletinSalaire);
 
 }

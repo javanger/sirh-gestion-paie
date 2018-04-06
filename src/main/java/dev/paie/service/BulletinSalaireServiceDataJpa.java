@@ -3,9 +3,10 @@
  */
 package dev.paie.service;
 
-import java.util.HashMap;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,12 +50,24 @@ public class BulletinSalaireServiceDataJpa implements BulletinSalaireService {
 	}
 
 	@Override
+	public BulletinSalaire recuperer(Integer bulletinSalaire) {
+		return bulletinSalaireRepository.findById(bulletinSalaire);
+	}
+
+	@Override
 	@Transactional
 	public Map<BulletinSalaire, ResultatCalculRemuneration> calcul() {
-		Map<BulletinSalaire, ResultatCalculRemuneration> mapCalcul = new HashMap<BulletinSalaire, ResultatCalculRemuneration>();
+		Map<BulletinSalaire, ResultatCalculRemuneration> mapCalcul = new TreeMap<BulletinSalaire, ResultatCalculRemuneration>(
+				Comparator.comparing(BulletinSalaire::getDateCreation));
 		bulletinSalaireRepository.findAll().forEach(b -> {
 			mapCalcul.put(b, calculerRemunerationService.calculer(b));
 		});
 		return mapCalcul;
+	}
+
+	@Override
+	@Transactional
+	public ResultatCalculRemuneration calcul(Integer bulletinSalaire) {
+		return calculerRemunerationService.calculer(recuperer(bulletinSalaire));
 	}
 }

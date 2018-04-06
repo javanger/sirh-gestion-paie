@@ -21,7 +21,11 @@ public class ResultatCalculRemuneration {
 	private String netImposable;   
 	/**netAPayer : String*/
 	private String netAPayer;   
- 
+	/** montantSalarial : String */
+	private String montantSalarial;
+	/** cotPatronales : String */
+	private String cotPatronales;
+
 	/** Getter
 	 * @return the salaireDeBase
 	 */
@@ -95,4 +99,37 @@ public class ResultatCalculRemuneration {
 		this.netAPayer = netAPayer;
 	}
 
+	/**
+	 * Getter
+	 * @return the montantSalarial
+	 */
+	public String getMontantSalarial() {
+		return montantSalarial;
+	}
+
+	/**
+	 * Setter
+	 * @param montantSalarial
+	 *            the montantSalarial to set
+	 */
+	public void setMontantSalarial(String montantSalarial) {
+		this.montantSalarial = montantSalarial;
+	}
+
+	/**
+	 * Getter
+	 * @return the cotPatronales
+	 */
+	public String getCotPatronales() {
+		return cotPatronales;
+	}
+
+	/**
+	 * Setter
+	 * @param cotPatronales
+	 *            the cotPatronales to set
+	 */
+	public void setCotPatronales(String cotPatronales) {
+		this.cotPatronales = cotPatronales;
+	}
 }
