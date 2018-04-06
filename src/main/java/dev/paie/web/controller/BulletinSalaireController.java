@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dev.paie.entite.BulletinSalaire;
 import dev.paie.service.BulletinSalaireService;
+import dev.paie.service.CalculerRemunerationServiceSimple;
 import dev.paie.service.PeriodeService;
 import dev.paie.service.RemunerationEmployeService;
 
@@ -32,6 +33,9 @@ public class BulletinSalaireController {
 	@Autowired
 	RemunerationEmployeService remunerationS;
 
+	@Autowired
+	CalculerRemunerationServiceSimple calculRemuneration;
+
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
 	public ModelAndView creerBulletin() {
 		ModelAndView mv = new ModelAndView();
@@ -46,16 +50,17 @@ public class BulletinSalaireController {
 
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
 	public ModelAndView submitForm(@ModelAttribute("bulletinSalaire") BulletinSalaire bulletinSalaire) {
+		ModelAndView mv = new ModelAndView();
 		bulletinSalaireS.save(bulletinSalaire);
-		return creerBulletin();
+		mv.setViewName("redirect:lister");
+		return mv;
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
-	public ModelAndView listerBulletin() {
+	public ModelAndView lister() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletins/listerBulletin");
-
-		mv.addObject("bulletinSalaires", bulletinSalaireS.list());
+		mv.addObject("bulletin", bulletinSalaireS.calcul());
 		return mv;
 	}
 }

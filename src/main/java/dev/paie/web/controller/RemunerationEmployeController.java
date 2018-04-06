@@ -43,17 +43,22 @@ public class RemunerationEmployeController {
 		mv.addObject("profils", profilS.list());
 		mv.addObject("grades", gradeS.list());
 		mv.addObject("remunerationEmploye", new RemunerationEmploye());
+
 		return mv;
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
 	public ModelAndView submitForm(@ModelAttribute("remunerationEmploye") RemunerationEmploye remunerationEmploye) {
+		ModelAndView mv = new ModelAndView();
 		remunerationEmployeS.save(remunerationEmploye);
-		return creerEmploye();
+
+		mv.setViewName("redirect:lister");
+		return mv;
+
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
-	public ModelAndView listerEmploye() {
+	public ModelAndView lister() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("employes/listerEmploye");
 
