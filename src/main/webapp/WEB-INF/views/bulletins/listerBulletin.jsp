@@ -25,9 +25,9 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="./lister">Employ&#xe9s
+					<li class="nav-item"><a class="nav-link" href="/paie/mvc/employes/lister">Employ&#xe9s
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="/paie/mvc/bulletins/lister">Bulletins</a>
+					<li class="nav-item"><a class="nav-link" href="./lister">Bulletins</a>
 					</li>
 				</ul>
 			</div>
@@ -36,15 +36,14 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-2 offset-5 mt-5">
-				<h2>Liste des employés</h2>
+				<h2>Liste des bulletins</h2>
 			</div>
 		</div>
 		<section>
 			<div class="row">
 				<div class="col-lg-9"></div>
 				<div class="col-12 col-lg-1 offset-1">
-					<a href="./creer" class="btn btn-primary mt-3">Ajouter
-						un employé</a>
+					<a href="./creer" class="btn btn-primary mt-3">Créer un nouveau bulletin</a>
 				</div>
 			</div>
 			<div class="row">
@@ -57,31 +56,36 @@
 								<tr>
 
 									<th scope="col">Date/heure création</th>
+									<th scope="col">Période</th>
 									<th scope="col">Matricule</th>
-									<th scope="col">Grade</th>
+									<th scope="col">Salaire Brut</th>
+									<th scope="col">Net Imposable</th>
+									<th scope="col">Net A Payer</th>
+									<th scope="col">Actions</th>
 
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${remunerationEmployes}" var="remunerations">
+								<c:forEach items="${bulletinSalaire}" var="bulletins">
 									<tr>
-										<td class="table-primary">${remunerations.creationMois}</td>
-										<td class="table-secondary">${remunerations.matricule}</td>
-										<td class="table-primary">${remunerations.grade.code}</td>
+										<td class="table-primary">${bulletins.creationMois}</td>
+										<td class="table-secondary">${bulletins.periode}</td>
+										<td class="table-primary">${bulletins.matricule}</td>
+										<td class="table-secondary">${bulletins.salaireBrut}</td>
+										<td class="table-primary">${bulletins.netImposable}</td>
+										<td class="table-secondary">${bulletins.netAPayer}</td>
+										<td class="table-primary">${bulletins.actions}</td>
 									</tr>
 								</c:forEach>
 
 							</tbody>
 						</table>
 
-
-
-
 					</div>
 				</div>
 			</div>
-	</div>
 	</section>
+	</div>
 
 </body>
 

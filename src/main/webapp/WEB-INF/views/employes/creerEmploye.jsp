@@ -49,7 +49,7 @@
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link" href="./lister">Employ&#xe9s
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="./lister">Bulletins</a>
+					<li class="nav-item"><a class="nav-link" href="/paie/mvc/bulletins/lister">Bulletins</a>
 					</li>
 				</ul>
 			</div>

@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF8"
+	pageEncoding="UTF8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -47,75 +51,63 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="./lister">Employ&#xe9s
-					</a></li>
-					<li class="nav-item"><a class="nav-link" href="./lister">Bulletins</a>
-					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="/paie/mvc/employes/lister">Employ&#xe9s </a></li>
+					<li class="nav-item"><a class="nav-link" href="./lister">Bulletins</a></li>
 				</ul>
 			</div>
 		</nav>
 	</header>
 	<div class="row">
 		<div class="col-3 offset-5 mt-5">
-			<h2>Ajouter un employ&#xe9</h2>
+			<h2>Creer Bulletin de Salaire</h2>
 		</div>
 	</div>
 	<div class="col-12 offset-2 mt-5">
-		<%@ taglib prefix="form"
-			uri="http://www.springframework.org/tags/form"%>
-		<form:form methode="post" modelAttribute="remunerationEmploye">
+		<form:form methode="post" modelAttribute="bulletinSalaire">
 			<div class="form-group row">
+				<label for="input-periode" class="col-sm-2 col-form-label">Période
+					:</label>
+				<div class="col-sm-4 ">
+					<form:select path="periode.id" class="form-control"
+						id="formPeriode">
+						<form:options items="${periodes}" itemValue="id"
+							itemLabel="debutFin" />
+					</form:select>
+					<div class="invalid-feedback">La période est obligatoire.</div>
+				</div>
+			</div>
+			<div class="form-group row mt-5">
 				<label for="input-matricule" class="col-sm-2 col-form-label">Matricule
 					:</label>
 				<div class="col-sm-4">
-					<form:input type="text" path="matricule" class="form-control"
-						id="formMatricule" placeholder="Matricule" />
+					<form:select path="remunerationEmploye.id" class="form-control"
+						id="formMatricule">
+						<form:options items="${remunerations}" itemValue="id"
+							itemLabel="matricule" />
+					</form:select>
 					<div class="invalid-feedback">Le matricule est obligatoire.</div>
 				</div>
 			</div>
-			<div class="form-group row">
-				<label for="input-entreprise" class="col-sm-2 col-form-label">Entreprise</label>
+			<div class="form-group row mt-5">
+				<label for="input-prime" class="col-sm-2 col-form-label">Prime
+					Exceptionnelle :</label>
 				<div class="col-sm-4">
-					<form:select path="entreprise.id" class="form-control"
-						id="formEnteprise">
-						<form:options items="${entreprises}" itemValue="id"
-							itemLabel="denomination" />
-					</form:select>
-					<div class="invalid-feedback">L'entreprise est obligatoire.</div>
+					<form:input type="text" path="primeExceptionnelle"
+						class="form-control" id="formPrime" placeholder="Prime" />
+					<div class="invalid-feedback">La prime Exceptionnelle est
+						obligatoire.</div>
 				</div>
 			</div>
-			<div class="form-group row">
-				<label for="input-profil" class="col-sm-2 col-form-label">Profil</label>
-				<div class="col-sm-4">
-					<form:select path="profilRemuneration.id" class="form-control"
-						id="formProfil">
-						<form:options items="${profils}" itemValue="id"
-							itemLabel="code" />
-					</form:select>
-					<div class="invalid-feedback">Le profil est obligatoire.</div>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="input-grade" class="col-sm-2 col-form-label">Grade</label>
-				<div class="col-sm-4">
-					<form:select path="grade.id" id="input-grade" class="custom-select">
-						<form:options items="${grades}" itemValue="id"
-							itemLabel="code" />
-					</form:select>
-					<div class="invalid-feedback">Le grade est obligatoire.</div>
-				</div>
-			</div>
-
 			<div class="form-group row">
 				<div class="col-sm-1 offset-5 ">
-					<button type="submit" class="btn btn-primary">Confirmer</button>
-
+					<form action="accueil.php" method="GET">
+						<button type="submit" class="btn btn-primary">Créer</button>
+					</form>
 				</div>
 			</div>
 		</form:form>
 	</div>
-
-
 </body>
 <footer> </footer>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
