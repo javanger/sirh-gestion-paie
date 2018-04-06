@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import dev.paie.entite.BulletinSalaire;
+import dev.paie.entite.Grade;
 import dev.paie.entite.ResultatCalculRemuneration;
 import dev.paie.repository.BulletinSalaireRepository;
 
@@ -57,8 +58,7 @@ public class BulletinSalaireServiceDataJpa implements BulletinSalaireService {
 	@Override
 	@Transactional
 	public Map<BulletinSalaire, ResultatCalculRemuneration> calcul() {
-		Map<BulletinSalaire, ResultatCalculRemuneration> mapCalcul = new TreeMap<BulletinSalaire, ResultatCalculRemuneration>(
-				Comparator.comparing(BulletinSalaire::getDateCreation));
+		Map<BulletinSalaire, ResultatCalculRemuneration> mapCalcul = new TreeMap<BulletinSalaire, ResultatCalculRemuneration>(Comparator.comparing(BulletinSalaire::getDateCreation));
 		bulletinSalaireRepository.findAll().forEach(b -> {
 			mapCalcul.put(b, calculerRemunerationService.calculer(b));
 		});

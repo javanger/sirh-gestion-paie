@@ -37,7 +37,7 @@
 				<div class="row pl-5">
 					<div class="col-3 p-3">
 						<a href="<c:url value="/mvc/employes/lister" />">
-							<img src='<c:out value="${pageContext.servletContext.contextPath}/images/fleche.png"/>' class="img-fluid" alt="Responsive image"/>
+							<img src='<c:out value="/images/fleche.png"/>' class="img-fluid" alt="Responsive image"/>
 						</a>
 					</div>
 					<div class="col-6 text-center p-2 p-m-4">
