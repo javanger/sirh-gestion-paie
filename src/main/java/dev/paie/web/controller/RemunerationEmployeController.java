@@ -55,10 +55,10 @@ public class RemunerationEmployeController {
 
 
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
-	public ModelAndView submitForm(@ModelAttribute("remunerationEmploye") RemunerationEmploye remunerationEmploye) {
+	public String submitForm(@ModelAttribute("remunerationEmploye") RemunerationEmploye remunerationEmploye) {
 		remunerationEmploye.creationString(ZonedDateTime.now());
 		remunerationEmployeRepository.save(remunerationEmploye);
-		return listerEmploye();
+		return "redirect:/mvc/employes/lister";
 
 	}
 

@@ -43,6 +43,10 @@ public class Periode {
 		this.id = id;
 	}
 
+	public String getPeriode() {
+		return dateDebut + " - " + dateFin;
+	}
+
 
 	
 
