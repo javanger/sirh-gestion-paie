@@ -13,23 +13,16 @@ import dev.paie.entite.BulletinSalaire;
 import dev.paie.entite.Periode;
 import dev.paie.entite.RemunerationEmploye;
 import dev.paie.repository.BulletinSalaireRepository;
-import dev.paie.repository.EntrepriseRepository;
-import dev.paie.repository.GradeRepository;
 import dev.paie.repository.PeriodeRepository;
 import dev.paie.repository.RemunerationEmployeRepository;
+import dev.paie.service.BulletinSalaireService;
 
 @Controller
 @RequestMapping("/bulletins")
 public class BulletinSalaireController {
 
 	@Autowired
-	private EntrepriseRepository entrepriseRepository;
-
-	@Autowired
 	private PeriodeRepository periodeRepository;
-
-	@Autowired
-	private GradeRepository gradeRepository;
 
 
 	@Autowired
@@ -37,6 +30,9 @@ public class BulletinSalaireController {
 
 	@Autowired
 	private BulletinSalaireRepository bulletinsSalaireRepository;
+
+	@Autowired
+	private BulletinSalaireService bulletinSalaireService;
 
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
 	public ModelAndView creerEmploye() {
@@ -64,9 +60,16 @@ public class BulletinSalaireController {
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
 	public ModelAndView listerBulletins() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("bulletins/listerbulletin");
-		mv.addObject("bulletinSalaire", bulletinsSalaireRepository.findAll());
+		mv.setViewName("bulletins/listerBulletin");
+		mv.addObject("bulletinSalaire", bulletinSalaireService.calcul());
 		return mv;
 	}
 
 }
+
+/*
+ * <!-- <td>${bulletins.key.matricule}</td>
+ * <td>${bulletins.value.salaireBrut}</td>
+ * <td>${bulletins.value.netImposable}</td>
+ * <td>${bulletins.value.netAPayer}</td> <td></td>-->
+ */

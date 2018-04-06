@@ -75,7 +75,7 @@
 				<div class="form-group row">
 				<label class="col-sm-4 col-2 col-form-label">Prime exceptionnelle</label>
 				<div class="col">
-				<input type="text" class="form-control" name="prime exceptionnelle" id="matricule" aria-describedby="inputGroupPrepend3" required>
+				<form:input path="primeExceptionnelle" class="form-control"/>
 						<div class="invalid-feedback">
 						Le prime exceptionnelle est obligatoire.
 						</div>

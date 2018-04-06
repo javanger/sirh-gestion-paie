@@ -38,7 +38,7 @@
         </div>
           </nav>
           <div class="col-sm-12 col-xs-12 col-lg-12 col-mg-12">
-      			<h1>Liste des employés</h1>
+      			<h1>Liste des bulletins</h1>
       		</div>
             <div class="form-group">
 			<a href="../bulletins/creer"><button  type="submit" id="buttoncreer" class="btn btn-primary btn-lg" >
@@ -58,17 +58,17 @@
     </tr>
   </thead>
   <tbody>
-    <c:forEach items="${remunerationEmploye}" var="employe">
+  <c:forEach items="${bulletinSalaire}" var="bulletins">
     <tr class="table-active">   
-      <td >${employe.creation}</td>
-      <td>${employe.matricule}</td>
-      <td >${employe.grade.code}</td>
-      <td>${employe.matricule}</td>
-      <td>${employe.matricule}</td>
-      <td>${employe.matricule}</td>
-      <td>${employe.matricule}</td>
-    </tr>
-    </c:forEach>
+      <td>${bulletins.key.creation}</td>
+      <td>${bulletins.key.periode.periode}</td>
+      <td>${bulletins.key.remunerationEmploye.matricule}</td>
+      <td>${bulletins.value.salaireBrut}</td>
+      <td>${bulletins.value.netImposable}</td>
+      <td>${bulletins.value.netAPayer}</td> 
+      <td></td>
+      </tr>
+      </c:forEach>
   </tbody>
 </table>
 </body>
