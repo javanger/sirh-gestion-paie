@@ -7,7 +7,9 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Optional;
 
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import dev.paie.entite.BulletinSalaire;
 import dev.paie.entite.Grade;
@@ -18,9 +20,10 @@ import dev.paie.util.PaieUtils;
  * @author Emmanuel
  *
  */
-@Service
+@Component
 public class CalculerRemunerationServiceSimple implements CalculerRemunerationService {
 
+	@Autowired
 	PaieUtils paieUtils = new PaieUtils();
 
 	/*
@@ -31,6 +34,7 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 	 * BulletinSalaire)
 	 */
 	@Override
+	@Transactional
 	public ResultatCalculRemuneration calculer(BulletinSalaire bulletin) {
 
 		ResultatCalculRemuneration remuneration = new ResultatCalculRemuneration();

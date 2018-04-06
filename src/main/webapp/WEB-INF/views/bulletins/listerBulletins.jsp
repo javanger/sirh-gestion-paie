@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Lister employés</title>
+<title>Lister bulletins</title>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -44,10 +44,10 @@
 				<li class="nav-item"><a class="nav-link" href="/paie/">Index
 				</a></li>
 
-				<li class="nav-item"><a class="nav-link" href="../bulletins/lister">Bulletin
+				<li class="nav-item"><a class="nav-link" href="lister">Bulletin
 				</a></li>
 
-				<li class="nav-item"><a class="nav-link" href="lister">Employé</a></li>
+				<li class="nav-item"><a class="nav-link" href="../employes/lister">Employé</a></li>
 
 			</ul>
 
@@ -61,19 +61,34 @@
 			<thread>
 			<tr>
 				<th>Date de création</th>
+				<th>Période</th>
 				<th>Matricule</th>
-				<th>Grade</th>
+				<th>Salaire brut</th>
+				<th>Net Imposable</th>
+				<th>Net A Payer</th>
+				<th>Actions</th>
 			</tr>
 			</thread>
 
-			<c:forEach items="${employes}" var="employe">
-			
+			<c:forEach items="${bulletins}" var="bulletin">
+
+				<fmt:parseNumber var="salaireBrut" type="number"
+					value="${bulletin.value.salaireBrut}" />
+				<fmt:parseNumber var="netImposable" type="number"
+					value="${bulletin.value.netImposable}" />
+				<fmt:parseNumber var="netAPayer" type="number"
+					value="${bulletin.value.netAPayer}" />
+
 				<tr>
-					<td>${employe.dateCreation}</td>
-					<td>${employe.matricule}</td>
-					<td>${employe.grade.code}</td>
+					<td>${bulletin.key.dateCreation}</td>
+					<td>${bulletin.key.periode.dateDebut} - ${bulletin.key.periode.dateFin}</td>
+					<td>${bulletin.key.remunerationEmploye.matricule}</td>
+					<td>${salaireBrut}</td>
+					<td>${netImposable}</td>
+					<td>${netAPayer}</td>
+					<td>Visualiser</td>
 				</tr>
-				
+
 			</c:forEach>
 
 		</table>
@@ -83,7 +98,7 @@
 			<div class=".col-auto">
 				<a href='creer'>
 					<button type="button" class="btn btn-outline-dark">Créer
-						un nouveau employé</button>
+						un nouveau bulletin</button>
 				</a>
 
 			</div>

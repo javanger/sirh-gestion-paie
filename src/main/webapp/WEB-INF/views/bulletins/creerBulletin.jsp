@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Lister employés</title>
+<title>Création bulletin</title>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -44,10 +44,10 @@
 				<li class="nav-item"><a class="nav-link" href="/paie/">Index
 				</a></li>
 
-				<li class="nav-item"><a class="nav-link" href="../bulletins/lister">Bulletin
+				<li class="nav-item"><a class="nav-link" href="lister">Bulletin
 				</a></li>
 
-				<li class="nav-item"><a class="nav-link" href="lister">Employé</a></li>
+				<li class="nav-item"><a class="nav-link" href="../employes/lister">Employé</a></li>
 
 			</ul>
 
@@ -56,39 +56,56 @@
 
 	<div class="container-fluid">
 
-		<table class="table">
+		<form:form class="needs-validation mt-4" method="post"
+			modelAttribute="bulletinSalaire" novalidate="novalidate">
 
-			<thread>
-			<tr>
-				<th>Date de création</th>
-				<th>Matricule</th>
-				<th>Grade</th>
-			</tr>
-			</thread>
+			<div class="form-row justify-content-center">
+				<div class="col-10 col-sm-8 col-md-6 col-lg-4 mb-3">
 
-			<c:forEach items="${employes}" var="employe">
-			
-				<tr>
-					<td>${employe.dateCreation}</td>
-					<td>${employe.matricule}</td>
-					<td>${employe.grade.code}</td>
-				</tr>
-				
-			</c:forEach>
+					<label for="periodeInput">Période</label>
 
-		</table>
+					<form:select path="periode.id" class="custom-select">
 
-		<div class="row justify-content-end mt-2 mr-2">
+						<c:forEach items="${periodes}" var="periode">
 
-			<div class=".col-auto">
-				<a href='creer'>
-					<button type="button" class="btn btn-outline-dark">Créer
-						un nouveau employé</button>
-				</a>
+							<option value="${periode.id}">${periode.dateDebut} - ${periode.dateFin}</option>
 
+						</c:forEach>
+
+					</form:select>
+				</div>
 			</div>
 
-		</div>
+			<div class="form-row justify-content-center">
+				<div class="col-10 col-sm-8 col-md-6 col-lg-4 mb-3">
+
+					<label for="employeInput">Matricule</label>
+					<form:select class="custom-select" items="${employes}"
+						itemLabel="matricule" itemValue="id" path="remunerationEmploye.id"></form:select>
+
+
+				</div>
+			</div>
+
+			<div class="form-row justify-content-center">
+				<div class="col-10 col-sm-8 col-md-6 col-lg-4 mb-3">
+					<label for="matriculeInput">Prime exceptionnelle</label>
+					<form:input path="primeExceptionnelle" type="number"
+						class="form-control" placeholder="prime Exceptionnelle"
+						required="required" />
+					<div class="invalid-feedback">Veuillez saisir une prime
+						correct.</div>
+				</div>
+			</div>
+
+			<div class="form-row justify-content-end">
+				<div class="col-10 col-sm-8 col-md-6 col-lg-4 mb-3">
+					<button type="submit" class="btn btn-primary">Valider</button>
+				</div>
+			</div>
+		</form:form>
+
+
 
 	</div>
 

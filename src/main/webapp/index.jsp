@@ -40,7 +40,7 @@
 				<li class="nav-item"><a class="nav-link" href="/paie/">Index
 				</a></li>
 
-				<li class="nav-item"><a class="nav-link" href="#">Bulletin
+				<li class="nav-item"><a class="nav-link" href="/paie/mvc/bulletins/lister">Bulletin
 				</a></li>
 
 				<li class="nav-item"><a class="nav-link"

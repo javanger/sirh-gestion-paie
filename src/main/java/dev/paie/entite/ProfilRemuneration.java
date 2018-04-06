@@ -1,6 +1,7 @@
 package dev.paie.entite;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,14 +30,14 @@ public class ProfilRemuneration {
 	@JoinTable(name = "COTISATION_NON_IMPOSSABLES", 
 	joinColumns = @JoinColumn(name = "ID_PROFIL", referencedColumnName = "ID"), 
 	inverseJoinColumns = @JoinColumn(name = "ID_COTISATION", referencedColumnName = "ID"))
-	private List<Cotisation> cotisationsNonImposables;
+	private Set<Cotisation> cotisationsNonImposables;
 
 	/** cotisationsImposables : List<Cotisation> */
 	@ManyToMany
 	@JoinTable(name = "COTISATION_IMPOSSABLES", 
 	joinColumns = @JoinColumn(name = "ID_PROFIL", referencedColumnName = "ID"), 
 	inverseJoinColumns = @JoinColumn(name = "ID_COTISATION", referencedColumnName = "ID"))
-	private List<Cotisation> cotisationsImposables;
+	private Set<Cotisation> cotisationsImposables;
 
 	/** avantages : List<Avantage> */
 	@OneToMany
@@ -62,19 +63,19 @@ public class ProfilRemuneration {
 		this.code = code;
 	}
 
-	public List<Cotisation> getCotisationsNonImposables() {
+	public Set<Cotisation> getCotisationsNonImposables() {
 		return cotisationsNonImposables;
 	}
 
-	public void setCotisationsNonImposables(List<Cotisation> cotisationsNonImposables) {
+	public void setCotisationsNonImposables(Set<Cotisation> cotisationsNonImposables) {
 		this.cotisationsNonImposables = cotisationsNonImposables;
 	}
 
-	public List<Cotisation> getCotisationsImposables() {
+	public Set<Cotisation> getCotisationsImposables() {
 		return cotisationsImposables;
 	}
 
-	public void setCotisationsImposables(List<Cotisation> cotisationsImposables) {
+	public void setCotisationsImposables(Set<Cotisation> cotisationsImposables) {
 		this.cotisationsImposables = cotisationsImposables;
 	}
 

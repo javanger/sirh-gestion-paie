@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Création</title>
+<title>Création employé</title>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -44,7 +44,7 @@
 				<li class="nav-item"><a class="nav-link" href="/paie/">Index
 				</a></li>
 
-				<li class="nav-item"><a class="nav-link" href="#">Bulletin
+				<li class="nav-item"><a class="nav-link" href="../bulletins/lister">Bulletin
 				</a></li>
 
 				<li class="nav-item"><a class="nav-link" href="lister">Employé</a></li>
@@ -102,7 +102,7 @@
 							<fmt:parseNumber var="i" type="number"
 								value="${grade.nbHeuresBase.multiply(grade.tauxBase).multiply(12)}" />
 
-							<option value="${grade.id}">${grade.code}- ${i} € / an</option>
+							<option value="${grade.id}">${grade.code} - ${i} € / an</option>
 
 						</c:forEach>
 
