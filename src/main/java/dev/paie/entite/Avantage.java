@@ -2,11 +2,29 @@ package dev.paie.entite;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Avantage")
 public class Avantage {
 
+	@Id
+	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(name = "CODE", length = 20)
 	private String code;
+	
+	@Column(name = "NOM", length = 20)
 	private String nom;
+	
+	@Column(name = "MONTANT")
 	private BigDecimal montant;
 
 	public String getCode() {
@@ -40,4 +58,6 @@ public class Avantage {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
 }
