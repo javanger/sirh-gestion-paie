@@ -3,6 +3,7 @@
  */
 package dev.paie.web.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,8 @@ public class RemunerationEmployeController {
 
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
 	public String submitForm(@ModelAttribute("remunerationEmploye") RemunerationEmploye remunerationEmploye) {
+		
+		remunerationEmploye.setDateCreation(LocalDateTime.now());
 		
 		remunerationEmployeRepository.save(remunerationEmploye);
 		
