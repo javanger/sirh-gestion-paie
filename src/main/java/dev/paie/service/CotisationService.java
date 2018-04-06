@@ -5,34 +5,28 @@ package dev.paie.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import dev.paie.entite.Cotisation;
+import dev.paie.repository.CotisationRepository;
 
 /**
  * @author GOBERT Guillaume
  *
  */
-public interface CotisationService {
-	/**
-	 * Ajout d'une nouvelle cotisation dans la base
-	 * @param nouvelleCotisation Cotisation a enregistrer dans la base
-	 */
-	void sauvegarder(Cotisation nouvelleCotisation);
+@Component
+public class CotisationService {
 
-	/**
-	 * Mise a jour d'une cotisation presente en base
-	 * @param cotisation Cotisation a mettre a jour
-	 */
-	void mettreAJour(Cotisation cotisation);
+	@Autowired
+	CotisationRepository cotisationRepository;
 
-	/**
-	 * Liste les cotisations presnetes en base
-	 * @return une liste de cotisation
-	 */
-	List<Cotisation> lister();
-	
-	/**
-	 * Supprime une cotisation de la base
-	 * @param supprimerCotisation Cotisation a supprimer
-	 */
-	void supprimer(Cotisation supprimerCotisation);
+	public List<Cotisation> list() {
+		return cotisationRepository.findAll();
+	}
+
+	public void save(Cotisation cotisation) {
+		cotisationRepository.save(cotisation);
+	}
+
 }

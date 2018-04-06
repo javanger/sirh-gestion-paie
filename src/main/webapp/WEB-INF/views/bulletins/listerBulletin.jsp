@@ -50,8 +50,8 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		  	<tr>
 		  	<c:forEach items="${bulletinSalaires}" var="bulletin">
+		  	<tr>
 
 		      <td>${bulletin.key.creationString}</td>
 		      <td>${bulletin.key.periode.debutFin}</td>
@@ -59,10 +59,10 @@
 		      <td>${bulletin.value.salaireBrut}</td>
 		      <td>${bulletin.value.netImposable}</td>
 		      <td>${bulletin.value.netAPayer}</td> 
-		  	</c:forEach>  
-		 	  <td><a href='<c:url value="/mvc/bulletins/creer.jsp"/>'>Visualiser</a></td>
+		 	  <td><a href='<c:url value="/mvc/bulletins/visualiser/${bulletin.key.id}"/>' class="text-white">Visualiser</a></td>
 		    </tr>
-
+		 	  
+		  	</c:forEach>  
 		  </tbody>
 		</table>
 		

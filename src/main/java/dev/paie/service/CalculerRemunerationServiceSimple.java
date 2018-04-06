@@ -4,8 +4,8 @@
 package dev.paie.service;
 
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,12 +31,12 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 		ResultatCalculRemuneration resultatCalculRemunaration = new ResultatCalculRemuneration();
 		Grade grade = bulletin.getRemunerationEmploye().getGrade();
 		BigDecimal prime = bulletin.getPrimeExceptionnelle();
-
-		BigDecimal salaireBase = grade.getNbHeuresBase().multiply(grade.getTauxBase());
+		String salaireBaseString = paieUtils.formaterBigDecimal(grade.getNbHeuresBase().multiply(grade.getTauxBase()));
+		BigDecimal salaireBase = new BigDecimal(salaireBaseString);
 		BigDecimal salaireBrut = salaireBase.add(prime);
 		resultatCalculRemunaration.setSalaireDeBase(salaireBase.toString());
 		resultatCalculRemunaration.setSalaireBrut(paieUtils.formaterBigDecimal(salaireBrut));
-		List<Cotisation> cotisationsNonImposable = bulletin.getRemunerationEmploye().getProfilRemuneration()
+		Set<Cotisation> cotisationsNonImposable = bulletin.getRemunerationEmploye().getProfilRemuneration()
 				.getCotisationsNonImposables();
 
 		Optional<BigDecimal> totalRetenueSalarial = bulletin.getRemunerationEmploye().getProfilRemuneration()

@@ -16,7 +16,6 @@ public class ResultatCalculRemuneration {
 	private String netImposable;
 	private String netAPayer;
 	
-	
 	/** Getter
 	 * @return the salaireDeBase
 	 */
@@ -89,6 +88,4 @@ public class ResultatCalculRemuneration {
 	public void setNetAPayer(String netAPayer) {
 		this.netAPayer = netAPayer;
 	}
-	
-	
 }

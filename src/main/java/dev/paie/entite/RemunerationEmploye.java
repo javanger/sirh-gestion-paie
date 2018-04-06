@@ -64,7 +64,6 @@ public class RemunerationEmploye {
 	public ZonedDateTime getCreation() {
 		return creation;
 	}
-
 	public String getCreationString(){
 		return creation.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
 	}

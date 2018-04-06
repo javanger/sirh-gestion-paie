@@ -4,9 +4,9 @@
 package dev.paie.service;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
+import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -37,13 +37,12 @@ public class GradeService {
 	}
 
 	@Transactional
-	public Map<Grade, String> salaireAnnuel(){
-		Map<Grade, String> gradeSalaire = new HashMap<>();
+	public TreeMap<Grade, String> salaireAnnuel() {
+		TreeMap<Grade, String> gradeSalaire = new TreeMap<>(Comparator.comparing(Grade::getCode));
 		gradeRepository.findAll().forEach(g -> {
 			String annuel = paieUtils.formaterBigDecimal(g.getNbHeuresBase().multiply(g.getTauxBase()).multiply(new BigDecimal(12)));
 			gradeSalaire.put(g, g.getCode() + " - " + annuel);
 		});
 		return gradeSalaire;
-		
 	}
 }

@@ -45,9 +45,9 @@ public class RemunerationEmployeController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
-	public ModelAndView submitForm(@ModelAttribute("remunerationEmploye") RemunerationEmploye remunerationEmploye) {
+	public String submitForm(@ModelAttribute("remunerationEmploye") RemunerationEmploye remunerationEmploye) {
 		remunerationServ.save(remunerationEmploye);
-		return listerEmploye();
+		return "redirect:/mvc/employes/lister";
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")

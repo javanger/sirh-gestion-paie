@@ -20,7 +20,7 @@ import dev.paie.entite.Cotisation;
  *
  */
 @Service
-public class CotisationServiceJpa implements CotisationService {
+public class CotisationServiceJpa implements CotisationServiceInterface {
 	
 	@PersistenceContext private EntityManager em;
 

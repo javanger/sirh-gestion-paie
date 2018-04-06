@@ -19,7 +19,7 @@ import dev.paie.config.DataSourceMySQLConfig;
 import dev.paie.config.JpaConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Cotisation;
-import dev.paie.service.CotisationService;
+import dev.paie.service.CotisationServiceInterface;
 
 /**
  * @author GOBERT Guillaume
@@ -29,7 +29,7 @@ import dev.paie.service.CotisationService;
 @RunWith(SpringRunner.class)
 public class CotisationServiceJpaTest {
 	@Autowired
-	private CotisationService cotisationService;
+	private CotisationServiceInterface cotisationService;
 
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {

@@ -35,10 +35,112 @@
 					<h1>Bulletin de Salaire</h1>
 				</header>	
       		</div>	     				
-		</div>			
 
-
-		
+			<div class="row">
+				<div class="col-6">
+					<p>Entreprise</p>
+					<p>${bulletin.remunerationEmploye.entreprise.denomination}</p>
+					<p>SIRET : ${bulletin.remunerationEmploye.entreprise.siret}</p>
+				</div>
+				<div class="col-6">
+					<p>Période</p>
+					<p>Du : ${bulletin.periode.dateDebut} au ${bulletin.periode.dateFin}</p>
+					<p>Matricule : ${bulletin.remunerationEmploye.matricule}</p>
+				</div>		 
+			</div>		
+			<!-- Table Salaire -->
+			<h5>Salaire</h5>
+			<table class="table table-hover table-dark">
+			  <thead>
+			    <tr>
+			      <th scope="col">Rubrique</th>
+			      <th scope="col" class="text-center">Nombre d'Heure)</th>
+			      <th scope="col" class="text-center">Taux</th>
+			      <th scope="col" class="text-center">Montant</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<tr>
+			      <td>Salaire de Base</td>
+			      <td class="text-center">${bulletin.remunerationEmploye.grade.nbHeuresBase}</td>
+			      <td class="text-center">${bulletin.remunerationEmploye.grade.tauxBase}</td>
+			      <td class="text-center">${calcul.salaireDeBase}</td>
+			    </tr>
+				<tr>
+			      <td>Prime Exceptionnelle</td>
+			      <td></td>
+			      <td></td>
+			      <td class="text-center">${bulletin.primeExceptionnelle}</td>
+			    </tr>
+			    <tr>
+			      <td>Salaire Brut</td>
+			      <td></td>
+			      <td></td>
+			      <td class="text-center">${calcul.salaireBrut}</td>
+			    </tr>
+			  </tbody>
+			</table>
+			<!-- Table Cotisation Non Impossable-->
+			<h5>Cotisations</h5>
+			<table class="table table-hover table-dark">
+			  <thead>
+			    <tr>
+			      <th scope="col">Rubrique</th>
+			      <th scope="col" class="text-center">Base</th>
+			      <th scope="col" class="text-center">Taux Salarial</th>
+			      <th scope="col" class="text-center">Montant Salarial</th>
+			      <th scope="col" class="text-center">Taux Patronal</th>
+			      <th scope="col" class="text-center">Cotisation patronales</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<c:forEach items="${cotCalcul}" var="cotisationNonImposable">
+			  	<tr>
+			      <td>${cotisationNonImposable.cotisation.code} - ${cotisationNonImposable.cotisation.libelle}</td>
+			      <td class="text-center">${calcul.salaireBrut}</td>
+			      <td class="text-center">${cotisationNonImposable.cotisation.tauxSalarial}</td>
+			      <td class="text-center">${cotisationNonImposable.montantSalarial}</td>
+			      <td class="text-center">${cotisationNonImposable.cotisation.tauxPatronal}</td>
+			      <td class="text-center">${cotisationNonImposable.cotisationPatronal}</td> 
+			    </tr>
+			  	</c:forEach>  
+			  	<tr>
+			      <td>Total Retenue</td>
+			      <td class="text-center"></td>
+			      <td class="text-center"></td>
+			      <td class="text-center">${calcul.totalRetenueSalarial}</td>
+			      <td class="text-center"></td>
+			      <td class="text-center">${calcul.totalCotisationsPatronales}</td> 
+			    </tr>	
+			  </tbody>
+			</table>
+			<!-- Tabe Net Imposable -->
+			<h5>Net Imposable : <c:out value="${calcul.netImposable}"/></h5>
+			<table class="table table-hover table-dark">
+			  <thead>
+			    <tr>
+			      <th scope="col">Rubrique</th>
+			      <th scope="col" class="text-center">Base</th>
+			      <th scope="col" class="text-center">Taux Salarial</th>
+			      <th scope="col" class="text-center">Montant Salarial</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<c:forEach items="${cotCalculImposable}" var="cotisationImposable">
+			  	<tr>
+			      <td>${cotisationImposable.cotisation.code} - ${cotisationImposable.cotisation.libelle}</td>
+			      <td class="text-center">${calcul.salaireBrut}</td>
+			      <td class="text-center">${cotisationImposable.cotisation.tauxSalarial}</td>
+			      <td class="text-center">${cotisationImposable.montantSalarial}</td>
+			    </tr>
+			  	</c:forEach>  
+			  </tbody>	
+			</table>
+			<div class="row justify-content-end mt-5 p-2">
+				<p>NET A PAYER : <c:out value="${calcul.netAPayer}"/></p>
+			</div>
+			    
+		</div>	
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
