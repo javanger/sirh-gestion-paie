@@ -14,7 +14,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Liste employés</title>
+<title>Liste bulletins</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -45,7 +45,7 @@
 
 
 
-							<div class="container-fluid" class="mx-auto">
+							<div class="container-fluid" >
 								<div class="row">
 
 
@@ -53,7 +53,7 @@
 										<div class="container-fluid">
 											<div class="row">
 												<div class="col">
-													<h1>Liste des employés</h1>
+													<h1>Liste des bulletins</h1>
 												</div>
 
 											</div>
@@ -63,22 +63,32 @@
 
 												<div class="col-10"></div>
 												<div class="col-2">
-													<a class="btn btn-dark" href='<c:url value="/mvc/employes/creer"></c:url>'>Ajouter un employé</a>
+													<a class="btn btn-dark" href='<c:url value="/mvc/bulletins/creer"></c:url>'>Créer un nouveau bulletin</a>
 												</div>
+												</div>
+												<div class="row">
 												<table class="table table-striped">
 													<thead>
 														<tr class="table">
-															<th class="col-6">Date/Heure de création</th>
-															<th class="col-2">Matricule</th>
-															<th class="col-4">Grade</th>
+															<th class="col-3">Date/Heure de création</th>
+															<th class="col-3">Période</th>
+															<th class="col-1">Matricule</th>
+															<th class="col-1">Salaire Brut</th>
+															<th class="col-1">Net Imposable</th>
+															<th class="col-1">Net A Payer</th>
+															<th class="col-1">Actions</th>
 														</tr>
 													</thead>
 													<tbody>
-														<c:forEach items="${employes}" var="employ">
+														<c:forEach items="${bulletins}" var="bulletin">
 															<tr class="table">
-																<td>${employ.dateCreation}</td>
-																<td>${employ.matricule}</td>
-																<td>${employ.grade.code}</td>
+																<td>${bulletin.key.dateCreation}</td>
+																<td>${bulletin.key.periode}</td>
+																<td>${bulletin.key.remunerationEmploye.matricule}</td>
+																<td>${bulletin.value.salaireBrut}</td>
+																<td>${bulletin.value.netImposable}</td>
+																<td>${bulletin.value.netAPayer}</td>
+																<td><a href='<c:url value="/mvc/bulletins/lister"></c:url>'>Visualiser</a></td>
 
 															</tr>
 														</c:forEach>

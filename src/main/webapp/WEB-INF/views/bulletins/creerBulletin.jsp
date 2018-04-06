@@ -14,7 +14,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Creer employé</title>
+<title>Créer bulletin</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -30,8 +30,8 @@
 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active"><a class="nav-link " href='<c:url value="/mvc/employes/lister"></c:url>'>Employés</a>
-						</li>
+						<li class="nav-item active"><a class="nav-link "
+							href='<c:url value="/mvc/employes/lister"></c:url>'>Employés</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href='<c:url value="/mvc/bulletins/lister"></c:url>'>Bulletins</a></li>
 
@@ -48,11 +48,11 @@
 		<div class="row">
 
 
-			<div class="text-center col-md-12">
+			<div class="text-center col-lg-8">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col">
-							<h1>Ajouter un employé</h1>
+							<h1>Céer Bulletin de Salaire</h1>
 						</div>
 
 					</div>
@@ -60,54 +60,44 @@
 
 					<div class="row">
 
-						<form:form id="edit-form" class="needs-validation col-sm-12"
-							novalidate="novalidate" modelAttribute="employe" method="POST">
+						<form:form id="edit-form" class="needs-validation col-md-12"
+							novalidate="novalidate" modelAttribute="bulletin" method="POST">
 							<div id="accordion">
 								<div class="card">
 									<div class="card-header" id="headingOne">
-										<h5>Employé</h5>
+										<h5>Bulletin</h5>
 									</div>
 
 
 									<div class="card-body">
-										<div class="form-group row">
-											<label for="input-matricule" class="col-sm-3 col-form-label">Matricule</label>
-											<div class="col-sm-9">
-												<form:input path="matricule" type="text"
-													class="form-control" id="input-matricule"
-													placeholder="Matricule" required="required" />
-												<div class="invalid-feedback">Le nom est obligatoire</div>
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="input-entreprise" class="col-sm-3 col-form-label">Entreprise</label>
-											<div class="col-sm-9">
-												<form:select id="input-entreprise" class="custom-select"
-													path="entreprise.id" items="${entreprises}" itemValue="id"
-													itemLabel="denomination">
 
+										<div class="form-group row">
+											<label for="input-entreprise" class="col-sm-3 col-form-label">Période</label>
+											<div class="col-sm-9">
+												<form:select path="periode.id" id="input-profil"
+													class="custom-select" items="${periodes}" >
+												</form:select>
+												
+												
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="input-profil" class="col-sm-3 col-form-label">Matricule</label>
+											<div class="col-sm-9">
+												<form:select path="remunerationEmploye.id" id="input-profil"
+													class="custom-select" items="${employes}" itemValue="id"
+													itemLabel="matricule">
 												</form:select>
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="input-profil" class="col-sm-3 col-form-label">Profil</label>
+											<label for="input-matricule" class="col-sm-3 col-form-label">Prime
+												exceptionnelle</label>
 											<div class="col-sm-9">
-												<form:select path="profilRemuneration.id" id="input-profil"
-													class="custom-select" items="${profils}" itemValue="id"
-													itemLabel="code">
-												</form:select>
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="input-grade" class="col-sm-3 col-form-label">Grade</label>
-											<div class="col-sm-9">
-												<select name="grade.id" id="input-grade"
-													class="custom-select">
-													<c:forEach items="${grades}" var="grade">
-														<option value="${grade.key.id}">${grade.key.code} -
-															${grade.value} /an</option>
-													</c:forEach>
-												</select>
+												<form:input path="primeExceptionnelle" type="text"
+													class="form-control" id="input-matricule"
+													placeholder="Prime exceptionnelle" required="required" />
+
 											</div>
 										</div>
 
@@ -116,7 +106,7 @@
 										<div class="col-md-2 ml-auto">
 											<button form="edit-form" type="submit"
 												class="btn btn-primary" data-toggle="modal"
-												data-target="#confirm">Ajouter</button>
+												data-target="#confirm">Creer</button>
 										</div>
 
 									</div>
