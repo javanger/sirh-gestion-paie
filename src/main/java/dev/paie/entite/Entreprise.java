@@ -1,12 +1,37 @@
 package dev.paie.entite;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Entreprise {
 
-	private Integer id;
+	/** id : int */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	/** siret : String */
+	@Column(name = "SIRET", length = 15)
 	private String siret;
+	
+	/** denomination : String */
+	@Column(name = "DENOMINATION", length = 30)
 	private String denomination;
+	
+	/** adresse : String */
+	@Column(name = "ADRESSE", length = 75)
 	private String adresse;
+	
+	/** urssaf : String */
+	@Column(name = "URSSAF", length = 15)
 	private String urssaf;
+	
+	/** codeNaf : String */
+	@Column(name = "CODENAF", length = 15)
 	private String codeNaf;
 	
 	public String getDenomination() {
@@ -39,10 +64,10 @@ public class Entreprise {
 	public void setCodeNaf(String codeNaf) {
 		this.codeNaf = codeNaf;
 	}
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	
