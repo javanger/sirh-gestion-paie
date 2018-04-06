@@ -1,6 +1,3 @@
-<%-- <h1>Créer Employe</h1>
-<p>Préfixe Matricule : ${prefixMatricule}</p> --%>
-
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -20,7 +17,7 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
-<title>ListerEmploye</title>
+<title>CreerBulletin</title>
 </head>
 
 <body>
@@ -45,39 +42,55 @@
 			</div>
 		</nav>
 	</header>
-	<section class="container-fluid">
-		<h1>Statistiques</h1>
-
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">Date/heure de création</th>
-					<th scope="col">Matricule</th>
-					<th scope="col">Grade</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${remuEmp}" var="emp">
-					<tr>
-						<th scope="row">${emp.dateTime }</th>
-						<td>${emp.matricule }</td>
-						<td>${emp.grade.code}</td>
-
-					</tr>
-
-				</c:forEach>
+	<section>
+		<h1>Creer le bulletin de salaire</h1>
+		<div class="container">
+			<form:form method="POST" modelAttribute="bulletinSalaire">
 
 
-			</tbody>
-		</table>
+				<div class="form-group row">
+					<label class="col-md-6 col-form-label">Periode</label>
+					<div class="col-md-6">
+
+						<form:select items="${periodes}" path="periode.id"
+							class="form-control" />
+
+
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="profil" class="col-md-6 col-form-label">Matricule</label>
+					<div class="col-md-6">
+
+						<form:select class="form-control" path="remunerationEmploye.id"
+							items="${employes}" itemLabel="matricule" itemValue="id"></form:select>
 
 
 
+					</div>
+				</div>
+
+				<div class="form-group row ">
+					<form:label path="primeExceptionnelle"
+						class="col-md-6 col-form-label">Prime exceptionnelle</form:label>
+					<div class="col-md-6">
+						<form:input path="primeExceptionnelle" class="form-control" />
+						<div class="invalid-feedback">Entrer le nom.</div>
+					</div>
+
+				</div>
 
 
 
 
 
+
+				<div class="row justify-content-end">
+					<button class="btn btn-primary" type="submit">Créer</button>
+				</div>
+
+			</form:form>
 	</section>
 
 

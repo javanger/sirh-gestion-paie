@@ -4,19 +4,21 @@ import java.math.BigDecimal;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import dev.paie.entite.BulletinSalaire;
 import dev.paie.entite.ResultatCalculRemuneration;
 import dev.paie.util.PaieUtils;
 
-@Service
+@Component
 public class CalculerRemunerationServiceSimple implements CalculerRemunerationService {
 
 	@Autowired
 	private PaieUtils paieUtils;
 
 	@Override
+	@Transactional
 	public ResultatCalculRemuneration calculer(BulletinSalaire bulletin) {
 		ResultatCalculRemuneration resultatCalculRemuneration = new ResultatCalculRemuneration();
 

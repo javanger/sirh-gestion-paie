@@ -45,40 +45,50 @@
 			</div>
 		</nav>
 	</header>
-	<section class="container-fluid">
-		<h1>Statistiques</h1>
+ <section class="container-fluid">
+<h1>Statistiques</h1>
 
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">Date/heure de création</th>
-					<th scope="col">Matricule</th>
-					<th scope="col">Grade</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${remuEmp}" var="emp">
-					<tr>
-						<th scope="row">${emp.dateTime }</th>
-						<td>${emp.matricule }</td>
-						<td>${emp.grade.code}</td>
+<table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Date/heure de création</th>
+            <th scope="col">Periode</th>
+            <th scope="col">Matricule</th>
+            <th scope="col">Salaire brut</th>
+             <th scope="col">Net a payer</th>
+             <th scope="col">Net imposable</th>
+             <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${bulletins}" var="bul">
+        <tr>
+            <th scope="row">${bul.key.dateTime }</th>
+            <td>${bul.key.periode.dateDebut } -  ${bul.key.periode.dateFin }</td>
+            <td>${bul.key.remunerationEmploye.matricule}</td>
+            <td>${bul.value.salaireBrut}</td>
+            <td>${bul.value.netAPayer}</td>
+            <td>${bul.value.netImposable}</td>
+            <td><a href = "#">Visualiser</a></td>
+            
+            
 
-					</tr>
+          </tr>
+        
+        </c:forEach>
 
-				</c:forEach>
-
-
-			</tbody>
-		</table>
-
-
+         
+        </tbody>
+      </table>
 
 
-
+        
 
 
 
-	</section>
+
+
+    </section>
 
 
 	<!-- Optional JavaScript -->

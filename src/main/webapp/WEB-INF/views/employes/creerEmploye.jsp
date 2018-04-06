@@ -35,10 +35,10 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 					<li class="nav-item active"><a class="nav-link"
-						href="listerCollaborateur.jsp">Employes <span class="sr-only">(current)</span>
+						href="../employes/lister">Employes <span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="statistique.html">Bulletins</a></li>
+						href="../bulletins/lister">Bulletins</a></li>
 
 
 				</ul>
@@ -60,23 +60,25 @@
 				</div>
 
 				<div class="form-group row">
-					<label  class="col-md-6 col-form-label">Entreprise</label>
+					<label class="col-md-6 col-form-label">Entreprise</label>
 					<div class="col-md-6">
-						<form:select class="form-control" path="entreprise.id" items="${entreprises}" itemLabel="denomination" itemValue="id"></form:select>
+						<form:select class="form-control" path="entreprise.id"
+							items="${entreprises}" itemLabel="denomination" itemValue="id"></form:select>
 						<%--                          <select  id="selectEntreprise" name="entreprise.id">
                  <c:forEach items="${entreprises}" var= "ent"> 
                  <option>${ent.denomination } </option>
                  </c:forEach> --%>
 					</div>
-					</div>
+				</div>
 
 				<div class="form-group row">
 					<label for="profil" class="col-md-6 col-form-label">Profil</label>
 					<div class="col-md-6">
-						
-						<form:select class="form-control" path="profilRemuneration.id" items="${profils}" itemLabel="code" itemValue="id"></form:select>
-						
-						
+
+						<form:select class="form-control" path="profilRemuneration.id"
+							items="${profils}" itemLabel="code" itemValue="id"></form:select>
+
+
 						<%-- <select class="form-control" id="profil" name="Profil">
 
 
@@ -92,9 +94,10 @@
 				<div class="form-group row">
 					<label for="Entreprise" class="col-md-6 col-form-label">grade</label>
 					<div class="col-md-6">
-					
-					<form:select class="form-control" path="grade.id" items="${grades}" itemLabel="code" itemValue="id"></form:select>
-					
+
+						<form:select class="form-control" path="grade.id"
+							items="${grades}" itemLabel="code" itemValue="id"></form:select>
+
 						<%-- <select class="form-control" id="grade" name="grade">
 							<c:forEach items="${grades}" var="grd">
 								<option value="${grd.id }">${grd.code }-
