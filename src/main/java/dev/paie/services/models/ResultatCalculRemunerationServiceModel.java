@@ -1,14 +1,14 @@
 /**
  * 
  */
-package dev.paie.entites;
+package dev.paie.services.models;
 
 /**
  * @author Kevin M.
  *
  */
 
-public class ResultatCalculRemuneration {
+public class ResultatCalculRemunerationServiceModel {
 
 	/** salaireDeBase : String */
 	private String salaireDeBase;

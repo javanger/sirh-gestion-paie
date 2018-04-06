@@ -43,6 +43,8 @@ public class RemunerationEmployeController {
 	private GradeRepository gRepo;
 	@Autowired
 	private ProfilRemunerationRepository pRepo;
+	@Autowired
+	private PaieUtils paieUtils;
 
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
 	public ModelAndView creer() {
@@ -54,7 +56,7 @@ public class RemunerationEmployeController {
 		for (Grade grade : grades) {
 			BigDecimal calcul = grade.getNbHeuresBase().multiply(grade.getTauxBase())
 					.multiply(new BigDecimal(Constantes.NOMBRE_DE_MOIS_PAR_ANNEE));
-			gradesEtCalculs.put(grade, PaieUtils.arrondie(calcul));
+			gradesEtCalculs.put(grade, paieUtils.arrondie(calcul));
 		}
 
 		List<ProfilRemuneration> profils = pRepo.findAll();
@@ -90,7 +92,7 @@ public class RemunerationEmployeController {
 		List<RemunerationEmploye> remunerations = rRepo.findAll();
 		Map<RemunerationEmploye, String> remuEtDate = new HashMap<>();
 		for (RemunerationEmploye r : remunerations) {
-			remuEtDate.put(r, PaieUtils.formatDateTime(r.getDateCreation()));
+			remuEtDate.put(r, paieUtils.formatDateTime(r.getDateCreation()));
 		}
 
 		ModelAndView mv = new ModelAndView();

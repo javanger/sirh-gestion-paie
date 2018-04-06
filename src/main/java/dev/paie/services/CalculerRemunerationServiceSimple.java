@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import dev.paie.entites.BulletinSalaire;
 import dev.paie.entites.Cotisation;
-import dev.paie.entites.ResultatCalculRemuneration;
+import dev.paie.services.models.ResultatCalculRemunerationServiceModel;
 import dev.paie.utils.PaieUtils;
 
 /**
@@ -34,9 +34,9 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 	}
 
 	@Override
-	public ResultatCalculRemuneration calculer(BulletinSalaire bulletin) {
+	public ResultatCalculRemunerationServiceModel calculer(BulletinSalaire bulletin) {
 
-		ResultatCalculRemuneration result = new ResultatCalculRemuneration();
+		ResultatCalculRemunerationServiceModel result = new ResultatCalculRemunerationServiceModel();
 
 		// SALAIRE_BASE = GRADE.NB_HEURES_BASE * GRADE.TAUX_BASE
 		BigDecimal gradeNbHeuresBase = bulletin.getRemunerationEmploye().getGrade().getNbHeuresBase();

@@ -11,9 +11,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import dev.paie.config.JeuxDeDonneesConfig;
 import dev.paie.entites.BulletinSalaire;
-import dev.paie.entites.ResultatCalculRemuneration;
 import dev.paie.services.CalculerRemunerationService;
 import dev.paie.services.CalculerRemunerationServiceSimple;
+import dev.paie.services.models.ResultatCalculRemunerationServiceModel;
 import dev.paie.utils.PaieUtils;
 
 // Sélection des classes de configuration Spring à utiliser lors du test
@@ -43,7 +43,7 @@ public class CalculerRemunerationServiceSimpleTest {
 	@Test
 	public void test_calculer() {
 		// TODO remplacer null par un objet bulletin
-		ResultatCalculRemuneration resultat = remunerationService.calculer(bulletin1);
+		ResultatCalculRemunerationServiceModel resultat = remunerationService.calculer(bulletin1);
 		assertThat(resultat.getSalaireBrut(), equalTo("2683.30"));
 		// assertThat(resultat.getTotalRetenueSalarial(), equalTo("517.08"));
 		// assertThat(resultat.getTotalCotisationsPatronales(),

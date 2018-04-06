@@ -3,12 +3,15 @@
  */
 package dev.paie.web.controller;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +23,9 @@ import dev.paie.entites.Periode;
 import dev.paie.repositories.BulletinRepository;
 import dev.paie.repositories.PeriodeRepository;
 import dev.paie.repositories.RemunerationEmployeRepository;
+import dev.paie.services.CalculerRemunerationService;
+import dev.paie.services.models.BulletinSemiDetailleServiceModel;
+import dev.paie.services.models.ResultatCalculRemunerationServiceModel;
 import dev.paie.utils.PaieUtils;
 
 /**
@@ -36,6 +42,10 @@ public class BulletinController {
 	private RemunerationEmployeRepository rRepo;
 	@Autowired
 	private PeriodeRepository peRepo;
+	@Autowired
+	private PaieUtils paieUtils;
+	@Autowired
+	private CalculerRemunerationService calculateur;
 
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
 	public ModelAndView creer(Model model) {
@@ -46,10 +56,7 @@ public class BulletinController {
 
 		if (periodes != null && !periodes.isEmpty()) {
 			for (Periode p : periodes) {
-				String dateDebut = PaieUtils.formatDate(p.getDateDebut());
-				String dateFin = PaieUtils.formatDate(p.getDateFin());
-				String periodeFormate = "de " + dateDebut + " à " + dateFin;
-				periodesMap.put(p.getId(), periodeFormate);
+				periodesMap.put(p.getId(), paieUtils.formatPeriode(p));
 			}
 		}
 		ModelAndView mv = new ModelAndView();
@@ -61,39 +68,27 @@ public class BulletinController {
 		return mv;
 	}
 
-	// autre facon de faire
-	public String creer2(Model model) {
-		BulletinSalaire bulletin = new BulletinSalaire();
-
-		List<Periode> periodes = peRepo.findAll();
-		Map<Integer, String> periodesMap = new HashMap<>();
-
-		if (periodes != null && !periodes.isEmpty()) {
-			for (Periode p : periodes) {
-				String dateDebut = PaieUtils.formatDate(p.getDateDebut());
-				String dateFin = PaieUtils.formatDate(p.getDateFin());
-				String periodeFormate = "de " + dateDebut + " à " + dateFin;
-				periodesMap.put(p.getId(), periodeFormate);
-			}
-		}
-
-		model.addAttribute("bulletin", bulletin);
-		model.addAttribute("profils", rRepo.findAll());
-		model.addAttribute("periodes", periodesMap);
-
-		return "bulletins/creer";
-	}
-
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
 	public ModelAndView post(@ModelAttribute("bulletin") BulletinSalaire bulletin) {
+		bulletin.setDateCreation(LocalDateTime.now());
 		bRepo.save(bulletin);
 		return new ModelAndView("redirect:lister");
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = { "", "/", "/lister" })
+	@Transactional
 	public ModelAndView lister() {
-		ModelAndView mv = new ModelAndView("bulletins/lister");
+
+		List<BulletinSemiDetailleServiceModel> bulletins = new ArrayList<>();
+
+		for (BulletinSalaire b : bRepo.findAll()) {
+			ResultatCalculRemunerationServiceModel result = calculateur.calculer(b);
+			BulletinSemiDetailleServiceModel bSemi = new BulletinSemiDetailleServiceModel(b,
+					paieUtils.formatDateTime(b.getDateCreation()), paieUtils.formatPeriode(b.getPeriode()), result);
+			bulletins.add(bSemi);
+		}
+
+		ModelAndView mv = new ModelAndView("bulletins/lister", "bulletins", bulletins);
 		return mv;
 	}
-
 }

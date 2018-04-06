@@ -60,7 +60,6 @@ public class CotisationServiceJpa implements CotisationService {
 	@Override
 	public void supprimer(Cotisation cotisation) {
 		em.remove(cotisation);
-		;
 	}
 
 	@Override

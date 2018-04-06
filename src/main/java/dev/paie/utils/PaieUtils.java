@@ -14,16 +14,17 @@ import java.util.Locale;
 
 import org.springframework.stereotype.Service;
 
+import dev.paie.entites.Periode;
+
 /**
  * @author Kevin M.
  *
  */
 @Service
 public class PaieUtils {
-
 	/**
-	 * Formate un nombre sous la forme xx.xx (exemple : 2.00, 1.90). L'arrondi
-	 * se fait en mode "UP" => 1.904 devient 1.91
+	 * Formate un nombre sous la forme xx.xx (exemple : 2.00, 1.90). L'arrondi se
+	 * fait en mode "UP" => 1.904 devient 1.91
 	 *
 	 * @param decimal
 	 *            nombre à formater
@@ -39,8 +40,8 @@ public class PaieUtils {
 		df.setGroupingUsed(false);
 		return df.format(decimal);
 	}
-	
-	public static String arrondie(BigDecimal decimal) {
+
+	public String arrondie(BigDecimal decimal) {
 		DecimalFormat df = new DecimalFormat();
 		// forcer le séparateur "." même sur un poste en français
 		df.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.UK));
@@ -49,14 +50,18 @@ public class PaieUtils {
 		df.setMinimumFractionDigits(0);
 		df.setGroupingUsed(false);
 		return df.format(decimal);
-	}	
+	}
 
-	public static String formatDateTime(LocalDateTime date) {
+	public String formatDateTime(LocalDateTime date) {
 		return date.format(DateTimeFormatter.ofPattern("dd-MM-YYYY H:m:s"));
 	}
 
-	public static String formatDate(LocalDate date) {
+	public String formatDate(LocalDate date) {
 		return date.format(DateTimeFormatter.ofPattern("dd-MM-YYYY"));
+	}
+
+	public String formatPeriode(Periode p) {
+		return "de " + formatDate(p.getDateDebut()) + " à " + formatDate(p.getDateFin());
 	}
 
 }
