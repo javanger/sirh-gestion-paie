@@ -1,10 +1,10 @@
 package dev.paie.web.controller;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,19 +53,21 @@ public class RemunerationEmployeController {
 		return mv;
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String setupForm(Model model) {
-		model.addAttribute("remunerationEmploye", new RemunerationEmploye());
-
-		return "employes/creerEmploye";
-	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
-	public String submitForm(@ModelAttribute("remunerationEmploye") RemunerationEmploye remunerationEmploye) {
+	public ModelAndView submitForm(@ModelAttribute("remunerationEmploye") RemunerationEmploye remunerationEmploye) {
+		remunerationEmploye.creationString(ZonedDateTime.now());
 		remunerationEmployeRepository.save(remunerationEmploye);
+		return listerEmploye();
 
-		return "employes/creerEmploye";
+	}
 
+	@RequestMapping(method = RequestMethod.GET, path = "/lister")
+	public ModelAndView listerEmploye() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("employes/listerEmploye");
+		mv.addObject("remunerationEmploye", remunerationEmployeRepository.findAll());
+		return mv;
 	}
 
 }
