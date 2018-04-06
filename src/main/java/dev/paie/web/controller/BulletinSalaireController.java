@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -60,6 +61,17 @@ public class BulletinSalaireController {
 		bulletinRepository.findAllWithCotisations().forEach(b -> resultat.put(b, calculer.calculer(b)));
 
 		mv.addObject("map", resultat);
+		return mv;
+	}
+
+	@RequestMapping(method = RequestMethod.GET, path = "/visualiser/{id}")
+	public ModelAndView visualiserBulletin(@PathVariable Integer id) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("bulletins/visualiserBulletin");
+
+
+		mv.addObject("bulletin", bulletinRepository.findById(id));
+		mv.addObject("resultat", calculer.calculer(bulletinRepository.findById(id)));
 		return mv;
 	}
 }

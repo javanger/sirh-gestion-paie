@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	      <a class="navbar-brand" href="#"></a>
+	      <a class="navbar-brand" href="#">Accueil</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="navbar-toggler-icon"></span>
 	      </button>
@@ -28,8 +28,10 @@
 			<div class="row justify-content-center p-2">
 				<h1>Liste des employés</h1>
 			</div>
-			<div class="row justify-content-end">
-	        	<a href="../employes/creer"><button type="submit"  class="btn btn-primary">Ajouter un nouvel employé</button></a>
+			<div class="row ">
+				<div class="col-10 text-right">
+	        		<a href="../employes/creer"><button type="submit"  class="btn btn-primary">Ajouter un nouvel employé</button></a>
+	        	</div>
 	       	</div>
 	       	
 	       	<div class = "row mt-3">

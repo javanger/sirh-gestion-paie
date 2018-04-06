@@ -17,7 +17,7 @@
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
-			<a class="navbar-brand" href="#"></a>
+			<a class="navbar-brand" href="#">Accueil</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -43,7 +43,7 @@
 						<label class="col-form-label">Matricule</label>
 					</div>
 					<div class="col-4">
-						<form:input path="matricule" class="form-control" />
+						<form:input path="matricule" class="form-control" required="required"/>
 					</div>
 					
 				</div>

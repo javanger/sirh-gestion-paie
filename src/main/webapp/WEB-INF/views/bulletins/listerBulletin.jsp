@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	      <a class="navbar-brand" href="#"></a>
+	      <a class="navbar-brand" href="">Accueil</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="navbar-toggler-icon"></span>
 	      </button>
@@ -28,8 +28,10 @@
 			<div class="row justify-content-center p-2">
 				<h1>Liste des bulletins</h1>
 			</div>
-			<div class="row justify-content-end">
-	        	<a href="../bulletins/creer"><button type="submit"  class="btn btn-primary">Ajouter un nouveau bulletin</button></a>
+			<div class="row ">
+				<div class="col-10 text-right">
+	        		<a href="../bulletins/creer"><button type="submit"  class="btn btn-primary">Ajouter un nouveau bulletin</button></a>
+	        	</div>
 	       	</div>
 	       	
 	       	<div class = "row mt-3">
@@ -69,7 +71,7 @@
 										${resultat.value.netAPayer }
 									</td>
 									<td>
-										<a href="">Visualiser</a>
+										<a href="visualiser/${resultat.key.id }">Visualiser</a>
 									</td>
 								</tr>
 							</c:forEach>

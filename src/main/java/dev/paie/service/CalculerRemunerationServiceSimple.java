@@ -21,10 +21,13 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 	@Transactional
 	public ResultatCalculRemuneration calculer(BulletinSalaire bulletin) {
 		ResultatCalculRemuneration resultat = new ResultatCalculRemuneration();
+		
+		BigDecimal salaireBase = bulletin.getRemunerationEmploye().getGrade().getNbHeuresBase()
+				.multiply(bulletin.getRemunerationEmploye().getGrade().getTauxBase());
 
-		BigDecimal salaireBrut = (bulletin.getRemunerationEmploye().getGrade().getNbHeuresBase()
-				.multiply((bulletin.getRemunerationEmploye().getGrade().getTauxBase()))
-				.add(bulletin.getPrimeExceptionnelle()));
+		resultat.setSalaireDeBase(paieUtils.formaterBigDecimal(salaireBase));
+
+		BigDecimal salaireBrut = salaireBase.add(bulletin.getPrimeExceptionnelle());
 
 		resultat.setSalaireBrut(paieUtils.formaterBigDecimal(salaireBrut));
 

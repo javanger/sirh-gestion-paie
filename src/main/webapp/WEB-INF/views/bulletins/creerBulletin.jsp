@@ -17,7 +17,7 @@
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
-			<a class="navbar-brand" href="#"></a>
+			<a class="navbar-brand" href="#">Accueil</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -70,7 +70,7 @@
 					</div>
 					<div class="col-4">
 						<div class="form-group">
-							<form:input path="primeExceptionnelle" class="form-control" />
+							<form:input path="primeExceptionnelle" class="form-control" required="required"/>
 						</div>
 					</div>
 				</div>
