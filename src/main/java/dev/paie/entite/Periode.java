@@ -1,13 +1,25 @@
 package dev.paie.entite;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "PERIODE")
 public class Periode {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ID")
 	private Integer id;
-	
+	@Column(name="DATE_DEBUT")
 	private LocalDate dateDebut;
+	@Column(name="DATE_FIN")
 	private LocalDate dateFin;
 	
 	public LocalDate getDateDebut() {
@@ -27,6 +39,12 @@ public class Periode {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getDebutFin() {
+		String value = dateDebut.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " - "
+				+ dateFin.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		return value;
 	}
 	
 	
