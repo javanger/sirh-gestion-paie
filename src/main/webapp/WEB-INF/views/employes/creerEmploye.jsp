@@ -49,8 +49,8 @@
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link" href="./lister">Employ&#xe9s
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="/paie/mvc/bulletins/lister">Bulletins</a>
-					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="/paie/mvc/bulletins/lister">Bulletins</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -89,8 +89,7 @@
 				<div class="col-sm-4">
 					<form:select path="profilRemuneration.id" class="form-control"
 						id="formProfil">
-						<form:options items="${profils}" itemValue="id"
-							itemLabel="code" />
+						<form:options items="${profils}" itemValue="id" itemLabel="code" />
 					</form:select>
 					<div class="invalid-feedback">Le profil est obligatoire.</div>
 				</div>
@@ -99,8 +98,7 @@
 				<label for="input-grade" class="col-sm-2 col-form-label">Grade</label>
 				<div class="col-sm-4">
 					<form:select path="grade.id" id="input-grade" class="custom-select">
-						<form:options items="${grades}" itemValue="id"
-							itemLabel="code" />
+						<form:options items="${grades}" itemValue="id" itemLabel="code" />
 					</form:select>
 					<div class="invalid-feedback">Le grade est obligatoire.</div>
 				</div>
