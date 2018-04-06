@@ -23,6 +23,8 @@ public class Grade {
 	private BigDecimal nbHeuresBase;
 	@Column(name = "TAUX_BASE")
 	private BigDecimal tauxBase;
+	@Column(name = "SALAIRE")
+	private String salaire;
 	
 	public String getCode() {
 		return code;
@@ -47,6 +49,21 @@ public class Grade {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the salaire
+	 */
+	public String getSalaire() {
+		return salaire;
+	}
+
+	/**
+	 * @param salaire
+	 *            the salaire to set
+	 */
+	public void setSalaire(String salaire) {
+		this.salaire = salaire;
 	}
 	
 	

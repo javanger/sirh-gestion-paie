@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import dev.paie.entite.BulletinSalaire;
 import dev.paie.entite.ResultatCalculRemuneration;
@@ -17,6 +18,7 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 	private PaieUtils paieUtils;
 
 	@Override
+	@Transactional
 	public ResultatCalculRemuneration calculer(BulletinSalaire bulletin) {
 		ResultatCalculRemuneration resultat = new ResultatCalculRemuneration();
 

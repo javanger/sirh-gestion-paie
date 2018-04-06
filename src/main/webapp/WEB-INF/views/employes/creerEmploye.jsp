@@ -55,7 +55,7 @@
 						<div class="form-group">
 							<form:select path="entreprise.id" class="form-control" >
 								<c:forEach items="${entreprise }" var="entreprise">
-									<form:option value="${entreprise.getId()}"> ${entreprise.getDenomination()} </form:option>
+									<form:option value="${entreprise.id}"> ${entreprise.denomination} </form:option>
 								</c:forEach>
 							</form:select>
 						</div>
@@ -69,7 +69,7 @@
 						<div class="form-group">
 							<form:select path="profilRemuneration.id" class="form-control" >
 								<c:forEach items="${profil }" var="profil">
-									<form:option value="${profil.getId()}"> ${profil.getCode()} </form:option>
+									<form:option value="${profil.id}"> ${profil.code} </form:option>
 								</c:forEach>
 							</form:select>
 						</div>
@@ -83,7 +83,7 @@
 						<div class="form-group">
 							<form:select path="grade.id" class="form-control" >
 								<c:forEach items="${grade }" var="grade">
-									<form:option value="${grade.getId()}"> ${grade.getCode()} </form:option>
+									<form:option value="${grade.id}"> ${grade.code}${grade.salaire} </form:option>
 								</c:forEach>
 							</form:select>
 						</div>

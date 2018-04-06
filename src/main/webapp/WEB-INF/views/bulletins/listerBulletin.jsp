@@ -48,25 +48,25 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${bulletin }" var="bulletin">
+							<c:forEach items="${map }" var="resultat">
 								<tr>
 									<td>
-										${bulletin.dateCreation} 
+										${resultat.key.dateCreation} 
 									</td>
 									<td>
-										${bulletin.periode.debutFin }
+										${resultat.key.periode.debutFin }
 									</td>
 									<td>
-										${bulletin.remunerationEmploye.matricule }
+										${resultat.key.remunerationEmploye.matricule }
 									</td>
 									<td>
-										XXXXX
+										${resultat.value.salaireBrut }
 									</td>
 									<td>
-										XXXXX
+										${resultat.value.netImposable }
 									</td>
 									<td>
-										XXXXX
+										${resultat.value.netAPayer }
 									</td>
 									<td>
 										<a href="">Visualiser</a>

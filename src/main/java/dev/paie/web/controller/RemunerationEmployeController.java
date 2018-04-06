@@ -4,7 +4,6 @@ import java.time.ZonedDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +14,7 @@ import dev.paie.repository.EntrepriseRepository;
 import dev.paie.repository.GradeRepository;
 import dev.paie.repository.ProfilRepository;
 import dev.paie.repository.RemunerationEmployeRepository;
+import dev.paie.service.GradeService;
 
 @Controller
 @RequestMapping("/employes")
@@ -31,6 +31,9 @@ public class RemunerationEmployeController {
 	@Autowired
 	private RemunerationEmployeRepository remunerationRepository;
 
+	@Autowired
+	private GradeService grade;
+
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
 	public ModelAndView creerEmploye() {
 		ModelAndView mv = new ModelAndView();
@@ -38,23 +41,17 @@ public class RemunerationEmployeController {
 
 		mv.addObject("entreprise", entrepriseRepository.findAll());
 		mv.addObject("profil", profilRepository.findAll());
+		grade.calculerSalaire();
 		mv.addObject("grade", gradeRepository.findAll());
 		mv.addObject("remunerationEmploye", new RemunerationEmploye());
 		return mv;
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String setupForm(Model model) {
-		model.addAttribute("remunerationEmploye", new RemunerationEmploye());
-
-		return "employes/creerEmploye";
-	}
-
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
-	public ModelAndView submitForm(@ModelAttribute("remunerationEmploye") RemunerationEmploye remunerationEmploye) {
+	public String submitForm(@ModelAttribute("remunerationEmploye") RemunerationEmploye remunerationEmploye) {
 		remunerationEmploye.setDateCreation(ZonedDateTime.now());
 		remunerationRepository.save(remunerationEmploye);
-		return listerEmploye();
+		return "redirect:/mvc/employes/lister";
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")

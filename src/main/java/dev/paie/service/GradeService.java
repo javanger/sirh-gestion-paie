@@ -1,13 +1,29 @@
 package dev.paie.service;
 
-import java.util.List;
+import java.math.BigDecimal;
 
-import dev.paie.entite.Grade;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public interface GradeService {
+import dev.paie.repository.GradeRepository;
+import dev.paie.util.PaieUtils;
 
-	void sauvegarder(Grade nouveauGrade);
-	void mettreAJour(Grade grade, String code);
-	List<Grade> lister();
-	Grade findGradeByCode( String code);
+@Component
+public class GradeService {
+
+	@Autowired
+	private PaieUtils paieUtils;
+	@Autowired
+	private GradeRepository gradeRepository;
+
+	public void calculerSalaire() {
+		gradeRepository.findAll().stream().forEach(
+				g -> {
+					g.setSalaire(" - " + paieUtils.formaterBigDecimal(
+								g.getNbHeuresBase().multiply(g.getTauxBase()).multiply(new BigDecimal("12")))
+							+ " € / an");
+					gradeRepository.save(g);
+				});
+	}
+
 }

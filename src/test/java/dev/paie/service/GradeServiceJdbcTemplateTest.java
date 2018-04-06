@@ -22,7 +22,7 @@ import dev.paie.entite.Grade;
 public class GradeServiceJdbcTemplateTest {
 
 	@Autowired
-	private GradeService gradeService;
+	private GradeServiceInterface gradeService;
 
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {
