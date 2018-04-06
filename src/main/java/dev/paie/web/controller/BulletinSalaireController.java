@@ -63,4 +63,12 @@ public class BulletinSalaireController {
 		mv.addObject("bulletin", bulletinSalaireS.calcul());
 		return mv;
 	}
+
+	@RequestMapping(method = RequestMethod.GET, path = "/visualiser")
+	public ModelAndView visualiser() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("bulletins/visualiserBulletin");
+		mv.addObject("bulletin", bulletinSalaireS.calcul());
+		return mv;
+	}
 }

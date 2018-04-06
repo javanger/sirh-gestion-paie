@@ -36,7 +36,7 @@
 	</header>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-lg-2 offset-5 mt-5">
+			<div class="col-lg-4 offset-4 mt-5">
 				<h2>Liste des bulletins</h2>
 			</div>
 		</div>
