@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class BulletinSalaire {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@ManyToOne

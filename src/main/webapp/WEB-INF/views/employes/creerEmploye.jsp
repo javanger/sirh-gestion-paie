@@ -30,7 +30,7 @@
 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active"><a class="nav-link " href="index">Employés</a>
+						<li class="nav-item active"><a class="nav-link " href="liste">Employés</a>
 						</li>
 						<li class="nav-item"><a class="nav-link"
 							href="statistiques.html">Bulletins</a></li>
@@ -61,7 +61,7 @@
 					<div class="row">
 
 						<form:form id="edit-form" class="needs-validation col-sm-12"
-							novalidate="novalidate" modelAttribute="employe">
+							novalidate="novalidate" modelAttribute="employe" method="POST">
 							<div id="accordion">
 								<div class="card">
 									<div class="card-header" id="headingOne">

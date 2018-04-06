@@ -6,6 +6,7 @@
 <%@ page language="java" pageEncoding="UTF-8"
 	contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +14,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Liste employé</title>
+<title>Creer employé</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -22,123 +23,80 @@
 </head>
 
 <body>
-	<div class="container-fluid">
-		<div class="row card">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+							<div class="container-fluid">
+								<div class="row card">
+									<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
 
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active"><a class="nav-link " href="index">Employés</a>
-						</li>
-						<li class="nav-item"><a class="nav-link"
-							href="statistiques.html">Bulletins</a></li>
+										<div class="collapse navbar-collapse"
+											id="navbarSupportedContent">
+											<ul class="navbar-nav mr-auto">
+												<li class="nav-item active"><a class="nav-link "
+													href="index">Employés</a></li>
+												<li class="nav-item"><a class="nav-link"
+													href="statistiques.html">Bulletins</a></li>
 
-					</ul>
-				</div>
-			</nav>
-		</div>
-	</div>
-
-
-
-
-	<div class="container-fluid">
-		<div class="row">
+											</ul>
+										</div>
+									</nav>
+								</div>
+							</div>
 
 
-			<div class="text-center col-lg-offset-2 col-lg-8">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col">
-							<h1>Liste des employés</h1>
-						</div>
-
-					</div>
-					<div class="row">
-                    <div class="col-8"></div>
-                    <div class="col-4">
-                        <a class="btn btn-dark" href="creer-collab.html">Ajouter un nouveau collaborateur</a>
-                    </div>
-                </div>
 
 
-					<div class="row">
+							<div class="container-fluid" class="mx-auto">
+								<div class="row">
 
-						<form id="edit-form" class="needs-validation col-sm-12" novalidate>
-							<div id="accordion">
-								<div class="card">
-									<div class="card-header" id="headingOne">
-										<h5>Employé</h5>
+
+									<div class="text-center col-lg-8">
+										<div class="container-fluid">
+											<div class="row">
+												<div class="col">
+													<h1>Liste des employés</h1>
+												</div>
+
+											</div>
+
+
+											<div class="row">
+
+												<div class="col-8"></div>
+												<div class="col-4">
+													<a class="btn btn-dark" href="creer">Ajouter un employé</a>
+												</div>
+												<table class="table table-striped">
+													<thead>
+														<tr class="table">
+															<th class="col-6">Date/Heure de création</th>
+															<th class="col-2">Matricule</th>
+															<th class="col-4">Grade</th>
+														</tr>
+													</thead>
+													<tbody>
+														<c:forEach items="${employes}" var="employ">
+															<tr class="table">
+																<td>${employ.dateCreation}</td>
+																<td>${employ.matricule}</td>
+																<td>${employ.grade.code}</td>
+
+															</tr>
+														</c:forEach>
+
+													</tbody>
+												</table>
+
+
+
+											</div>
+
+
+
+										</div>
 									</div>
-
-
-									<div class="card-body">
-										<div class="form-group row">
-											<label for="input-matricule" class="col-sm-3 col-form-label">Matricule</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="input-matricule"
-													placeholder="Matricule" required>
-												<div class="invalid-feedback">Le nom est obligatoire</div>
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="input-entreprise" class="col-sm-3 col-form-label">Entreprise</label>
-											<div class="col-sm-9">
-												<select id="input-entreprise" class="custom-select">
-													<option value="1">Entreprise 3</option>
-													<option value="2">Entreprise 3</option>
-													<option value="2">Entreprise 3</option>
-												</select>
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="input-profil" class="col-sm-3 col-form-label">Profil</label>
-											<div class="col-sm-9">
-												<select id="input-profil" class="custom-select">
-													<option value="1">Cadre</option>
-													<option value="2">Technicien</option>
-													<option value="2">Stagiaire</option>
-												</select>
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="input-grade" class="col-sm-3 col-form-label">Grade</label>
-											<div class="col-sm-9">
-												<select id="input-grade" class="custom-select">
-													<option value="1">Grade A - 20 000 € /an</option>
-													<option value="2">Grade B - 30 000 € /an</option>
-													<option value="2">Grade C - 40 000 € /an</option>
-												</select>
-											</div>
-										</div>
-										
-									</div>
-										<div class="row">
-						<div class="col-md-2 ml-auto">
-							<button form="edit-form" type="submit" class="btn btn-primary"
-								data-toggle="modal" data-target="#confirm">Sauvegarder</button>
-						</div>
-
-					</div>
 								</div>
 
-
 							</div>
-						
-						</form>
-
-
-
-					</div>
-
-					
-
-				</div>
-			</div>
-		</div>
-
-	</div>
 
 
 
@@ -148,7 +106,7 @@
 
 
 
-</body>
+						</body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 	crossorigin="anonymous"></script>

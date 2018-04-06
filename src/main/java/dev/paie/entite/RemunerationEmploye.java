@@ -1,5 +1,7 @@
 package dev.paie.entite;
 
+import java.time.ZonedDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +15,7 @@ import javax.persistence.Table;
 public class RemunerationEmploye {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Column(name = "MATRICULE", length = 20, nullable = true)
@@ -27,6 +29,17 @@ public class RemunerationEmploye {
 	
 	@ManyToOne
 	private Grade grade;
+
+	@Column(name = "DATECREATION")
+	private ZonedDateTime dateCreation;
+
+	public ZonedDateTime getDateCreation() {
+		return dateCreation;
+	}
+
+	public void setDateCreation(ZonedDateTime dateCreation) {
+		this.dateCreation = dateCreation;
+	}
 	
 	
 	public String getMatricule() {
