@@ -15,6 +15,11 @@ pipeline {
                   sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.projectKey=${DEV_ID}-sirh-paie -Dsonar.projectName=${DEV_ID}-sirh-paie -Dsonar.projectVersion=1.0 -Dsonar.sourceEncoding=UTF-8"
                 }
             }
+            post {
+		        failure {
+		           slackSend channel: '#jenkins_nantes', color: 'warning', message: "Attention ${DEV_ID}, un soucis avec l'analyse de code. Jacoco ? ${env.JOB_NAME} commit ${env.GIT_COMMIT} (<${env.BUILD_URL}|Open>)"
+		        }
+    		}
         }
     }
     post {
