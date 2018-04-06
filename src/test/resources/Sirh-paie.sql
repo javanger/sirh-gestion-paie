@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS Grade;
+CREATE TABLE Grade (ID integer(10) NOT NULL AUTO_INCREMENT PRIMARY KEY, CODE  varchar(20) NOT NULL, nbHeureBase decimal(10,2) NOT NULL, tauxBase decimal(10,2) NOT NULL);
+
