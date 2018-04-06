@@ -44,6 +44,7 @@ public class RemunerationEmployeController {
 
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
 	public ModelAndView creerEmploye() {
+		
 		ModelAndView mv = new ModelAndView();
 
 		List<Entreprise> entreprises = entrepriseRepository.findAll();
@@ -61,12 +62,30 @@ public class RemunerationEmployeController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
-	public String submitForm(@ModelAttribute("remunerationEmploye") RemunerationEmploye remunerationEmploye) {
+	public ModelAndView submitForm(@ModelAttribute("remunerationEmploye") RemunerationEmploye remunerationEmploye) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("redirect:lister");
 		
 		remunerationEmploye.setDateCreation(LocalDateTime.now());
 		
 		remunerationEmployeRepository.save(remunerationEmploye);
 		
-		return "employes/creerEmploye";
+		return mv;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/lister")
+	public ModelAndView listerEmployes() {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		List<RemunerationEmploye> employes = remunerationEmployeRepository.findAll();
+
+		mv.setViewName("employes/listerEmployes");
+
+		mv.addObject("employes", employes);
+
+		return mv;
 	}
 }

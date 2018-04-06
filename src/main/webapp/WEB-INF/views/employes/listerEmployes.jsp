@@ -1,4 +1,8 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,8 +47,7 @@
 				<li class="nav-item"><a class="nav-link" href="#">Bulletin
 				</a></li>
 
-				<li class="nav-item"><a class="nav-link"
-					href="/paie/mvc/employes/lister">Employé </a></li>
+				<li class="nav-item"><a class="nav-link" href="lister">Employé</a></li>
 
 			</ul>
 
@@ -53,7 +56,41 @@
 
 	<div class="container-fluid">
 
-		<h1>Index</h1>
+		<table class="table">
+
+			<thread>
+			<tr>
+				<th>Date de création</th>
+				<th>Matricule</th>
+				<th>Grade</th>
+			</tr>
+			</thread>
+
+			<tr>
+
+				<c:forEach items="${employes}" var="employe">
+
+					<td>${employe.dateCreation}</td>
+					<td>${employe.matricule}</td>
+					<td>${employe.grade.code}</td>
+
+				</c:forEach>
+
+			</tr>
+
+		</table>
+
+		<div class="row justify-content-end mt-2 mr-2">
+
+			<div class=".col-auto">
+				<a href='creer'>
+					<button type="button" class="btn btn-outline-dark">Créer
+						un nouveau employé</button>
+				</a>
+
+			</div>
+
+		</div>
 
 	</div>
 

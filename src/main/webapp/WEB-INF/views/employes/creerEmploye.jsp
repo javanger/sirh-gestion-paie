@@ -47,6 +47,8 @@
 				<li class="nav-item"><a class="nav-link" href="#">Bulletin
 				</a></li>
 
+				<li class="nav-item"><a class="nav-link" href="lister">Employé</a></li>
+
 			</ul>
 
 		</div>
@@ -60,7 +62,8 @@
 			<div class="form-row justify-content-center">
 				<div class="col-10 col-sm-8 col-md-6 col-lg-4 mb-3">
 					<label for="matriculeInput">Matricule</label>
-					<form:input path="matricule" type="text" class="form-control"  placeholder="matricule" required="required" />
+					<form:input path="matricule" type="text" class="form-control"
+						placeholder="matricule" required="required" />
 					<div class="invalid-feedback">Veuillez saisir un matricule
 						correct.</div>
 				</div>
@@ -70,8 +73,9 @@
 				<div class="col-10 col-sm-8 col-md-6 col-lg-4 mb-3">
 
 					<label for="entrepriseInput">Entreprise</label>
-					
-					<form:select class="custom-select" items="${entreprises}" itemLabel="denomination" itemValue="id" path="entreprise.id"></form:select>
+
+					<form:select class="custom-select" items="${entreprises}"
+						itemLabel="denomination" itemValue="id" path="entreprise.id"></form:select>
 
 				</div>
 			</div>
@@ -80,8 +84,9 @@
 				<div class="col-10 col-sm-8 col-md-6 col-lg-4 mb-3">
 
 					<label for="profilInput">Profil</label>
-					
-					<form:select class="custom-select" items="${profils}" itemLabel="code" itemValue="id" path="profilRemuneration.id"></form:select>
+
+					<form:select class="custom-select" items="${profils}"
+						itemLabel="code" itemValue="id" path="profilRemuneration.id"></form:select>
 
 				</div>
 			</div>
@@ -97,8 +102,8 @@
 							<fmt:parseNumber var="i" type="number"
 								value="${grade.nbHeuresBase.multiply(grade.tauxBase).multiply(12)}" />
 
-							<option value="${grade.id}">${grade.code} - ${i} € / an</option>
-							
+							<option value="${grade.id}">${grade.code}- ${i} € / an</option>
+
 						</c:forEach>
 
 					</form:select>
