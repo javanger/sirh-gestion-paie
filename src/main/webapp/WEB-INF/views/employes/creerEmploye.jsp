@@ -50,7 +50,7 @@
 							: </label>
 						<div class="col-sm-8">
 							<form:input type="text" path="matricule" class="form-control" id="inputMatricule"
-								name="matricule" placeholder="Matricule"/>
+								name="matricule" placeholder="Matricule" required="required"/>
 						</div>
 					</div>
 					<div class="form-group row p-3 pl-5">
