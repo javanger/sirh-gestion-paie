@@ -5,19 +5,30 @@
 
 <t:app>
 	<jsp:attribute name="header">
-       <a href="${ path }/bulletins/creer"
-			class="btn btn-outline-success">Ajouter</a>
+       
 		<div class="row">
-			<div class="col-md-4 offset-md-4">Fleche</div>
+		  <div class="col-4">
+			<a href="${ path }/bulletins/lister">Retour</a>
+		  </div>
+		  <div class="col-8 self-align-center">
+	         <h1>Bulletin de salaire</h1>
+          </div>
 		</div>
-	       <h1>Bulletin de salaire</h1>
     </jsp:attribute>
 	<jsp:attribute name="footer"></jsp:attribute>
 	<jsp:body>
-	   <h3>Entreprise</h3>
-       ${ b.bulletinSalaire.remunerationEmploye.entreprise.denomination }<br />
-       SIRET: ${ b.bulletinSalaire.remunerationEmploye.entreprise.siret }<br />
-       Matricule: ${ b.bulletinSalaire.remunerationEmploye.matricule }
+	   <div class="row">
+	       <div class="col-8">
+        	   <h3>Entreprise</h3>
+		       ${ b.bulletinSalaire.remunerationEmploye.entreprise.denomination }<br />
+		       SIRET: ${ b.bulletinSalaire.remunerationEmploye.entreprise.siret }<br />
+	       </div>
+	       <div class="col-4">
+               <h3>Période</h3> ${ b.periode }
+               <br><br>   
+		       <h3>Matricule</h3> ${ b.bulletinSalaire.remunerationEmploye.matricule }
+	       </div>
+	   </div>
        
        <h3>Salaire</h3>
        
@@ -116,7 +127,7 @@
             </tr>
           </thead>
           <tbody>
-            <c:forEach items="${ listMontantParCotisationImposable }" var="item">
+            <c:forEach items="${ b.resultatCRSM.listMontantParCotisationImposable }" var="item">
                 <tr>
                     <td>${ item.cotisation.code } ${ item.cotisation.libelle }</td>
                     <td>${ b.resultatCRSM.salaireBrut }</td>
@@ -130,13 +141,13 @@
              <td><strong>Total Retenue</strong></td>
              <td></td>
              <td></td>
-             <td><strong></strong></td>
+             <td><strong>${ b.resultatCRSM.totalCotisationsImposable }</strong></td>
              <td></td>
-             <td><strong></strong></td>
+             <td></td>
             </tr>          
           </tbody>
         </table>      
-        <h3>Net à payer : ${ b.resultatCRSM.netAPayer }</h3>
-               
+        <h3 class="float-right">Net à payer : ${ b.resultatCRSM.netAPayer }</h3>
+        <br><br><br><br><br><br>
     </jsp:body>
 </t:app>

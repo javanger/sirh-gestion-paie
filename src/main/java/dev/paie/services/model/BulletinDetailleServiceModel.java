@@ -10,26 +10,29 @@ import dev.paie.entites.BulletinSalaire;
  *
  */
 
-public class BulletinSemiDetailleServiceModel {
+public class BulletinDetailleServiceModel {
+
+
 
 	/** bulletinSalaire : BulletinSalaire */
-	private BulletinSalaire bulletinSalaire;
+	protected BulletinSalaire bulletinSalaire;
 	/**
 	 * resultatCalculRemunerationServiceModel :
 	 * ResultatCalculRemunerationServiceModel
 	 */
-	private ResultatCalculRemunerationServiceModel resultatCRSM;
+	protected ResultatCalculRemunerationServiceModel resultatCRSM;
 
 	/** dateCreation : String */
-	private String dateCreation;
+	protected String dateCreation;
 	/** periode : String */
-	private String periode;
+	protected String periode;
 
 	/**
 	 * Constructor
 	 * 
 	 */
-	public BulletinSemiDetailleServiceModel(BulletinSalaire b, String dateCreation, String periode, ResultatCalculRemunerationServiceModel resultat) {
+	public BulletinDetailleServiceModel(BulletinSalaire b, String dateCreation, String periode,
+			ResultatCalculRemunerationServiceModel resultat) {
 		this.bulletinSalaire = b;
 		this.dateCreation = dateCreation;
 		this.periode = periode;
@@ -111,6 +114,5 @@ public class BulletinSemiDetailleServiceModel {
 	public void setResultatCRSM(ResultatCalculRemunerationServiceModel resultatCRSM) {
 		this.resultatCRSM = resultatCRSM;
 	}
-
 
 }

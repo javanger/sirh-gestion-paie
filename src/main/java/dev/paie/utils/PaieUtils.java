@@ -61,7 +61,7 @@ public class PaieUtils {
 	}
 
 	public String formatPeriode(Periode p) {
-		return "de " + formatDate(p.getDateDebut()) + " à " + formatDate(p.getDateFin());
+		return "du " + formatDate(p.getDateDebut()) + " au " + formatDate(p.getDateFin());
 	}
 
 }

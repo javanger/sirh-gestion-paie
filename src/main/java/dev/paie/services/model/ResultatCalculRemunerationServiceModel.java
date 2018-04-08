@@ -3,6 +3,8 @@
  */
 package dev.paie.services.model;
 
+import java.util.List;
+
 /**
  * @author Kevin M.
  *
@@ -18,10 +20,21 @@ public class ResultatCalculRemunerationServiceModel {
 	private String totalRetenueSalarial;
 	/** totalCotisationsPatronales : String */
 	private String totalCotisationsPatronales;
+	/** totalCotisationsImposable : String */
+	private String totalCotisationsImposable;
 	/** netImposable : String */
 	private String netImposable;
 	/** netAPayer : String */
 	private String netAPayer;
+	/**
+	 * listMontantParCotisationNonImposable :
+	 * List<DetailsCotisationServiceModel>
+	 */
+	private List<DetailsCotisationServiceModel> listMontantParCotisationNonImposable;
+	/**
+	 * listMontantParCotisationImposable : List<DetailsCotisationServiceModel>
+	 */
+	private List<DetailsCotisationServiceModel> listMontantParCotisationImposable;
 
 	/**
 	 * Getter
@@ -136,5 +149,66 @@ public class ResultatCalculRemunerationServiceModel {
 	public void setNetAPayer(String netAPayer) {
 		this.netAPayer = netAPayer;
 	}
+
+	/**
+	 * Getter
+	 * 
+	 * @return the listMontantParCotisationNonImposable
+	 */
+	public List<DetailsCotisationServiceModel> getListMontantParCotisationNonImposable() {
+		return listMontantParCotisationNonImposable;
+	}
+
+	/**
+	 * Setter
+	 * 
+	 * @param listMontantParCotisationNonImposable
+	 *            the listMontantParCotisationNonImposable to set
+	 */
+	public void setListMontantParCotisationNonImposable(
+			List<DetailsCotisationServiceModel> listMontantParCotisationNonImposable) {
+		this.listMontantParCotisationNonImposable = listMontantParCotisationNonImposable;
+	}
+
+	/**
+	 * Getter
+	 * 
+	 * @return the listMontantParCotisationImposable
+	 */
+	public List<DetailsCotisationServiceModel> getListMontantParCotisationImposable() {
+		return listMontantParCotisationImposable;
+	}
+
+	/**
+	 * Setter
+	 * 
+	 * @param listMontantParCotisationImposable
+	 *            the listMontantParCotisationImposable to set
+	 */
+	public void setListMontantParCotisationImposable(
+			List<DetailsCotisationServiceModel> listMontantParCotisationImposable) {
+		this.listMontantParCotisationImposable = listMontantParCotisationImposable;
+	}
+
+	/**
+	 * Getter
+	 * 
+	 * @return the totalCotisationsImposable
+	 */
+	public String getTotalCotisationsImposable() {
+		return totalCotisationsImposable;
+	}
+
+	/**
+	 * Setter
+	 * 
+	 * @param totalCotisationsImposable
+	 *            the totalCotisationsImposable to set
+	 */
+	public void setTotalCotisationsImposable(String totalCotisationsImposable) {
+		this.totalCotisationsImposable = totalCotisationsImposable;
+	}
+
+
 
 }
