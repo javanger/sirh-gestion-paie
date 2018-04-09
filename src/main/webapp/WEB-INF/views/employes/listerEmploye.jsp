@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF8" pageEncoding="UTF8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -43,8 +44,9 @@
 			<div class="row">
 				<div class="col-lg-9"></div>
 				<div class="col-12 col-lg-1 offset-1">
-					<a href="./creer" class="btn btn-primary mt-3">Ajouter
-						un employé</a>
+				<sec:authorize access="hasRole('ADMINISTRATEUR')">
+					<a href="./creer" class="btn btn-primary mt-3">Ajouter	un employé</a>
+					</sec:authorize>
 				</div>
 			</div>
 			<div class="row">

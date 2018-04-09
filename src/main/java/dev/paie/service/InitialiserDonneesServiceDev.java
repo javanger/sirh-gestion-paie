@@ -12,7 +12,9 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +23,8 @@ import dev.paie.entite.Entreprise;
 import dev.paie.entite.Grade;
 import dev.paie.entite.Periode;
 import dev.paie.entite.ProfilRemuneration;
+import dev.paie.entite.Utilisateur;
+import dev.paie.entite.Utilisateur.ROLES;
 
 /**
  * @author Axel B.
@@ -32,6 +36,9 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 	private ClassPathXmlApplicationContext context;
 	@PersistenceContext
 	private EntityManager em;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Override
 	@Transactional
@@ -71,6 +78,25 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 			date = date.with(TemporalAdjusters.firstDayOfNextMonth());
 		}
 		periodes.forEach(x -> em.persist(x));
+
+		Utilisateur user = new Utilisateur();
+
+		String passwordHashe = this.passwordEncoder.encode("user");
+		user.setEstActif(true);
+		user.setNomUtilisateur("user");
+		user.setMotDePasse(passwordHashe);
+		user.setRole(ROLES.ROLE_UTILISATEUR);
+
+		em.persist(user);
+
+		Utilisateur admin = new Utilisateur();
+		passwordHashe = this.passwordEncoder.encode("admin");
+		admin.setEstActif(true);
+		admin.setNomUtilisateur("admin");
+		admin.setMotDePasse(passwordHashe);
+		admin.setRole(ROLES.ROLE_ADMINISTRATEUR);
+
+		em.persist(admin);
 
 	}
 
