@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,6 +48,7 @@ public class RemunerationEmployeController {
 	private PaieUtils paieUtils;
 
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
+	@Secured({ "ROLE_ADMINISTRATEUR" })
 	public ModelAndView creer() {
 		// récupérer la liste des entrprises
 		List<Entreprise> entreprises = eRepo.findAll();
@@ -70,6 +72,7 @@ public class RemunerationEmployeController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = { "/creer" })
+	@Secured({ "ROLE_ADMINISTRATEUR" })
 	public ModelAndView creerProcess(@RequestParam("inputMatricule") String matricule,
 			@RequestParam("selectProfil") Integer idProfil, @RequestParam("selectEntreprise") Integer idEntreprise,
 			@RequestParam("selectGrade") Integer idGrade) {
@@ -86,6 +89,7 @@ public class RemunerationEmployeController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = { "", "/", "/lister" })
+	@Secured({ "ROLE_ADMINISTRATEUR", "ROLE_UTILISATEUR" })
 	public ModelAndView lister() {
 		// récupérer la liste de remunerations
 

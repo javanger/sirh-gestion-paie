@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -49,6 +50,7 @@ public class BulletinController {
 	private CalculerRemunerationService calculateur;
 
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView creer(Model model) {
 		BulletinSalaire bulletin = new BulletinSalaire();
 
@@ -70,6 +72,7 @@ public class BulletinController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView post(@ModelAttribute("bulletin") BulletinSalaire bulletin) {
 		bulletin.setDateCreation(LocalDateTime.now());
 		bRepo.save(bulletin);
@@ -77,6 +80,7 @@ public class BulletinController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = { "", "/", "/lister" })
+	@Secured({ "ROLE_ADMINISTRATEUR", "ROLE_UTILISATEUR" })
 	@Transactional
 	public ModelAndView lister() {
 
@@ -94,6 +98,7 @@ public class BulletinController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@Secured({ "ROLE_ADMINISTRATEUR", "ROLE_UTILISATEUR" })
 	public ModelAndView visualiser(@PathVariable Integer id) {
 		BulletinSalaire bulletin = new BulletinSalaire();
 
