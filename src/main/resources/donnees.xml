@@ -11,5 +11,6 @@
 	<import resource="classpath:entreprises.xml" />
 	<import resource="classpath:grades.xml" />
 	<import resource="classpath:profils-remuneration.xml" />
+	<import resource="classpath:utilisateur.xml" />
 
 </beans>
