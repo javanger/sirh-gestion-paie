@@ -23,6 +23,7 @@
 		        <a class="nav-link" href='<c:url value="/mvc/bulletins/lister.jsp"/>'>Bulletins</a>
 		      </li>
 		    </ul>
+		    <button class="btn btn-primary">Déconnexion</button>
 		  </div>
 		</nav>
 		<div class="container-fluid">
