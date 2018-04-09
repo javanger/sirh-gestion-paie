@@ -82,7 +82,7 @@ public class BulletinController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/supprimer/{id}")
-	public void supprimerBulletin(@PathVariable Integer id) {
+	public ModelAndView supprimerBulletin(@PathVariable Integer id) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletins/listerBulletin");
 		bulletinServ.supprimer(id);
