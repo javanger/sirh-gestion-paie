@@ -67,9 +67,6 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 			periode.setDateFin(periode.getDateDebut().with(TemporalAdjusters.lastDayOfMonth()));
 			return periode;
 		}).forEach(em::persist);
-		
-		String iciUnMotDePasse = "admin";
-		String iciMotDePasseHashe = this.passwordEncoder.encode(iciUnMotDePasse);
 
 	}
 
