@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -12,7 +13,7 @@
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	      <a class="navbar-brand" href="">Accueil</a>
+	      <a class="navbar-brand" href="../..">Accueil</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="navbar-toggler-icon"></span>
 	      </button>
@@ -28,11 +29,13 @@
 			<div class="row justify-content-center p-2">
 				<h1>Liste des bulletins</h1>
 			</div>
-			<div class="row ">
-				<div class="col-10 text-right">
-	        		<a href="../bulletins/creer"><button type="submit"  class="btn btn-primary">Ajouter un nouveau bulletin</button></a>
-	        	</div>
-	       	</div>
+			<sec:authorize access="hasRole('ADMINISTRATEUR')">
+				<div class="row ">
+					<div class="col-10 text-right">
+		        		<a href="../bulletins/creer"><button type="submit"  class="btn btn-primary">Ajouter un nouveau bulletin</button></a>
+		        	</div>
+		       	</div>
+	       </sec:authorize>
 	       	
 	       	<div class = "row mt-3">
 	       		<div class ="col-9 offset-1">

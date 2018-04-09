@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,6 +37,7 @@ public class BulletinSalaireController {
 	private CalculerRemunerationService calculer;
 
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView creerEmploye() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletins/creerBulletin");
@@ -47,6 +49,7 @@ public class BulletinSalaireController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView submitForm(@ModelAttribute("bulletinSalaire") BulletinSalaire bulletinSalaire) {
 		bulletinSalaire.setDateCreation(ZonedDateTime.now());
 		bulletinRepository.save(bulletinSalaire);
@@ -54,6 +57,7 @@ public class BulletinSalaireController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
+	@Secured({ "ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR" })
 	public ModelAndView listerBulletin() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletins/listerBulletin");
@@ -65,6 +69,7 @@ public class BulletinSalaireController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/visualiser/{id}")
+	@Secured({ "ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR" })
 	public ModelAndView visualiserBulletin(@PathVariable Integer id) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletins/visualiserBulletin");
