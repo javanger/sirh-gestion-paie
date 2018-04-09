@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -43,9 +44,10 @@ public class BulletinController {
 	private BulletinSalaireRepository bulletinSalaireRepository;
 	
 	@Autowired
-	private CalculerRemunerationService calculRemuneration;
+	private CalculerRemunerationService	 calculRemuneration;
 
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView creerBulletin() {
 		
 		ModelAndView mv = new ModelAndView();
@@ -64,6 +66,7 @@ public class BulletinController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView submitForm(@ModelAttribute("bulletinSalaire") BulletinSalaire bulletinSalaire) {
 		
 		ModelAndView mv = new ModelAndView();
@@ -78,6 +81,7 @@ public class BulletinController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
+	@Secured({"ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR"})
 	@Transactional
 	public ModelAndView listerBulletins() {
 		
