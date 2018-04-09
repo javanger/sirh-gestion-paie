@@ -40,11 +40,13 @@
           <div class="col-sm-12 col-xs-12 col-lg-12 col-mg-12">
       			<h1>Liste des employés</h1>
       		</div>
+            <sec:authorize access="hasRole('ADMINISTRATEUR')">
             <div class="form-group">
 			<a href="../employes/creer"><button  type="submit" id="buttoncreer" class="btn btn-primary btn-lg" >
                 Ajouter un employe
             </button></a>
             </div>
+            </sec:authorize>
             <table class="table">
   <thead class="thead-dark">
     <tr>

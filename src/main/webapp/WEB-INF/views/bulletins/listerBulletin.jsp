@@ -2,6 +2,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="fr">
 <link rel="stylesheet"
@@ -40,11 +41,13 @@
           <div class="col-sm-12 col-xs-12 col-lg-12 col-mg-12">
       			<h1>Liste des bulletins</h1>
       		</div>
+      		<sec:authorize access="hasRole('ADMINISTRATEUR')">
             <div class="form-group">
 			<a href="../bulletins/creer"><button  type="submit" id="buttoncreer" class="btn btn-primary btn-lg" >
                 creer un nouveau bulletin
             </button></a>
             </div>
+            </sec:authorize>
             <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -66,7 +69,7 @@
       <td>${bulletins.value.salaireBrut}</td>
       <td>${bulletins.value.netImposable}</td>
       <td>${bulletins.value.netAPayer}</td> 
-      <td></td>
+      <td><a href="../bulletins/visualiser">Visualiser</a></td>
       </tr>
       </c:forEach>
   </tbody>

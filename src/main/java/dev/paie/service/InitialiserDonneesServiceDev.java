@@ -9,7 +9,9 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,12 +20,16 @@ import dev.paie.entite.Entreprise;
 import dev.paie.entite.Grade;
 import dev.paie.entite.Periode;
 import dev.paie.entite.ProfilRemuneration;
+import dev.paie.entite.Utilisateur;
 
 @Service
 public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 
 	@PersistenceContext
 	private EntityManager em;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Transactional
 	@Override
@@ -67,6 +73,13 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		}
 
 		periode.forEach((y) -> {
+			em.persist(y);
+		});
+
+		Map<String, Utilisateur> utilisateur = context.getBeansOfType(Utilisateur.class);
+
+		utilisateur.forEach((x, y) -> {
+			y.setMotDePasse(this.passwordEncoder.encode(y.getMotDePasse()));
 			em.persist(y);
 		});
 	}

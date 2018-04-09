@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan("dev.paie.web")
-@Import({JpaConfig.class, ServicesConfig.class, DataSourceMySQLConfig.class})
+@Import({ JpaConfig.class, ServicesConfig.class, DataSourceMySQLConfig.class, SecurityConfig.class })
 public class WebAppConfig {
 	@Bean
 	public ViewResolver viewResolver() {

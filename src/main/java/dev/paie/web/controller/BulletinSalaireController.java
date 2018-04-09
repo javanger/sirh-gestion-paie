@@ -3,6 +3,7 @@ package dev.paie.web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,6 @@ public class BulletinSalaireController {
 	@Autowired
 	private PeriodeRepository periodeRepository;
 
-
 	@Autowired
 	private RemunerationEmployeRepository remunerationEmployeRepository;
 
@@ -35,6 +35,7 @@ public class BulletinSalaireController {
 	private BulletinSalaireService bulletinSalaireService;
 
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView creerEmploye() {
 
 		ModelAndView mv = new ModelAndView();
@@ -51,6 +52,7 @@ public class BulletinSalaireController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public String submitForm(@ModelAttribute("bulletinSalaire") BulletinSalaire bulletinSalaire) {
 		bulletinsSalaireRepository.save(bulletinSalaire);
 		return "redirect:/mvc/bulletins/lister";
@@ -58,6 +60,7 @@ public class BulletinSalaireController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
+	@Secured({ "ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR" })
 	public ModelAndView listerBulletins() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletins/listerBulletin");
@@ -65,11 +68,15 @@ public class BulletinSalaireController {
 		return mv;
 	}
 
+	@RequestMapping(method = RequestMethod.GET, path = "/visualiser")
+	@Secured({ "ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR" })
+	public ModelAndView visualiserBulletins() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("bulletins/visualiserBulletins");
+		mv.addObject("bulletinSalaire", new BulletinSalaire());
+		return mv;
+	}
+
 }
 
-/*
- * <!-- <td>${bulletins.key.matricule}</td>
- * <td>${bulletins.value.salaireBrut}</td>
- * <td>${bulletins.value.netImposable}</td>
- * <td>${bulletins.value.netAPayer}</td> <td></td>-->
- */
+
