@@ -4,12 +4,16 @@
 package dev.paie.services;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +22,8 @@ import dev.paie.entites.Entreprise;
 import dev.paie.entites.Grade;
 import dev.paie.entites.Periode;
 import dev.paie.entites.ProfilRemuneration;
+import dev.paie.entites.Utilisateur;
+import dev.paie.entites.Utilisateur.ROLES;
 
 /**
  * @author Kevin M.
@@ -29,6 +35,9 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 	@PersistenceContext
 	private EntityManager em;
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -37,6 +46,15 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 	@Override
 	@Transactional
 	public void initialiser() {
+
+		// insertion des utilisateurs
+
+		List<Utilisateur> users = new ArrayList<>();
+		users.add(new Utilisateur(passwordEncoder.encode("j1234"), "jean", true, ROLES.ROLE_UTILISATEUR));
+		users.add(new Utilisateur(passwordEncoder.encode("p1234"), "paul", false, ROLES.ROLE_UTILISATEUR));
+		users.add(new Utilisateur(passwordEncoder.encode("g1234"), "gautier", true, ROLES.ROLE_ADMINISTRATEUR));
+
+		users.forEach(user -> em.persist(user));
 
 		// extraire les grades du fichier xml
 		@SuppressWarnings("resource")
