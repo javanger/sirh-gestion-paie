@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +37,7 @@ public class RemunerationEmployeController {
 
 
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView creerEmploye() {
 		// (g1, g2) -> g1.calculerSalaire().compareTo(g2.calculerSalaire())
 		Map<Grade, String> salaires = new TreeMap<>(Comparator.comparing(Grade::calculerSalaire));
@@ -60,6 +62,7 @@ public class RemunerationEmployeController {
 
 
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public String submitForm(@ModelAttribute("employe") RemunerationEmploye remunerationEmploye) {
 		remunerationEmploye.setDateCreation(ZonedDateTime.now());
 		employeRepository.save(remunerationEmploye);
@@ -68,6 +71,7 @@ public class RemunerationEmployeController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
+	@Secured({ "ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR" })
 	public ModelAndView listerEmploye() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("employes/listerEmploye");

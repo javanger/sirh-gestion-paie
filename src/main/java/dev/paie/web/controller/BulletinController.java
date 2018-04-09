@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,6 +40,7 @@ public class BulletinController {
 
 
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView creerBulletin() {
 		// (g1, g2) -> g1.calculerSalaire().compareTo(g2.calculerSalaire())
 
@@ -64,6 +66,7 @@ public class BulletinController {
 
 
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public String submitForm(@ModelAttribute("bulletin") BulletinSalaire bulletinSalaire) {
 		bulletinSalaire.setDateCreation(ZonedDateTime.now());
 		bulletinRepo.save(bulletinSalaire);
@@ -72,6 +75,7 @@ public class BulletinController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
+	@Secured({ "ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR" })
 	@Transactional
 	public ModelAndView listerBulletin() {
 

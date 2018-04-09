@@ -84,5 +84,6 @@
 	<import resource="entreprises.xml" />
 	<import resource="grades.xml" />
 	<import resource="profils-remuneration.xml" />
+	<import resource="utilisateur.xml" />
 
 </beans>
