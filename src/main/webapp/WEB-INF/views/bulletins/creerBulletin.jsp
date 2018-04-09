@@ -63,7 +63,7 @@
 							: </label>
 						<div class="col-sm-8">
 							<form:input type="text" path="primeExceptionnelle" class="form-control" id="inputPrimeExceptionnelle"
-								name="primeExceptionnelle" placeholder="Prime Exceptionnelle"/>
+								name="primeExceptionnelle" placeholder="Prime Exceptionnelle" required="required"/>
 						</div>
 					</div>
 					<div class="col-sm-10 text-right p-3">
