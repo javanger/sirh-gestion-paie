@@ -8,7 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -18,7 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 @Configuration
 @ComponentScan({ "dev.paie.services", "dev.paie.utils" })
-@Import({ DataSourceMariadbConfig.class, JpaConfig.class, JeuxDeDonneesConfig.class, SecurityConfig.class })
+@Import({ DataSourceH2Config.class, JpaConfig.class, JeuxDeDonneesConfig.class })
 @EnableJpaRepositories("dev.paie.repositories")
 public class ServicesConfig {
 
