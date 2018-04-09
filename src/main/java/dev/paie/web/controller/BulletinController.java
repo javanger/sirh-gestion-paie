@@ -26,7 +26,7 @@ import dev.paie.repositories.BulletinRepository;
 import dev.paie.repositories.PeriodeRepository;
 import dev.paie.repositories.RemunerationEmployeRepository;
 import dev.paie.services.CalculerRemunerationService;
-import dev.paie.services.model.BulletinSemiDetailleServiceModel;
+import dev.paie.services.model.BulletinDetailleServiceModel;
 import dev.paie.services.model.ResultatCalculRemunerationServiceModel;
 import dev.paie.utils.PaieUtils;
 
@@ -84,11 +84,11 @@ public class BulletinController {
 	@Transactional
 	public ModelAndView lister() {
 
-		List<BulletinSemiDetailleServiceModel> bulletins = new ArrayList<>();
+		List<BulletinDetailleServiceModel> bulletins = new ArrayList<>();
 
 		for (BulletinSalaire b : bRepo.findAll()) {
 			ResultatCalculRemunerationServiceModel result = calculateur.calculer(b);
-			BulletinSemiDetailleServiceModel bSemi = new BulletinSemiDetailleServiceModel(b,
+			BulletinDetailleServiceModel bSemi = new BulletinDetailleServiceModel(b,
 					paieUtils.formatDateTime(b.getDateCreation()), paieUtils.formatPeriode(b.getPeriode()), result);
 			bulletins.add(bSemi);
 		}
@@ -99,11 +99,17 @@ public class BulletinController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@Secured({ "ROLE_ADMINISTRATEUR", "ROLE_UTILISATEUR" })
+	@Transactional
 	public ModelAndView visualiser(@PathVariable Integer id) {
-		BulletinSalaire bulletin = new BulletinSalaire();
+		BulletinSalaire bulletin = bRepo.findOne(id);
+		String dateCreation = paieUtils.formatDateTime(bulletin.getDateCreation());
+		String periode = paieUtils.formatPeriode(bulletin.getPeriode());
+		BulletinDetailleServiceModel bComplet = new BulletinDetailleServiceModel(bulletin, dateCreation,
+				periode,
+				calculateur.calculer(bulletin));
 
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("b", bRepo.findOne(id));
+		mv.addObject("b", bComplet);
 		mv.setViewName("bulletins/detailsBulletin");
 
 		return mv;

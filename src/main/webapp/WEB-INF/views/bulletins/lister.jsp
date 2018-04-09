@@ -6,7 +6,7 @@
 <t:app>
 	<jsp:attribute name="header">
        <a href="${ path }/bulletins/creer"
-			class="btn btn-outline-success">Ajouter</a>
+			class="btn btn-outline-success float-rigth">Ajouter</a><br><br>
        <h1>Liste des bulletins</h1>
     </jsp:attribute>
 	<jsp:attribute name="footer"></jsp:attribute>
