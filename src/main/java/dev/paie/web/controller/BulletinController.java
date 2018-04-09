@@ -4,6 +4,7 @@
 package dev.paie.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,6 +42,7 @@ public class BulletinController {
 	private CotisationCalculerService cotisationServ;
 
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView creerEmploye() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletins/creerBulletin");
@@ -51,12 +53,14 @@ public class BulletinController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public String submitForm(@ModelAttribute("bulletinSalaire") BulletinSalaire bulletinSalaire) {
 		bulletinServ.save(bulletinSalaire);
 		return "redirect:/mvc/bulletins/lister";
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
+	@Secured({ "ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR" })
 	public ModelAndView listerBulletin() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletins/listerBulletin");
@@ -65,6 +69,7 @@ public class BulletinController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/visualiser/{id}")
+	@Secured({ "ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR" })
 	public ModelAndView visualiserBulletin(@PathVariable Integer id) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletins/visualiserBulletin");
@@ -73,6 +78,14 @@ public class BulletinController {
 		mv.addObject("cotCalcul", bulletinServ.total(bulletinServ.calculOne(id), id));
 		mv.addObject("cotCalculImposable",
 				bulletinServ.totalImposable(bulletinServ.calculOne(id), id));
+		return mv;
+	}
+
+	@RequestMapping(method = RequestMethod.GET, path = "/supprimer/{id}")
+	public void supprimerBulletin(@PathVariable Integer id) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("bulletins/listerBulletin");
+		bulletinServ.supprimer(id);
 		return mv;
 	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -25,18 +26,19 @@
 		  </div>
 		</nav>
 		<div class="container-fluid">	
-      		<div class="row justify-content-center p-2">
-      			<header>
+	    	<div class="row justify-content-center p-2">
+	    		<header>
 					<h1>Liste des employés</h1>
 				</header>	
-      		</div>	     				
-		</div>			
-			<div class="row justify-content-end mt-2 p-2">
-	        	<div class=".col-auto">
+	   		</div>	     				
+		</div>		
+		<div class="row justify-content-end mt-2 p-2">
+	       	<div class=".col-auto">
+				<sec:authorize access="hasRole('ADMINISTRATEUR')">
 	          		<a href='<c:url value="/mvc/employes/creer.jsp"/>'><button class="btn btn-primary">Ajouter un employé</button></a>
-	        	</div>
-      		</div>
-		
+				</sec:authorize>	
+	        </div>
+      	</div>
 		<table class="table table-hover table-dark">
 		  <thead>
 		    <tr>

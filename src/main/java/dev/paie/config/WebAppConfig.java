@@ -18,7 +18,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan({ "dev.paie.web" })
-@Import({ ServicesConfig.class, JpaConfig.class, DateSourceH2Heroku.class })
+@Import({ ServicesConfig.class, JpaConfig.class, DateSourceH2Heroku.class, SecurityConfig.class })
 public class WebAppConfig {
 	@Bean
 	public ViewResolver viewResolver() {

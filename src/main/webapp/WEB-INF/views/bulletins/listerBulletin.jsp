@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -31,12 +32,13 @@
 				</header>	
       		</div>	     				
 		</div>			
-			<div class="row justify-content-end mt-2 p-2">
-	        	<div class=".col-auto">
+		<div class="row justify-content-end mt-2 p-2">
+	       	<div class=".col-auto">
+				<sec:authorize access="hasRole('ADMINISTRATEUR')">
 	          		<a href='<c:url value="/mvc/bulletins/creer.jsp"/>'><button class="btn btn-primary">Créer un nouveau bulletin</button></a>
-	        	</div>
-      		</div>
-		
+				</sec:authorize>			
+	        </div>
+      	</div>
 		<table class="table table-hover table-dark">
 		  <thead>
 		    <tr>
@@ -59,9 +61,11 @@
 		      <td>${bulletin.value.salaireBrut}</td>
 		      <td>${bulletin.value.netImposable}</td>
 		      <td>${bulletin.value.netAPayer}</td> 
-		 	  <td><a href='<c:url value="/mvc/bulletins/visualiser/${bulletin.key.id}"/>' class="text-white">Visualiser</a></td>
+		 	  <td><a href='<c:url value="/mvc/bulletins/visualiser/${bulletin.key.id}"/>' class="text-white">Visualiser</a></td>		 	  
+		 	  <td>
+		 		<a href='<c:url value="/mvc/bulletins/supprimer/${bulletin.key.id}"/>'><img src="<%=request.getContextPath()%>/image/trash.png" class="rounded"></a>
+		 	  </td>
 		    </tr>
-		 	  
 		  	</c:forEach>  
 		  </tbody>
 		</table>

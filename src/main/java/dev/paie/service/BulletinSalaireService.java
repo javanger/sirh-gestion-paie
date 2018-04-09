@@ -40,6 +40,10 @@ public class BulletinSalaireService {
 		return bulletinRepository.findAll();
 	}
 
+	public void supprimer(Integer idBulletin) {
+		bulletinRepository.delete(bulletinRepository.findById(idBulletin));
+	}
+
 	public void save(BulletinSalaire bulletin) {
 		bulletin.setCreation(ZonedDateTime.now());
 		bulletinRepository.save(bulletin);
