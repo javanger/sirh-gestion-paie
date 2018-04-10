@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- cotisations imposables -->
+
+	<bean id="u01" class="dev.paie.entite.Utilisateur">
+		<property name="nomUtilisateur" value="admin"></property>
+		<property name="motDePasse" value="admin"></property>
+		<property name="estActif" value="true"></property>
+		<property name="role" value="ROLE_ADMINISTRATEUR"></property>
+	</bean>
+
+	<bean id="u02" class="dev.paie.entite.Utilisateur">
+		<property name="nomUtilisateur" value="user1"></property>
+		<property name="motDePasse" value="user1"></property>
+		<property name="estActif" value="true"></property>
+		<property name="role" value="ROLE_UTILISATEUR"></property>
+	</bean>
+	
+	<bean id="u03" class="dev.paie.entite.Utilisateur">
+		<property name="nomUtilisateur" value="alexis"></property>
+		<property name="motDePasse" value="alexis"></property>
+		<property name="estActif" value="true"></property>
+		<property name="role" value="ROLE_UTILISATEUR"></property>
+	</bean>
+	
+	<bean id="u04" class="dev.paie.entite.Utilisateur">
+		<property name="nomUtilisateur" value="emmanuel"></property>
+		<property name="motDePasse" value="emmanuel"></property>
+		<property name="estActif" value="false"></property>
+		<property name="role" value="ROLE_UTILISATEUR"></property>
+	</bean>
+	
+</beans>
