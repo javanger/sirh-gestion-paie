@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/connexion")
 public class ConnexionController {
+
 	@GetMapping
 	public String afficherPageCreer() {
 		return "connexion";

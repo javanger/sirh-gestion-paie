@@ -15,36 +15,44 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<div class="container">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
 			<a class="navbar-brand" href='<c:url value="/index.jsp" />'>Home</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarNav" aria-controls="navbarNav"
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
+			<div id="navbarNav" class="collapse navbar-collapse">
+				<ul class="navbar-nav mr-md-auto">
+					<li class="nav-item"><a class="nav-link"
+						href='<c:url value="/mvc/employes/lister" />'>Employés</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href='<c:url value="/mvc/bulletins/lister" />'>Bulletins</a></li>
+				</ul>
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href='<c:url value="/mvc/employes/lister" />'>Employés</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href='<c:url value="/mvc/bulletins/lister" />'>Bulletins</a>
-					</li>
+					<li class="nav-item"><a class="nav-link"
+						href='<c:url value="/mvc/employes/lister" />'>Déconnexion</a></li>
 				</ul>
 			</div>
-		</nav>
-		<section>
+		</div>
+	</nav>
+	<section>
+		<div class="container">
 			<article>
-				<div class="row pl-5">
+				<div class="row pl-5 pt-4">
 					<div class="col-6 offset-3 text-center p-2 p-m-4">
 						<h1>Créer Bulletin de Salaire</h1>
 					</div>
 				</div>
-				<form:form method="POST" modelAttribute="bulletinSalaire" accept-charset="UTF-8">
+				<form:form method="POST" modelAttribute="bulletinSalaire"
+					accept-charset="UTF-8">
 					<div class="form-group row p-3 pl-5">
 						<label for="selectPeriode" class="col-sm-2 col-form-label">Période
 							: </label>
 						<div class="col-sm-8">
-							<form:select path="periode.id" items="${periodes}" itemValue="id" itemLabel="dateString" class="form-control"  id="selectPeriode"
+							<form:select path="periode.id" items="${periodes}" itemValue="id"
+								itemLabel="dateString" class="form-control" id="selectPeriode"
 								name="periode">
 							</form:select>
 						</div>
@@ -53,17 +61,20 @@
 						<label for="selectEmploye" class="col-sm-2 col-form-label">Matricule
 							: </label>
 						<div class="col-sm-8">
-							<form:select path="remunerationEmploye.id" items="${employes}" itemValue="id" itemLabel="matricule" class="form-control"  id="selectEmploye"
-								name="employe">
+							<form:select path="remunerationEmploye.id" items="${employes}"
+								itemValue="id" itemLabel="matricule" class="form-control"
+								id="selectEmploye" name="employe">
 							</form:select>
 						</div>
 					</div>
 					<div class="form-group row p-3 pl-5">
-						<label for="inputPrimeExceptionnelle" class="col-sm-2 col-form-label">Prime exeptionnelle
-							: </label>
+						<label for="inputPrimeExceptionnelle"
+							class="col-sm-2 col-form-label">Prime exeptionnelle : </label>
 						<div class="col-sm-8">
-							<form:input type="text" path="primeExceptionnelle" class="form-control" id="inputPrimeExceptionnelle"
-								name="primeExceptionnelle" placeholder="Prime Exceptionnelle" required="required"/>
+							<form:input type="text" path="primeExceptionnelle"
+								class="form-control" id="inputPrimeExceptionnelle"
+								name="primeExceptionnelle" placeholder="Prime Exceptionnelle"
+								required="required" />
 						</div>
 					</div>
 					<div class="col-sm-10 text-right p-3">
@@ -72,8 +83,8 @@
 					</div>
 				</form:form>
 			</article>
-		</section>
-	</div>
+		</div>
+	</section>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>

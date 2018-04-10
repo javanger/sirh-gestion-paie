@@ -14,33 +14,40 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<div class="container">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
 			<a class="navbar-brand" href='<c:url value="/index.jsp" />'>Home</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarNav" aria-controls="navbarNav"
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
+			<div id="navbarNav" class="collapse navbar-collapse">
+				<ul class="navbar-nav mr-md-auto">
+					<li class="nav-item"><a class="nav-link"
+						href='<c:url value="/mvc/employes/lister" />'>Employés</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href='<c:url value="/mvc/bulletins/lister" />'>Bulletins</a></li>
+				</ul>
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link"
-						href="<c:url value="mvc/employes/lister" />">Employés</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="<c:url value="mvc/bulletins/lister" />">Bulletins</a></li>
+						href='<c:url value="/mvc/employes/lister" />'>Déconnexion</a></li>
 				</ul>
 			</div>
-		</nav>
-		<section>
+		</div>
+	</nav>
+	<section>
+		<div class="container">
 			<article>
-				<div class="row p-5">
+				<div class="row p-5 pt-4">
 					<div class="col-6 offset-3 text-center">
 						<h1>Projet SIRH - Gestion de la paie</h1>
 					</div>
 				</div>
 			</article>
-		</section>
-	</div>
+		</div>
+	</section>
+
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>

@@ -15,50 +15,60 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<div class="container">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
 			<a class="navbar-brand" href='<c:url value="/index.jsp" />'>Home</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarNav" aria-controls="navbarNav"
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
+			<div id="navbarNav" class="collapse navbar-collapse">
+				<ul class="navbar-nav mr-md-auto">
+					<li class="nav-item"><a class="nav-link"
+						href='<c:url value="/mvc/employes/lister" />'>Employés</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href='<c:url value="/mvc/bulletins/lister" />'>Bulletins</a></li>
+				</ul>
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href='<c:url value="/mvc/employes/lister" />'>Employés</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href='<c:url value="/mvc/bulletins/lister" />'>Bulletins</a>
-					</li>
+					<li class="nav-item"><a class="nav-link"
+						href='<c:url value="/mvc/employes/lister" />'>Déconnexion</a></li>
 				</ul>
 			</div>
-		</nav>
-		<section>
+		</div>
+	</nav>
+	<section>
+		<div class="container">
 			<article>
-				<div class="row pl-5">
+				<div class="row pl-5 pt-4">
 					<div class="col-3 p-3">
-						<a href="<c:url value="/mvc/employes/lister" />">
-							<img src='<c:out value="/images/fleche.png"/>' class="img-fluid" alt="Responsive image"/>
+						<a href="<c:url value="/mvc/employes/lister" />"> <img
+							src='<c:out value="/images/fleche.png"/>' class="img-fluid"
+							alt="Responsive image" />
 						</a>
 					</div>
 					<div class="col-6 text-center p-2 p-m-4">
 						<h1>Ajouter un employé</h1>
 					</div>
 				</div>
-				<form:form method="POST" modelAttribute="remunerationEmploye" accept-charset="UTF-8">
+				<form:form method="POST" modelAttribute="remunerationEmploye"
+					accept-charset="UTF-8">
 					<div class="form-group row p-3 pl-5">
 						<label for="inputMatricule" class="col-sm-2 col-form-label">Matricule
 							: </label>
 						<div class="col-sm-8">
-							<form:input type="text" path="matricule" class="form-control" id="inputMatricule"
-								name="matricule" placeholder="Matricule" required="required"/>
+							<form:input type="text" path="matricule" class="form-control"
+								id="inputMatricule" name="matricule" placeholder="Matricule"
+								required="required" />
 						</div>
 					</div>
 					<div class="form-group row p-3 pl-5">
 						<label for="selectEntreprise" class="col-sm-2 col-form-label">Entreprise
 							: </label>
 						<div class="col-sm-8">
-							<form:select path="entreprise.id" items="${entreprises}" itemValue="id" itemLabel="denomination" class="form-control"  id="selectEntreprise"
-								name="entreprise">
+							<form:select path="entreprise.id" items="${entreprises}"
+								itemValue="id" itemLabel="denomination" class="form-control"
+								id="selectEntreprise" name="entreprise">
 							</form:select>
 						</div>
 					</div>
@@ -66,7 +76,9 @@
 						<label for="selectProfil" class="col-sm-2 col-form-label">Profil
 							: </label>
 						<div class="col-sm-8">
-							<form:select path="profilRemuneration.id" items="${profils}" itemValue="id" itemLabel="code" class="form-control" id="selectProfil" name="profil">
+							<form:select path="profilRemuneration.id" items="${profils}"
+								itemValue="id" itemLabel="code" class="form-control"
+								id="selectProfil" name="profil">
 							</form:select>
 						</div>
 					</div>
@@ -74,7 +86,8 @@
 						<label for="selectGrade" class="col-sm-2 col-form-label">Grade
 							: </label>
 						<div class="col-sm-8">
-							<form:select path="grade.id" class="form-control" id="selectGrade" name="grade">
+							<form:select path="grade.id" class="form-control"
+								id="selectGrade" name="grade">
 								<c:forEach items="${grades}" var="grade">
 									<form:option value="${grade.key.id}" label="${grade.value}"></form:option>
 								</c:forEach>
@@ -87,8 +100,9 @@
 					</div>
 				</form:form>
 			</article>
-		</section>
-	</div>
+		</div>
+	</section>
+
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
